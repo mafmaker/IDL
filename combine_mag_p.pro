@@ -1,0 +1,216 @@
+pro combine_mag_p, filelist, mapim, minlat, maxlat, minlon, maxlon, lat_res,  lon_res, nolow = nolow, pd = pd,full_earth=full_earth
+
+;
+; 	Combine_Mag.pro
+;	12-4-97
+;	combines maps, separated into groups by blank lines in the .dat file,
+;	which have been created by vismag.pro or vismap.pro
+;	P.S. It's fast but a little buggy.
+;
+;	11-6-97 This code excludes pixels outside of the 'oval'
+;		See combine_mag_all.pro for all pixels 
+;	2-15-98 Code has flag to exclude or include oval pixels
+;       2-15-98 Needs to be written to work for northern hemisphere
+;		pixels!!! (Lat problem)
+;	2-16-98 Fix for bad scanlines (newmap_holder vs newmap_wt)
+;	2-16-98 Need to implement weighting of -1 to indicate untouched areas
+;	11-3-98 Add working directory flag and OS flag
+; 	5-10-2001 better handling of output filename
+;		fltarr newmap!!!
+;
+;       7-30-2002  Now proceduralizing this code
+;               Nolow keyword means no low has been defined and we
+;               have to set it to something and enforce it.
+;
+;       11-8-02 Added loop for adjusting highindex and lowindex
+;       9-11-07 full_earth added to not add + 1 to x-y size of newmap_holder
+
+
+;working_dir='../../83_036/'
+;working_dir='~/fat/sci/fuv/bastille/images/'
+;working_dir='~/neo/sci/fuv/bastille/quiet/'
+;working_dir='~/fat/sci/fuv/istp_events/'
+;working_dir='~/sci/fuv/'
+;working_dir='/disks/neo/disk1/immel/sci/fuv/bastille/aguf01/'
+;working_dir='~/sci/fuv/clouds/'
+
+
+;mag_flag =1
+;if mag_flag eq 1 then print,'GOING TO APPEND A _avg TO YOUR FILE' else $
+;   print,'GOING TO APPEND A _avg TO YOUR FILE'
+
+
+;VMS_flag=0				; not actually used
+oval_ex_flag=0
+nolow_flag = 0
+
+if keyword_set(nolow) gt 0 then nolow_flag =  1
+
+;while not eof(6) do begin	;begin reading through dat file
+;name_buffer=strarr(50)	;to hold map names between averaging reads
+			;size is generous!!!
+
+;  blank=' '
+;  numims=0
+;  readf,6,format='(a35)',blank
+;  print,blank
+;  while strmid(blank,0,1) ne ' ' do begin	;get set of images
+;    name_buffer(numims)=blank
+;    print,name_buffer;
+;    numims=numims+1
+
+;    blank=' '
+;    readf,6,format='(a35)',blank
+;    print,numims,' ',blank
+;    help,blank
+;  endwhile
+;  name_buffer(numims + 1)=blank
+;  print,'***got here' , numims
+
+  numims = n_elements(filelist)
+  ysize=intarr(numims)  
+
+  for i=0,numims-1 do begin
+
+    restore,filelist(i) ;working_dir + strcompress(name_buffer(i),/rem)
+    pdfinder=strpos(strupcase(filelist(i)),'PD')
+    if pdfinder ne -1 then pd_flag = 1 else pd_flag=0
+    if keyword_set(pd) gt 0 then pd_flag = 1
+;	tvscl,mapim,i
+
+    if i eq 0 then begin
+      thing=size(mapim) 
+      ysize(i)=thing(2)
+      base_name=name
+      base_lab=lab
+    endif else begin 
+      thing=size(mapim) 
+      ysize(i)=thing(2) 	;now no difference
+    endelse
+
+    if i eq 0 then begin
+      minlatall=minlat 
+      maxlatall=maxlat
+      minlonall=minlon
+      maxlonall=maxlon
+    endif else begin
+      minlatall=minlat < minlatall
+      maxlatall=maxlat > maxlatall
+      minlonall=minlon < minlonall   
+      maxlonall=maxlon > maxlonall
+    endelse
+
+    xsizer=360 & minlon=0 & maxlon=359.999
+    ysizer=abs(fix(maxlatall + 1) -fix(minlatall))
+
+    if keyword_set(full_earth) gt 0 then buffer=0 else buffer=1
+
+    newmap=fltarr(fix(xsizer/lon_res)+buffer, $
+                  fix(ysizer/lat_res)+buffer) & newmap(*,*)=0
+    newmap_wt=newmap & newmap_wt(*,*)=-1
+    newmap_sqr=newmap
+    newmap_holder=newmap & newmap_holder(*,*)=-61
+  endfor		;done testing sizes and building newmap array
+
+  for i=0,numims-1 do begin
+;-----------thing?!@?!?!?!?!
+    restore, filelist(i);working_dir + strcompress(name_buffer(i),/rem)    ;map file again
+    if oval_ex_flag then $
+		restore,strmid(filelist(i),0,15) + '.ict'  ;oval inner contour file
+    lowindex = fix((minlat-minlatall)/lat_res) 	;added minlatall 2-15-98
+    highindex= lowindex + ysize(i) - 1
+
+;---fudge factor
+    newsize=size(newmap) & newsize=newsize(2)
+    if highindex ge newsize then if lowindex ne 0 then begin
+        while highindex ge newsize do begin
+  	  highindex=highindex-1
+   	  lowindex=lowindex-1
+        endwhile
+
+    endif
+
+;---not excluding oval for DE!!!
+if not oval_ex_flag then goto, skip_oval_ex
+
+    oval=fix(congrid(oval,361) + 90.)
+    badoval=where(oval lt 0,badovalcount)
+    if badovalcount gt 0 then goto, skipmap
+    for j=0,360 do begin		;wipe out all pixels but polar cap
+      mapim(j,oval(j):ysize(i)-1)=0	;minus -60 is bottom of mappd range 
+    endfor
+
+skip_oval_ex:
+
+
+    lowcount=-1			;WHY DOES THIS GET CHANGED TO ZERO AS 
+				;WELL AS THAT pd_min=-1 in vismag.pro!??!?!
+
+
+
+    if pd_flag  eq 1 then lowcount = -61
+
+    if nolow_flag gt 0 then begin & lowcount = 0 & mapim=(mapim>0) &  endif
+
+    newmap_holder(*,lowindex:highindex)=mapim 
+    finder1=where(newmap_holder eq lowcount,nodat)		;aint no data
+    finder2=where(newmap_holder ne lowcount, find2ct)	;
+    finder3=where(newmap_holder ne lowcount and newmap_wt eq -1,find3ct)
+    if nodat gt 0 then newmap_holder(finder1)=0		;add zero when weight is zero!
+    if find3ct gt 0 then newmap_wt(finder3)=0		;-1 bin is 'activated'
+    if find2ct gt 0 then newmap_wt(finder2)=newmap_wt(finder2) + 1	
+    newmap=newmap + newmap_holder
+    newmap_sqr=newmap_sqr + newmap_holder^2
+;    newmap(*,lowindex:highindex)=mapim + newmap(*,lowindex:highindex)
+
+;***holder looks at one image at a time, taking advantage of -61 flag.
+    newmap_holder(*,*)=-61
+  skipmap:
+  endfor
+;  last_find=where
+  avgmap=newmap/newmap_wt 
+  set_off=where(newmap_wt le 0,set_off_count)
+  if set_off_count gt 0 then avgmap(set_off)=-61
+
+;& makeminus=where(newmap eq -61,faulty) ;
+;  if faulty gt 0 then avgmap(makeminus) = -61
+  ;  tvscl,avgmap
+
+  mapim=avgmap
+  mapim_wt=newmap_wt
+  mapim_sqr=newmap_sqr/newmap_wt
+  maxlon=maxlonall
+  minlon=minlonall
+  maxlat=maxlatall
+  minlat=minlatall
+  avgmapname=filelist(0:numims-1)
+;  if strpos(name_buffer(0),'pd') eq -1 then $
+   savefile=strcompress(filelist(0),/rem) + '_avg' 
+;    else savefile=working_dir + strmid(name_buffer(0),0,15) + '.mappd_avg'
+;  if mag_flag eq 1 then begin
+
+;    if strpos(name_buffer(0),'pd') eq -1 then $
+;      savefile=working_dir + strmid(name_buffer(0),0,15) + '.mag_avg' $
+;      else savefile=working_dir + strmid(name_buffer(0),0,15) + '.magpd_avg'
+;  endif
+
+;  if strpos(name_buffer(0),'pd') eq -1 then $
+;    savefile=working_dir + strmid(name_buffer(0),0,15) + '.map_avg' $
+;    else savefile=working_dir + strmid(name_buffer(0),0,15) + '.mappd_avg'
+;  if mag_flag eq 1 then begin;
+;
+;    if strpos(name_buffer(0),'pd') eq -1 then $
+;      savefile=working_dir + strmid(name_buffer(0),0,15) + '.mag_avg' $
+;      else savefile=working_dir + strmid(name_buffer(0),0,15) + '.magpd_avg'
+;  endif
+
+  print,savefile
+  name=base_name
+  lab=base_lab
+;  save,filename=savefile,mapim,mapim_wt,mapim_sqr,$
+;       avgmapname,maxlat,minlat,maxlon,minlon,$
+;				lat_res,lon_res,name,lab
+
+;endwhile
+
+end

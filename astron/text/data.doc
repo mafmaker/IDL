@@ -1,0 +1,11 @@
+                                                            November 1995
+
+This directory contains data files which are read by two procedures
+in the astronomy library XASTRO.PRO and STREBCASC.PRO.   These procedure
+look for these data files in a directory with the logical name
+ASTRO_DATA (VMS) or the environment name ASTRO_DATA (Unix).
+
+The file EBCDIC.DAT is read by STREBCASC.PRO.   It gives the EBCDIC-ASCII
+conversion codes.
+
+The file XASTROHELP.DAT is read by XASTRO.PRO and displays help info.

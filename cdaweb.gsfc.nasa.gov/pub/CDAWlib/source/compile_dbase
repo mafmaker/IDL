@@ -1,0 +1,36 @@
+#$Author: kovalick $
+#$Date: 1998/09/03 13:52:15 $
+#$Header: /home/rumba/cdaweb/dev/control/RCS/compile_dbase,v 1.2 1998/09/03 13:52:15 kovalick Exp kovalick $
+#$Locker: kovalick $
+#$Revision: 1.2 $
+#---------------------------------------------------------------------------
+#! /bin/csh
+#check out a copy of the two C programs into a local developers account.
+#we have defined a local group of developers to be in the cdaweb group.
+#so that all of those folks can have priveleges to modify/setup some
+#of the necessary files...
+cdawget generateDatabases.c
+cdawget list_CDFS.c
+echo
+#execute the CDF definitions script in order to define CDF_INC, etc.
+#Mirror site: change this to point to your location of CDF.
+source /usr/local/share/cdf26/bin/definitions.C
+#Mirror site: change below to point to your distribution of the
+#CDF library.
+setenv LD_LIBRARY_PATH /usr/local/share/cdf26/lib 
+#compile and link each executable, place the executable in ~cdaweb/bin
+printenv CDF_INC
+printenv CDF_LIB
+cc -c -I${CDF_INC} generateDatabases.c 
+cc -o generateDatabases generateDatabases.o ${CDF_LIB}/libcdf.so -lm -lc
+cc -c -I${CDF_INC} list_CDFS.c 
+cc -o list_CDFS list_CDFS.o ${CDF_LIB}/libcdf.so -lm -lc 
+chmod +x ~cdaweb/bin/generateDatabases
+chmod +x ~cdaweb/bin/list_CDFS
+rm generateDatabases.*
+rm list_CDFS.*
+echo "Database programs compiled and installed"
+
+
+
+

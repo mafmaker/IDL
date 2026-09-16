@@ -1,0 +1,81 @@
+pro read_int, path
+
+; read the PLOTINT file from trans
+
+@common
+@common_w
+
+;on_ioerror, error
+
+openr, unit, path+"/PLOTINTxdr", /get_lun, /xdr
+
+msg_out, "Reading file PLOTINTxdr"
+
+l1=0L
+readu, unit, l1
+messag=string(replicate(32B,l1))
+readu, unit, messag
+ 
+readu, unit, l1
+crs_file=string(replicate(32B,l1))
+readu, unit, crs_file
+ 
+nmax=0L
+mmax=0L
+kmax=0L
+readu, unit, nmax, mmax, kmax
+
+angle=fltarr(kmax)
+mu_weight=angle 
+readu, unit, angle
+readu, unit, mu_weight
+ 
+energy=fltarr(nmax)
+readu, unit, energy
+ 
+altitude=fltarr(mmax)
+readu, unit, altitude
+altitude=altitude*1e-5
+ 
+intens_up=fltarr(mmax, nmax, kmax)
+intens_dn=intens_up
+total_int=fltarr(mmax, nmax)
+work=fltarr(mmax, nmax)
+for k=kmax-1,0,-1 do begin
+  readu, unit, work
+  intens_dn(*,*,k)=work
+endfor
+readu, unit, work
+total_int=work
+for k=0,kmax-1 do begin
+  readu, unit, work
+  intens_up(*,*,k)=work
+endfor
+
+free_lun, unit
+
+; I'm not sure this is really necessary - commenting it out:
+
+; There tend to be really small numbers in the file, causing "underflow" 
+; error messages.  So we turn error messages off, fix the problem, and
+; turn them back on.
+
+;error = check_math(0,1)
+;mach_min = machar()
+;mach_min = mach_min.xmin
+;intensity_param.irange=[mmin([intens_up, intens_dn], above=mach_min), $
+;                        max([intens_up, intens_dn]) ]
+;intens_up = (intens_up > intensity_param.irange(0))
+;intens_dn = (intens_dn > intensity_param.irange(0))
+;error = check_math(0,0)
+; set initital minimum (for plotting
+;intensity_param.irange[0] = intensity_param.irange[1]*1e-8
+
+
+return
+
+; error: prnt_error, !err_string
+;return
+
+
+end

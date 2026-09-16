@@ -1,0 +1,37 @@
+pushd, '~lumm/New_trans/plot'
+@common
+@common_w
+.r density.pro
+.r display.pro
+.r engdep.pro
+.r exrates.pro
+.r flx_cont.pro
+.r flx_surf.pro
+.r intensity
+.r ionrates.pro
+.r mk_path.pro
+.r penetration.pro
+.r plot_loss.pro
+.r prnt_error.pro
+.r read_all.pro
+.r read_atm.pro
+.r read_crs.pro
+.r read_dep.pro
+.r read_exr.pro
+.r read_flx.pro
+.r read_int.pro
+.r read_lbh.pro
+.r set_engdep.pro
+.r set_flx_cont.pro
+.r set_flx_surf.pro
+.r set_ionr.pro
+.r set_excr.pro
+.r set_intensity
+.r set_spectrum.pro
+.r spectrum.pro
+.r trans.pro
+.r uv_emission.pro
+
+popd
+;trans
+

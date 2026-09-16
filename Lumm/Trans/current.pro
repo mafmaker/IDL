@@ -1,0 +1,32 @@
+pro current, limit=limit, _extra=_extra
+
+;plot the current as a function of altitude
+
+@common
+@common_w
+
+j_dn = fltarr(mmax)
+j_up = fltarr(mmax)
+
+for i=0,mmax-2 do j_dn(i) = trap(flux_down(*,i), energy, limit=limit)
+for i=0,mmax-2 do j_up(i) = trap(flux_up(*,i), energy, limit=limit)
+
+;convert to micro Ampere/m2
+j_dn = j_dn*1.6022e-9
+j_up = j_up*1.6022e-9
+
+p_save = !p.multi
+!p.multi = [0,2,1]
+plot, j_dn, altitude, xtit='Current Density (!4l!3Am!u-2!n)',  $
+     ytit='Altitude (km)', ysty=16, $
+     title='Current Density from Up and Downward Fluxes'
+oplot, j_up, altitude, line=2
+
+plot, j_dn-j_up, altitude, xtit='Current Density (!4l!3Am!u-2!n)',  $
+     ytit='Altitude (km)', ysty=16, $
+     title='Net Current Density', _extra=_extra
+oplot, [0,0], [0, max(altitude)], line=2
+!p.multi = p_save
+
+return
+end

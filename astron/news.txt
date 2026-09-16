@@ -1,0 +1,589 @@
+29-Jun-1998: ***Procedures in the Library now use the square array notation
+                for subscripts introduced in IDL V4.0.***     A version of the
+                Library that works with older versions of IDL is still available
+                http://idlastro.gsfc.nasa.gov/ftp/v4/
+
+27-Jun-1998: PLOTERROR, OPLOTERROR -- renamed from PLOTERR, OPLOTERR to avoid
+                     conflict with RSI procedures with the same name
+
+             CONV_VAX_UNIX, CONV_UNIX_VAX - Now know that since V5.1, the
+                     'alpha' architecture is always IEEE little endian
+
+             pro/daophot directory renamed to pro/idlphot 
+
+26-Jun-1998: PUTAST - Fixed bug where CROTA value was not converted from 
+                      radians to degrees. 
+
+22-Jun-1998: CORREL_IMAGES - now subtracts mean of entire image before 
+                   computing correlation, rather than just mean of overlap 
+                   region.    
+
+19-Jun-1998: WFPC2_READ - Read Wide Field/Planetary Camera 2 (WFPC2) images
+             FREBIN - Expand or contract an image by an arbitary amount using
+                      interpolation (and conserving flux)
+             DBCOMPRESS - Compress the size of a database (use after DBDELETE)
+
+6-Jun-1998:  LINEID_PLOT - Don't extend lines outside of the plot region
+
+4-Jun-1998:  WRITEFITS - Will now create a default header, if needed, for 
+                     image extensions, when /APPEND is used
+             HROTATE - Now work properly for non-square images
+
+1-Jun-1998:  SXADDPAR - Make sure closing quote supplied with long string value
+
+29-May-1998: FXPAR(), SXPAR() - Integer values too large to be stored as type
+		LONG are now returned as DOUBLE.
+                    
+20-May-1998: FXREAD - Can now read single rows or columns.  Also now includes
+                      additional error checking.
+
+19-May-1998: CLEANPLOT - Use !D.TABLE_SIZE instead of !D.N_COLORS to support
+                         24 bit displays
+             FIND_WTIH_DEF() - Trim blanks from input file name
+
+12-May-1998: POSANG - Compute position angle from source 1 to source 2 given  
+                      their RA and Dec
+             WCS_ROTATE - Fixed bug for projections (such as sinusoidal) which
+                      have /ORIGIN set and LONGPOLE = 180.0
+
+20-Apr-1998: FORPRINT - Now has a /SILENT keyword
+
+14-Apr-1998: FITS_INFO, RDFITS_STRUCT - Now correctly skip past FITS extensions
+             with no data.   Also RDFITS_STRUCT now returns anonymous structures
+
+11-Apr-1998: IRAFRD - Now accepts filenames with multiple extensions
+
+9-Apr-1998: CR_REJECT - Now has NULL_VALUE keyword to specify output value of 
+		pixels for which no input values contribute.   Also, CR_REJECT
+		called the following two procedures which were missing from the
+		Library.
+	SKYADJ_CUBE - Remove the sky level from individual images of a data cube
+	XMEDSKY - Compute the median sky as a 1-d function of X (e.g. useful 
+		for slitless spectra)
+
+7-Apr-1998:  CCM_UNRED - Update input vector if output vector not supplied
+	     GCIRC - Display result at terminal if output parameter not supplied
+
+30-Mar-1998: READFITS() - Fix NaN assignment for integer data, and accept a
+                          a value of 0.0 for the NaNvalue keyword
+
+18-Mar-1998: FIND_ALL_DIR - Fixed for Windows and Mac operating systems
+
+09-Mar-1998: MWRFITS - Fixed problem writing null primary arrays
+
+19-Feb-1998: OPLOTERR - Now has /HIBAR and /LOBAR keywords which allow for 
+		asymmetric error bars.
+
+13-Feb-1998: SIGRANGE() - Now has MISSING, RANGE keywords, and uses random 
+             statistics when sampling the array to get the optimal range
+	     NINT() - Return type LONG if any input values exceed 32767, and 
+			accept strings
+
+11-Feb-1998: IEEE_TO_HOST - Under VMS, check for IEEE -0.0 values, since 
+                            VMS can choke on these values
+
+30-Jan-1998: MEDARR - Code restructured for improved performance
+
+23-Jan-1998: IRAFRD - Fixed problem reading IRAF v2.11 images with long headers
+
+20-Jan-1998: PLOTHIST - Added /FILL keyword and other POLYFILL related 
+             keywords.    Allows a variety of filled histograms
+
+10-Jan-1998: PLOTHIST - Added PEAK keyword that if set, will scale the peak of
+	     the histogram to the value in PEAK.  Good for comparing normalized
+	     histograms, particularly when using the OVERPLOT keyword.
+
+02-Jan-1998: PLOTERR - Recognize /XLOG, /YLOG keywords instead of /XTYPE, /YTYPE
+
+01-Jan-1998  FITS_INFO - EXTNAME keyword does not need to be in first 36 lines
+             YMD2DN() - Now accepts vector arguments
+
+30-Dec-1997: LOOK (in pub/contrib/knight) widget image display program now has 
+             numerous bug fixes, updates for V5 compatibility and new keywords
+
+19-Dec-1997: CR_REJECT - General cosmic ray removal routine for 2 or more images
+             Removed XASTRO (it never worked very well)
+
+18-Dec-1997: MWRFITS - OPENW statement modified to work with VMS
+
+10-Dec-1997: CURVAL - Now properly rounds positions for zoomed images
+
+5-Dec-1997:  TVLASER - Now has a /TRUECOLOR keyword for 24 bit printers
+
+3-Dec-1997:  READFITS - /SILENT keyword now suppresses all non-fatal messages
+
+25-Nov-1997: BREAK_PATH - Apply TRIM() to input string
+
+24-Nov-1997: MRDFITS - Now accepts trailing blanks to XTENSION keyword
+
+20-Nov-1997: DBBUILD, DBUPDATE - Now much faster when building or updating
+                  external databases on a big endian machine
+             DBWRT - Now has a /NoConvert keyword 
+
+18-Nov-1997: IEEE_TO_HOST, HOST_TO_IEEE - Under certain circumstances scalars
+                   could be converted to 1 element arrays
+             ADSTRING() - Now works for a precision of 4
+
+1-Nov-1997:  In V2.11 of IRAF, the internal (*.imh) data format has changed.  
+             IRAFRD and IRAFDIR modified to interpret the new format (as well
+             as the old format).
+
+28-Oct-1997: MODFITS - Fixed problem that could occur when READU precedes a
+                       WRITEU on a file opened with OPENU.
+
+24-Oct-1997: PUTAST will now update CROTA1 if it already exists in the header
+
+22-Oct-1997: MRDFITS() now knows that IDL reserved words (e.g. EQ, DO) cannot 
+             be structure tag names
+
+18-Oct-1997: The Web server idlastro.gsfc.nasa.gov has been upgraded to an
+             Sun Ultra-1.  Some anomalies and downtime may occur while the
+             machine upgrade takes place. 
+
+14-Oct-1997: ADSTRING() - Fixed roundoff past 60s of time
+             FIND_ALL_DIR() - Find all directories under a specified directory.
+               (In VMS distribution calls a command file find_all_dir.com)
+             DEF_DIRLIST - Define directory list using setenv or setlog
+             FIND_WITH_DEF() - Added /RESET keyword, now calls FIND_ALL_DIR()
+
+10-Oct-1997: FXTAPEREAD, FXTAPEWRITE - Updated to match versions in SOHO Library
+
+5-Oct-1997:  DBFIND(), DB_ITEM - Now have ERRMSG keyword
+             REM_DUP() - Work for > 32767 values
+
+28-Sep-1997: WHERE_NEGZERO() - Find positions of IEEE -0.0 values (which are not
+                   handled correctly under VMS).
+	     FXBREAD - Updated to call WHERE_NEGZERO
+	     DATE() - Now works for dates outside of the 20th century
+             SPEC_DIR(),NUMLINES() - Now call EXPAND_TILDE() under Unix if 
+			needed
+
+27-Sep-1997: PUTAST - Now defaults to CD matrix type of CD1_1; calls GET_COORDS
+                      instead of GETOPT to fix problem reading '-0'
+	     STRINGAD removed from Library, use the more general procedure
+                      GET_COORDS instead.
+
+10-Sep-1997: CLEANPLOT - Updated for V5.0 (which has 60 instead of 30 default
+			 TICKV and TICKNAME values).
+	     TRIM() - Convert numbers to strings, without trailing zeros
+	     EXPAND_TILDE() - Expand the tilde in Unix directory names
+
+7-Sep-1997:  FXTPIO_READ, FXTPIO_WRITE - Now have output ERRMSG keyword
+
+5-Sep-1997:  FXADDPAR - Fixed bug inserting strings with a '/' character
+             DATATYPE() - Now recognizes object and pointer data types 
+             TAG_EXIST() - Now has /TOP_LEVEL keyword to suppress recursive
+			searches.
+             SELECT_W - Changed handling of MODAL keyword for V5.0
+             WHERE_TAG() - /NOPRINT now really does what it says
+
+4-Sep-1997:  HOST_TO_IEEE - Work for complex and double complex data types
+
+3-Sep-1997:  PUTAST - Fixed for the case CD_TYPE=1 and CDELT = [1.0,1.0]
+
+             The contrib/thompson directories have been removed.   Instead
+             users should go the following (more up-to-date) Web sites:
+ 
+          /time:   http://sohowww.nascom.nasa.gov/solarsoft/gen/idl/time/
+   /documentation: http://sohowww.nascom.nasa.gov/solarsoft/gen/idl/help/
+   /image_display: http://sohowww.nascom.nasa.gov/solarsoft/gen/idl/image/
+/graphics_devices: http://sohowww.nascom.nasa.gov/solarsoft/gen/idl/system/
+
+
+2-Sep-1997:  All procedures now have a one-line description following the 
+	     PURPOSE: heading.    Any additional description is placed under
+             an EXPLANATION: heading.
+
+             A tar file containing all Astronomy Library procedures converted
+             to IDL V5.0 is now available in the /v5 directory.    All 
+             subscripts now use square brackets rather than parentheses, and
+             a few other updates have been made for V5.0 as noted in the README
+             file.
+
+30-Aug-1997: DBEDIT - Now works with databases (but still not on items) with 
+                      multiple valued items.
+             PRINT_STRUCT - Now uses IDL UNIQ() function rather than calling
+                      an (unavailable) UNIQUE() function
+
+             Tar files now distributed as gzip rather than Unix compress files.
+                      
+             Removed TAB_TO_DB (since STSDAS files rarely used for tables)
+
+28-Aug-1997: REM_DUP - Change loop index to type LONG
+
+26-Aug-1997: RDFLOAT - Can now read up to 19 (rather than 17) columns
+
+24-Aug-1997: Major upgrade to /fits_table directory.   Includes new driver 
+               procedures which call the TB* or FT* procedures to work on 
+               either binary or ASCII FITS table extensions
+             FTAB_HELP - Describe the fields a specified table extension
+             FTAB_EXT - Extract specified table columns into IDL vectors
+             FTAB_PRINT - Print specified rows and columns of a table extension
+             FTAB_DELROW - Delete specified rows of a table 
+
+             TBINFO - Now returns table info in a structure
+             TBGET(), TBPRINT, TBDELCOL - Now recognize new TBINFO structure
+
+	     FITS_WRITE - Now writes PCOUNT, GCOUNT keywords to an
+			 extension header
+	     READFITS() - Can now read heap area of a variable length binary
+			table.
+             REMCHAR - Now works on string arrays
+
+19-Aug-1997: IEEE_TO_HOST - Now knows that OSF/Alpha conversion problems fixed
+                            in IDL V4.0.1b and later 
+             FTPUT, APER, FIND, T_FIND, SUBSTAR, DBMATCH, SRCOR - Changed loop 
+                            indices to type LONG
+
+18-Aug-1997: GET_DATE - Now outputs new FITS recommended date format with a 
+		a 4 digit year, and uses UTC rather than local time
+             TVBOX - Fixed typo in _EXTRA keyword
+             CONV_VAX_UNIX - Fixed typo introduced 13-Aug-1997
+
+13-Aug-1997: CONV_VAX_UNIX - Removed message outputs under VMS
+             FTPRINT, TBPRINT - Now accept undefined values of rows, columns
+             TBPRINT - Extend common block to match TBGET()
+
+12-Aug-1997: FX* FITS routines now recognize IDL double complex datatype
+             Affected routines are FXBADDCOL, FXBPARSE, FXBREAD,
+             FXBTFORM, FXBWRITE, FXHMAKE, FXWRITE
+
+             MRDFITS() - Fixed problem handling double complex data type
+             
+             Removed FIXDAOTAB from Library
+
+11-Aug-1997: SRCOR - Correlate the source positions on two different lists
+
+             DAOPHOT procedures modified so that PSF residuals are written
+	     to a FITS rather than a STSDAS file.   Affects RDPSF, NSTAR
+             GETPSF, and SUBSTAR.       
+
+08-Aug-1997: CREATE_STRUCT - Now accepts much longer structure definitions
+
+06-Aug-1997: SUNPOS and MOONPOS now have /RADIAN keyword
+
+30-Jul-1997: PLOTHIST - Now has /NOPLOT and /OVERPLOT keywords
+
+25-Jul-1997: MWRFITS - Write an IDL structure to a FITS file.  
+                       Approximate inverse of MRDFITS 
+
+	     PRINT_STRUCT - Now has WHICH and MAX_ELEM keywords
+
+18-Jul-1997:   New FITS I/O package developed by Don Lindler (ACC/Goddard) 
+  added.   This package provides added efficiency for handling FITS files
+  with multiple extensions, and recognition of HST conventions.    Packages
+  consists of the following five routines.    
+
+  FITS_CLOSE - Close a FITS file defined by a FITS Control Block(see FITS_OPEN)
+  FITS_HELP - Summarize the primary data units and extensions in a FITS file
+  FITS_OPEN - Open a FITS file and define a FITS Control Block (FCB)
+  FITS_READ - Read a FITS file specified by name or FITS Control Block (FCB)
+  FITS_WRITE - Write a FITS primary data unit or extension
+
+  The "old-style" help file astron.help is no longer kept on the main 
+  directory.    A copy is still available in /contrib/landsman
+
+14-Jul-1997: IS_IEEE_BIG() - Added a CHECK_MATH to avoid underflow message
+                             on Windows NT
+
+9-Jul-1997:  READFITS() now has a NSLICE keyword to read a N-1 dimensional
+                        image from a N dimensional array
+             DBMATCH() - Work for more than 32,767 values
+             DBFIND(),DBMATCH(),DBPRINT(),DBOPEN() - Now use CATCH facility
+                        to capture errors, to maintain behavior in V5.0
+             TVLASER - Fixed typo in astrometry extraction
+
+3-Jul-1997:  TVLASER - Added /INFO to final MESSAGE statement
+
+2-Jul-1997:  CORREL_OPTIMIZE - Added PLATEAU_THRESH keyword
+             CORRMAT_ANALYZE, CORREL_IMAGES()- Removed use of !DEBUG system var
+
+1-Jul-1997:  READFITS() - Apply BSCALE and BZERO factor to IMAGE extensions
+
+25-Jun-1997: FXBCREATE - Fixed occasional problem with very large tables
+
+20-Jun-1997: TVLASER - Cleaner output when no astrometry available in header
+             PRECESS - Added /RADIAN keyword to perform input/output in radians
+             DBCREATE - Make sure all databases closed before starting
+
+16-Jun-1997: MRDFITS() - Fixed occasional problem for >32767 entries 
+                         introduced 24-Apr-1997
+
+13-Jun-1997: TVLASER - Copy to a RETAIN =2 window to avoid possible TVRD
+                       problems, more alternate keywords added
+             PIXCOLOR - Added color 'C'harcoal
+
+12-Jun-1997: MRD_STRUCT - Under Unix use /usr/bin/rm to remove temporary file
+
+9-Jun-1997:  WRITEFITS - Make sure 'SIMPLE' keyword is present in first line
+                         of primary FITS header.
+
+7-Jun-1997:  GAL_FLAT() - Fix typo causing compilation error
+
+6-Jun-1997:  FTPUT - Now adjusts width of a new column in an ASCII table to
+                     to the maximum length of input string array.
+
+5-Jun-1997:  SXADDPAR - Now knows that comment for a string keyword can start
+                        after column 32
+
+3-Jun-1997:  IRAFWRT - Check that headers are 80 chars long, call IS_IEEE_BIG()
+
+1-Jun-1997:  TVLASER - Major rewrite, now allows color bar, North-East arrows,
+                      and reading from image array instead of a window.
+                      Note that the parameter calling sequence has changed.
+
+             APER - Now has SETSKY keyword to let user input sky value
+             T_APER, T_NSTAR - Now check for both 'ATODGAIN' and 'CCDGAIN' 
+                    FITS keywords to get CCD gain (phpadu)
+             GETPRO - Check whether procedure exists in current directory
+             DBINDEX, DBEXT_DBF - Now accept up to 15 (instead of 12) items
+
+30-May-1997: FITSDIR, SPEC_DIR() - Now work for Unix relative directories
+
+28-May-1997: MRDFITS() - Less strict parsing of the XTENSION keyword
+             FXPOSIT - Non-Unix does not just mean VMS 
+
+21-May-1997: POLYLEG - Fixed for double precision computation
+
+19-May-1997: TBGET(), DBEXT_DBF, DBXPUT, DBXVAL() - Now use /OVERWRITE with
+                      REFORM() for improved efficiency
+             HBOXAVE, HCONGRID, HREBIN - Update BSCALE parameters even if no
+                      astrometry present
+
+13-May-1997: CHECK_FITS - Now has a /SILENT keyword
+
+07-May-1997: FINDPRO - Don't include duplicate directories in output
+
+24-Apr-1997: MRDFITS() - Handle FITS binary tables with zero length columns
+
+23-Apr-1997: READFITS(), FXPOSIT - Force use of the /bin/sh shell when reading 
+                      gzip'ed files under Unix for more consistent I/O
+
+22-Apr-1997: CSPLINE() - Interpolate using a natural cubic spline
+
+12-Apr-1997: SUNSYMBOL() - Return Sun symbol (circle with a dot in the middle)
+                           formatted as a character string
+
+11-Apr-1997: READFITS() - Changed a FIX() to LONG() to handle extremely large
+                          binary tables
+
+9-Apr-1997: FXBTFORM - Modified to still work even if maxelem is not defined
+                       for a variable length FITS binary table column
+
+6-Apr-1997: ARCBAR - Account for postscript zero-pt offset  
+
+29-Mar-97: HROT, HASTROM, HCONGRID - Now assume at least V3.5, added CUBIC 
+                  parameter to support more flexible cubic option in IDL V5.0
+           HEXTRACT, HREVERSE - Now have /SILENT keyword
+
+27-Mar-97: HROTATE - Fixed pixel offset error
+
+18-Mar-97: MEDARR - Now accepts optional image mask parameter
+           FINDPRO - Removed spurious first element from ProList parameter
+
+           VMS users should no longer use the machine uit.gsfc.nasa.gov
+               but instead use the machine stars.gsfc.nasa.gov
+
+13-Mar-97: KSONE - Fixed occasional bug in plot display showing position of 
+                   maximum difference
+
+12-Mar-97: HROTATE - Apply the intrinsic IDL ROTATE function to an image, and 
+                     update astrometry in associated FITS header
+
+06-Mar-97: GROUP - Work for more than 32767 points
+
+23-Feb-97: DBXVAL() - Now works with multiple-values string arrays 
+
+27-Jan-97: READFITS() - Now works for Unix compress files, as well  as for
+                        gzip'ed files.
+
+11-Dec-96: TBINFO, TBGET() - For variable length binary FITS columns, now 
+            returns the array of pointers.           
+
+8-Dec-96:  TBINFO - Now returns TSCALn, TZEROn, and TDISPn keywords 
+           TBGET() - Now automatically scales by TSCALn and TZEROn unless 
+                   /NOSCALE is set
+
+4-Dec-96:  PLOTERR, OPLOTERR - Now have NSKIP keyword to only plot every nth
+                     error bar
+
+7-Nov-96:  READFITS() - Don't use FINDFILE() (too slow) and check for values
+                        specified by BLANK, when BITPIX = 16 or 32
+
+17-Sep-96: LINEID_PLOT - Annotate the identified lines in a spectrum
+
+14-Sep-96: PARTVELVEC - Plot the velocity vectors of a set of particles 
+
+05-Sep-96: MEDARR - Don't use IDL MEDIAN function for an even number of images
+                    since it is a biased toward high values
+
+31-Aug-96: Six database procedures (DB_ENT2HOST, DBFIND, DBXPUT, DBEXT_DBF,
+           DBRD, and DBXVAL) updated to provide much improved performance.
+           DBCOMPARE - Display the values in two database entries side by side 
+
+28-Aug-96: MRDFITS() - V2.1, Works again for random groups, among other fixes
+           MRD_STRUCT() - Now uses RESOLVE_ROUTINE
+           MRD_SKIP - Fixed for gzip files for IDL V3.6
+
+22-Aug-96: TEXTOPEN - New option TEXTOUT=7 to append to existing 
+		      <program>.prt file
+
+18-Aug-96: DBEXT_DBF - Increased performance with external databases
+
+08-Aug-96: TABLE_LIST - Added TEXTOUT, /HEADER keyword
+
+24-Jul-96: DBXPUT - Now allow multiple valued string items
+           DBBUILD - Allow up to 30 items to be input, fixed problem if first
+                   item was multiple-valued.
+
+17-Jul-96: ASTRO - now allows floating point input for the equinox
+
+13-Jul-96: TABLE_CONV - Convert an STSDAS table into the host architecture
+                        Useful when copying STSDAS table to different machines
+
+02-Jul-96: FXBREAD - Fixed bug with use of the /VIRTUAL keyword
+
+27-Jun-96: IP Addresses of IDL Astronomy Library machines have changed
+           idlastro.gsfc.nasa.gov (anonymous FTP) is now 128.183.172.82
+           uit.gsfc.nasa.gov (VMS FTP with password) is now 128.183.172.27
+           These changes should be transparent to most users.
+
+25-Jun-96: MPHASE - Compute phase of Moon as a function of Julian date
+
+14-Jun-96: READFITS - Fixed bug when reading 1-d data introduced Apr 96
+
+08-Jun-96: NUTATE - Compute the nutation in longitude and latitude for a given
+                    Julian date
+           MOONPOS - Major rewrite, new calling sequence (incompatible with old)
+		    Now returns positions within 2"
+
+06-Jun-96: Minor updates to PLOTSYM (add square symbol), LEGEND (add charthick
+           keyword), and HELIO_RV (don't modify input parameters)
+
+27-May-96: FXBFINDLUN, FXBPARSE - Fix integer overflow for very large tables
+           MEDARR - Median filter across a set of 2-d images (e.g. for cosmic
+                    ray removal)
+
+24-May-96: CIRRANGE - Now uses faster, more accurate algorithm
+
+20-May-96: SUNPOS - Major rewrite, new calling sequence (incompatible with old)
+                    now returns positions to within 1"
+           DBINDEX - Speed up processing on big endian machines if /IEEE set
+
+13-May-96: TVCIRCLE, TVELLIPSE - fixed occasional problem when used with /DATA
+
+9-May-96:  Several updates to DAOPHOT emulation procedures:
+           (1) T_FIND, T_APER, T_GROUP, T_NSTAR, T_SUBSTAR -- now have a new 
+           syntax, and require the *name* of a disk FITS ASCII table, rather 
+           than separate header & table variables.
+           (2) DAOPHOT Procedures no longer use nonstandard system variables;
+           PRINT keyword replaces TEXTOUT, DEBUG keyword replaces !DEBUG
+           (3) SUBSTAR - fixed subtraction of stars near edge of frame
+           (4) NSTAR - added /VARSKY option to let sky level be a free parameter
+
+29-Apr-96: Several updates to LOOK.PRO, general widget image display package in
+           contrib/knight, including a Laplacian filter and improved PS output
+
+22-Apr-96: REPSTR() - Now accepts vector values of the object string
+
+19-Apr-96: HEADFITS() - Major rewrite, under Unix can now read gzip 
+                        or Unix compressed files.    
+           MRD_SKIP - Did not always work correctly with a pipe
+
+	   Removed SINCE_VERSION() from Library, since it is unnecessary,
+           (e.g. VERSION.RELEASE GE '4' is equivalent to SINCE_VERSION('4.0') )
+
+17-Apr-96: HERMITE() - Interpolate a tabulated function using a Hermite spline
+
+16-Apr-96: IS_IEEE_BIG() - Test if host machine is IEEE big endian 
+           MRDFITS(), WRITEFITS now call IS_IEEE_BIG() for improved performance
+           on IEEE big endian machines (e.g. Sparcstations)
+
+10-Apr-96: WCS_ROTATE - Bug fix of 20-Mar-96 was not done correctly
+           CHECK_TAPE_DRV - Open tape drive for read only access if necessary
+
+09-Apr-96: IRAFRD - Improved efficiency for certain image sizes
+
+06-Apr-96: Version 2.0 of MRDFITS added to the Library. New features include
+           (1) ability to handle FITS tables with more than 127 columns
+               by use of substructures
+           (2) Direct support for DCOMPLEX numbers for IDL V4.0 or later
+           (3) ERROR_ACTION keyword to specify ON_ERROR action
+
+03-Apr-96: READFITS() - Fixed the case of reading gzip'ed extensions
+           TEXTOPEN - Added /STDOUT keyword to force use of standard output
+	   IMLIST, TVLIST - call TEXTOPEN with /STDOUT, and more intelligent
+                      formatting of longword data
+
+02-Apr-96: DBDELETE - Fixed for the case where database name supplied
+
+27-Mar-96: PENT() - Return the information entropy, S, of time-series data for
+                    a set of trial periods
+
+26-Mar-96: FTPUT - Now accepts a 1 element ROW vector
+
+20-Mar-96: WCS_ROTATE - Fixed bug when /ORIGIN is set and LONGPOLE is 
+                not 180 degrees.
+
+19-Mar-96: WCSSPH2XY, WCSXY2SPH -- All-sky projections (CSC, QSC, TSC) updated
+                  to match the latest Greisen & Calabretta guidelines
+
+17-Mar-96: APER - Now has /FLUX keyword to output linear flux units instead of
+                  magnitudes
+           T_GETPSF - Now stores (in PSF_CODE) the ID of PSF stars in order used
+
+16-Mar-96: TBINFO,HCONGRID,HROT - removed call to SINCE_VERSION()
+
+14-Mar-96: UNZOOM_XY - Convert from window coordinates to image array coords
+           ZOOM_XY - Convert from image array coordinates to window coords
+           CURVAL, TVLIST now call UNZOOM_XY, have OFFSET and ZOOM keywords
+
+13-Mar-96: NSTAR - Fixed PRINT='filename' option
+
+11-Mar-96: LEGEND - Now accepts scalar-valued keywords
+           IMF() - Exponent value forced to be at least floating point
+           TRAPZD - Always compute TOTAL() in double precision
+
+07-Mar-96: STRD - Added GROUP, PAR keywords, call PICKFILE
+
+06-Mar-96: PROB_KS - Typo corrected in probability computation
+	   Did not affect numeric result, but sometimes required more iterations
+	   than necessary
+	    
+           KSTWO - Use floating point computation for effective number of points
+
+04-Mar-96: Removed FITSRD, FITSWRT, DFITSRD, DFITSWRT and associated 
+           procedures from the Library
+           Use the FITS I/O and STSDAS I/O packages for general conversion 
+           between FITS and STSDAS formats.
+
+	   ST_DISKREAD - Read a disk FITS file from the Hubble Space Telescope
+		and reconstruct an STSDAS (GEIS) file
+
+29-Feb-96: TABLE_EXT - Now accepts STSDAS table column numbers as well as names
+           STRD - Now correctly prints array size when more than 2 dimensions
+
+28-Feb-96: MRDFITS() - Fixed problem reading byte field in a variable length
+                     array binary FITS tables
+
+27-Feb-96: LEGEND - now has /CLEAR keyword to erase area within legend box
+                    before writing.   Also THICK and SYMSIZE keywords added
+
+19-Feb-96: FORPRINT - Added NUMLINE keyword
+           NUMLINES() - Determine the number of lines in a file
+           READCOL, READFMT, RDFLOAT modified to call NUMLINES()
+           NINT() - deleted from Library, use ROUND() instead
+
+16-Feb-96: ARROWS - Fixed for the case of negative CDELT keywords LANDSMAN
+
+7-Feb-96:  FIND - Changed internal variable name DERIV because there was a
+                  possible conflict with the DERIV function  LANDSMAN
+
+6-Feb-96:  ARCBAR - Added /NORMAL keyword, use DATA coords for postscript
+
+           The /contrib/landsman directory now contains the procedure MAN.PRO
+           which emulates the online help (?) facility used prior to 
+           IDL Version 4.  
+
+26-Jan-96: TVELLIPSE - fixed /DATA keyword; added NPOINTS keyword
+

@@ -1,0 +1,1507 @@
+there are 880 files.
+Directory /fast/tms/2000/ does not exist, creating.
+cant chdir, trying to create fast 
+fast created successfully
+changed directory to fast succesfully
+cant chdir, trying to create tms 
+tms created successfully
+changed directory to tms succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000416_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000416_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000417_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000417_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000418_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000418_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000419_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000419_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000420_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000420_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000421_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000421_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000422_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000422_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000423_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000423_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000424_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000424_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000425_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000425_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000426_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000426_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000427_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000427_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000428_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000428_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000429_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000429_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/tms/2000/fa_k0_tms_20000430_v01.cdf to /var/tmp/data/fast/tms/2000/fa_k0_tms_20000430_v01.cdf
+Directory /geotail/epi/2000/ does not exist, creating.
+cant chdir, trying to create geotail 
+geotail created successfully
+changed directory to geotail succesfully
+cant chdir, trying to create epi 
+epi created successfully
+changed directory to epi succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/epi/2000/ge_k0_epi_20000904_v01.cdf to /var/tmp/data/geotail/epi/2000/ge_k0_epi_20000904_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/epi/2000/ge_k0_epi_20000905_v01.cdf to /var/tmp/data/geotail/epi/2000/ge_k0_epi_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/epi/2000/ge_k0_epi_20000906_v01.cdf to /var/tmp/data/geotail/epi/2000/ge_k0_epi_20000906_v01.cdf
+Directory /polar/spha/2000/ does not exist, creating.
+cant chdir, trying to create polar 
+polar created successfully
+changed directory to polar succesfully
+cant chdir, trying to create spha 
+spha created successfully
+changed directory to spha succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/spha/2000/po_k0_spha_20000905_v01.cdf to /var/tmp/data/polar/spha/2000/po_k0_spha_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/spha/2000/po_k0_spha_20000906_v01.cdf to /var/tmp/data/polar/spha/2000/po_k0_spha_20000906_v01.cdf
+Directory /lanl/91_mpa/2000/ does not exist, creating.
+cant chdir, trying to create lanl 
+lanl created successfully
+changed directory to lanl succesfully
+cant chdir, trying to create 91_mpa 
+91_mpa created successfully
+changed directory to 91_mpa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/91_mpa/2000/l1_k0_mpa_20000906_v02.cdf to /var/tmp/data/lanl/91_mpa/2000/l1_k0_mpa_20000906_v02.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/91_mpa/2000/l1_k0_mpa_20000907_v02.cdf to /var/tmp/data/lanl/91_mpa/2000/l1_k0_mpa_20000907_v02.cdf
+Directory /wind/mfi/2000/ does not exist, creating.
+cant chdir, trying to create wind 
+wind created successfully
+changed directory to wind succesfully
+cant chdir, trying to create mfi 
+mfi created successfully
+changed directory to mfi succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/mfi/2000/wi_k0_mfi_20000905_v01.cdf to /var/tmp/data/wind/mfi/2000/wi_k0_mfi_20000905_v01.cdf
+Directory /polar/uvi/2000/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create uvi 
+uvi created successfully
+changed directory to uvi succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/uvi/2000/po_k0_uvi_20000905_v01.cdf to /var/tmp/data/polar/uvi/2000/po_k0_uvi_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/uvi/2000/po_k0_uvi_20000906_v01.cdf to /var/tmp/data/polar/uvi/2000/po_k0_uvi_20000906_v01.cdf
+Directory /sampex/pof/2000/ does not exist, creating.
+cant chdir, trying to create sampex 
+sampex created successfully
+changed directory to sampex succesfully
+cant chdir, trying to create pof 
+pof created successfully
+changed directory to pof succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/sampex/pof/2000/sx_k0_pof_20000201_v01.cdf to /var/tmp/data/sampex/pof/2000/sx_k0_pof_20000201_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/pof/2000/sx_k0_pof_20000101_v01.cdf to /var/tmp/data/sampex/pof/2000/sx_k0_pof_20000101_v01.cdf
+Directory /lanl/97_mpa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 97_mpa 
+97_mpa created successfully
+changed directory to 97_mpa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/97_mpa/2000/l7_k0_mpa_20000906_v02.cdf to /var/tmp/data/lanl/97_mpa/2000/l7_k0_mpa_20000906_v02.cdf
+Directory /lanl/91_spa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 91_spa 
+91_spa created successfully
+changed directory to 91_spa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/91_spa/2000/l1_k0_spa_20000906_v01.cdf to /var/tmp/data/lanl/91_spa/2000/l1_k0_spa_20000906_v01.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/91_spa/2000/l1_k0_spa_20000907_v01.cdf to /var/tmp/data/lanl/91_spa/2000/l1_k0_spa_20000907_v01.cdf
+Directory /cluster/c1/jp/pse/2000/ does not exist, creating.
+cant chdir, trying to create cluster 
+cluster created successfully
+changed directory to cluster succesfully
+cant chdir, trying to create c1 
+c1 created successfully
+changed directory to c1 succesfully
+cant chdir, trying to create jp 
+jp created successfully
+changed directory to jp succesfully
+cant chdir, trying to create pse 
+pse created successfully
+changed directory to pse succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pse/2000/c1_jp_pse_20000901_v09.cdf to /var/tmp/data/cluster/c1/jp/pse/2000/c1_jp_pse_20000901_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pse/2000/c1_jp_pse_20001001_v09.cdf to /var/tmp/data/cluster/c1/jp/pse/2000/c1_jp_pse_20001001_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pse/2000/c1_jp_pse_20001101_v05.cdf to /var/tmp/data/cluster/c1/jp/pse/2000/c1_jp_pse_20001101_v05.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pse/2000/c1_jp_pse_20001201_v05.cdf to /var/tmp/data/cluster/c1/jp/pse/2000/c1_jp_pse_20001201_v05.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pse/2000/c1_jp_pse_20000901_v10.cdf to /var/tmp/data/cluster/c1/jp/pse/2000/c1_jp_pse_20000901_v10.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pse/2000/c1_jp_pse_20001001_v10.cdf to /var/tmp/data/cluster/c1/jp/pse/2000/c1_jp_pse_20001001_v10.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pse/2000/c1_jp_pse_20001101_v06.cdf to /var/tmp/data/cluster/c1/jp/pse/2000/c1_jp_pse_20001101_v06.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pse/2000/c1_jp_pse_20001201_v06.cdf to /var/tmp/data/cluster/c1/jp/pse/2000/c1_jp_pse_20001201_v06.cdf
+Directory /ace/sis/2000/ does not exist, creating.
+cant chdir, trying to create ace 
+ace created successfully
+changed directory to ace succesfully
+cant chdir, trying to create sis 
+sis created successfully
+changed directory to sis succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000801_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000801_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000802_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000802_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000803_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000803_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000804_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000804_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000805_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000805_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000806_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000806_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000807_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000807_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000808_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000808_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000809_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000809_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000810_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000810_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000811_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000811_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000812_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000812_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000813_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000813_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000814_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000814_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000815_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000815_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000816_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000816_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000817_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000817_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000818_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000818_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000819_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000819_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000820_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000820_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000821_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000821_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000822_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000822_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000823_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000823_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000824_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000824_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000825_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000825_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000826_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000826_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000827_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000827_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000828_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000828_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000829_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000829_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000830_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000830_v02.cdf
+symbolic link created from /ncf/rumba1/istp/ace/sis/2000/ac_k0_sis_20000831_v02.cdf to /var/tmp/data/ace/sis/2000/ac_k0_sis_20000831_v02.cdf
+Directory /wind/pre_or/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create pre_or 
+pre_or created successfully
+changed directory to pre_or succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000913_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000913_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000914_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000914_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000915_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000915_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000916_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000916_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000917_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000917_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000918_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000918_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000919_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000919_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000920_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000920_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000921_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000921_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000922_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000922_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000923_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000923_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000924_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000924_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000925_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000925_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000906_v03.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000906_v03.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000907_v03.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000907_v03.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000908_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000908_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000909_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000909_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000910_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000910_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000911_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000911_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000912_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000912_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000926_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000926_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000927_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000927_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000928_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000928_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000929_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000929_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20000930_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20000930_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001001_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001001_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001002_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001002_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001003_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001003_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001004_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001004_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001005_v02.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001005_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001006_v01.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001006_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001007_v01.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001007_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001008_v01.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001008_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001009_v01.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001009_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_or/2000/wi_or_pre_20001010_v01.cdf to /var/tmp/data/wind/pre_or/2000/wi_or_pre_20001010_v01.cdf
+Directory /lanl/97_spa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 97_spa 
+97_spa created successfully
+changed directory to 97_spa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/97_spa/2000/l7_k0_spa_20000906_v01.cdf to /var/tmp/data/lanl/97_spa/2000/l7_k0_spa_20000906_v01.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/97_spa/2000/l7_k0_spa_20000907_v01.cdf to /var/tmp/data/lanl/97_spa/2000/l7_k0_spa_20000907_v01.cdf
+Directory /cluster/c1/jp/pmp/2000/ does not exist, creating.
+chdir successful to cluster 
+chdir successful to c1 
+chdir successful to jp 
+cant chdir, trying to create pmp 
+pmp created successfully
+changed directory to pmp succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pmp/2000/c1_jp_pmp_20000901_v10.cdf to /var/tmp/data/cluster/c1/jp/pmp/2000/c1_jp_pmp_20000901_v10.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001001_v12.cdf to /var/tmp/data/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001001_v12.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001101_v06.cdf to /var/tmp/data/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001101_v06.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001201_v05.cdf to /var/tmp/data/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001201_v05.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pmp/2000/c1_jp_pmp_20000901_v11.cdf to /var/tmp/data/cluster/c1/jp/pmp/2000/c1_jp_pmp_20000901_v11.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001001_v13.cdf to /var/tmp/data/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001001_v13.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001101_v07.cdf to /var/tmp/data/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001101_v07.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001201_v06.cdf to /var/tmp/data/cluster/c1/jp/pmp/2000/c1_jp_pmp_20001201_v06.cdf
+Directory /polar/pixie/2000/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create pixie 
+pixie created successfully
+changed directory to pixie succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/pixie/2000/po_k0_pix_20000905_v01.cdf to /var/tmp/data/polar/pixie/2000/po_k0_pix_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pixie/2000/po_k0_pix_20000906_v01.cdf to /var/tmp/data/polar/pixie/2000/po_k0_pix_20000906_v01.cdf
+Directory /wind/spha/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create spha 
+spha created successfully
+changed directory to spha succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/spha/2000/wi_k0_spha_20000905_v01.cdf to /var/tmp/data/wind/spha/2000/wi_k0_spha_20000905_v01.cdf
+Directory /polar/pwi_h3/1996/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create pwi_h3 
+pwi_h3 created successfully
+changed directory to pwi_h3 succesfully
+cant chdir, trying to create 1996 
+1996 created successfully
+changed directory to 1996 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960601_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960601_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960602_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960602_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960604_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960604_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960605_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960605_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960606_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960606_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960607_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960607_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960608_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960608_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960609_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960609_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960611_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960611_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960612_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960612_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960613_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960613_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960615_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960615_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960616_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960616_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960617_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960617_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960618_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960618_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960619_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960619_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960620_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960620_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960622_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960622_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960623_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960623_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960624_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960624_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960626_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960626_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960627_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960627_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960628_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960628_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960629_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960629_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960630_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960630_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960701_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960701_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960703_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960703_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960704_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960704_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960705_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960705_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960706_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960706_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960707_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960707_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960708_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960708_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960709_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960709_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960710_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960710_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960711_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960711_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960712_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960712_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960714_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960714_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960715_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960715_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960716_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960716_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960717_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960717_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960719_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960719_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960720_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960720_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960721_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960721_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960722_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960722_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960723_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960723_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960724_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960724_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960725_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960725_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960726_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960726_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960727_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960727_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960728_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960728_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960730_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960730_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/pwi_h3/1996/po_h3_pwi_19960731_v01.cdf to /var/tmp/data/polar/pwi_h3/1996/po_h3_pwi_19960731_v01.cdf
+Directory /hawkeye/h0/mag/1976/ does not exist, creating.
+cant chdir, trying to create hawkeye 
+hawkeye created successfully
+changed directory to hawkeye succesfully
+cant chdir, trying to create h0 
+h0 created successfully
+changed directory to h0 succesfully
+cant chdir, trying to create mag 
+mag created successfully
+changed directory to mag succesfully
+cant chdir, trying to create 1976 
+1976 created successfully
+changed directory to 1976 succesfully
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760101_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760101_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760102_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760102_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760103_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760103_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760104_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760104_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760105_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760105_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760106_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760106_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760107_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760107_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760108_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760108_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760109_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760109_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760110_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760110_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760111_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760111_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760112_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760112_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760113_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760113_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760114_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760114_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760115_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760115_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760116_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760116_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760117_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760117_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760118_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760118_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760119_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760119_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760120_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760120_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760121_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760121_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760122_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760122_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760123_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760123_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760124_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760124_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760125_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760125_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760126_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760126_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760127_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760127_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760128_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760128_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760129_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760129_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760130_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760130_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760131_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760131_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760201_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760201_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760202_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760202_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760203_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760203_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760204_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760204_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760205_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760205_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760206_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760206_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760207_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760207_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760208_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760208_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760209_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760209_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760210_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760210_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760211_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760211_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760212_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760212_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760213_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760213_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760214_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760214_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760215_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760215_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760216_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760216_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760217_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760217_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760218_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760218_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760219_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760219_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760222_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760222_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760223_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760223_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760224_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760224_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760225_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760225_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760226_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760226_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760227_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760227_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760228_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760228_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760229_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760229_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760301_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760301_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760302_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760302_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760303_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760303_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760304_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760304_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760305_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760305_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760306_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760306_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760307_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760307_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760308_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760308_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760309_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760309_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760310_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760310_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760311_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760311_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760312_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760312_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760313_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760313_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760314_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760314_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760315_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760315_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760316_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760316_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760318_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760318_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760319_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760319_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760320_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760320_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760321_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760321_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760322_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760322_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760323_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760323_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760324_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760324_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760325_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760325_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760326_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760326_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760327_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760327_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760328_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760328_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760329_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760329_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760330_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760330_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760331_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760331_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760401_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760401_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760402_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760402_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760403_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760403_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760404_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760404_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760405_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760405_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760406_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760406_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760407_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760407_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760408_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760408_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760409_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760409_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760410_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760410_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760411_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760411_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760412_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760412_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760413_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760413_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760414_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760414_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760415_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760415_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760416_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760416_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760417_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760417_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760418_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760418_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760419_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760419_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760420_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760420_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760421_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760421_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760422_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760422_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760423_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760423_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760424_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760424_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760425_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760425_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760426_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760426_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760427_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760427_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760428_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760428_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760429_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760429_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760430_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760430_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760501_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760501_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760502_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760502_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760503_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760503_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760504_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760504_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760505_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760505_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760506_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760506_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760507_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760507_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760508_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760508_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760509_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760509_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760510_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760510_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760511_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760511_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760512_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760512_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760513_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760513_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760514_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760514_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760515_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760515_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760516_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760516_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760517_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760517_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760518_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760518_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760519_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760519_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760520_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760520_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760521_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760521_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760522_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760522_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760523_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760523_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760524_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760524_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760525_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760525_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760526_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760526_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760527_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760527_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760528_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760528_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760529_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760529_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760530_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760530_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760531_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760531_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760601_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760601_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760602_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760602_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760603_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760603_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760604_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760604_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760605_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760605_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760606_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760606_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760607_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760607_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760608_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760608_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760609_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760609_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760610_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760610_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760612_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760612_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760613_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760613_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760614_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760614_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760615_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760615_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760616_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760616_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760617_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760617_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760618_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760618_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760619_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760619_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760620_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760620_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760621_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760621_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760622_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760622_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760623_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760623_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760624_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760624_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760625_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760625_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760626_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760626_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760627_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760627_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760628_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760628_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760629_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760629_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760630_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760630_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760701_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760701_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760703_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760703_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760707_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760707_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760708_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760708_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760709_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760709_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760710_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760710_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760712_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760712_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760715_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760715_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760722_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760722_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760727_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760727_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760731_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760731_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760801_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760801_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760802_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760802_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760803_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760803_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760809_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760809_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760818_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760818_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760819_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760819_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760825_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760825_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760826_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760826_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760902_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760902_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760903_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760903_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760909_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760909_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760910_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760910_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760911_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760911_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760917_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760917_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760918_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760918_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760923_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760923_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760924_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760924_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19760930_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19760930_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761003_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761003_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761008_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761008_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761009_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761009_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761014_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761014_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761016_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761016_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761018_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761018_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761019_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761019_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761020_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761020_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761021_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761021_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761022_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761022_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761024_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761024_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761025_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761025_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761026_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761026_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761027_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761027_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761028_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761028_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761029_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761029_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761030_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761030_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761031_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761031_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761101_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761101_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761102_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761102_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761103_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761103_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761104_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761104_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761105_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761105_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761106_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761106_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761111_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761111_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761113_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761113_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761114_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761114_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761115_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761115_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761116_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761116_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761117_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761117_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761118_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761118_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761119_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761119_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761121_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761121_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761122_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761122_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761123_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761123_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761124_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761124_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761125_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761125_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761126_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761126_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761127_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761127_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761128_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761128_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761129_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761129_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761130_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761130_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761201_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761201_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761202_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761202_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761203_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761203_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761204_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761204_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761205_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761205_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761206_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761206_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761207_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761207_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761208_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761208_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761209_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761209_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761210_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761210_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761213_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761213_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761218_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761218_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761221_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761221_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761225_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761225_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761229_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761229_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761230_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761230_v01.cdf
+symbolic link created from /ncf/rumba1/istp/hawkeye/h0/mag/1976/hk_h0_mag_19761231_v01.cdf to /var/tmp/data/hawkeye/h0/mag/1976/hk_h0_mag_19761231_v01.cdf
+Directory /geotail/pre_at/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create pre_at 
+pre_at created successfully
+changed directory to pre_at succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/pre_at/2000/ge_at_pre_20000904_v01.cdf to /var/tmp/data/geotail/pre_at/2000/ge_at_pre_20000904_v01.cdf
+Directory /polar/tide/2000/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create tide 
+tide created successfully
+changed directory to tide succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/tide/2000/po_k0_tid_20000905_v01.cdf to /var/tmp/data/polar/tide/2000/po_k0_tid_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/tide/2000/po_k0_tid_20000906_v01.cdf to /var/tmp/data/polar/tide/2000/po_k0_tid_20000906_v01.cdf
+Directory /geotail/lep/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create lep 
+lep created successfully
+changed directory to lep succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/lep/2000/ge_k0_lep_20000904_v01.cdf to /var/tmp/data/geotail/lep/2000/ge_k0_lep_20000904_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/lep/2000/ge_k0_lep_20000905_v01.cdf to /var/tmp/data/geotail/lep/2000/ge_k0_lep_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/lep/2000/ge_k0_lep_20000906_v01.cdf to /var/tmp/data/geotail/lep/2000/ge_k0_lep_20000906_v01.cdf
+Directory /goes/0_ep8/2000/ does not exist, creating.
+cant chdir, trying to create goes 
+goes created successfully
+changed directory to goes succesfully
+cant chdir, trying to create 0_ep8 
+0_ep8 created successfully
+changed directory to 0_ep8 succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/goes/0_ep8/2000/g0_k0_ep8_20000906_v03.cdf to /var/tmp/data/goes/0_ep8/2000/g0_k0_ep8_20000906_v03.cdf
+symbolic link created from /ncf/rumba1/istp/goes/0_ep8/2000/g0_k0_ep8_20000907_v03.cdf to /var/tmp/data/goes/0_ep8/2000/g0_k0_ep8_20000907_v03.cdf
+Directory /ace/epm/2000/ does not exist, creating.
+chdir successful to ace 
+cant chdir, trying to create epm 
+epm created successfully
+changed directory to epm succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000801_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000801_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000802_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000802_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000803_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000803_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000804_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000804_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000805_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000805_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000806_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000806_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000807_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000807_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000808_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000808_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000809_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000809_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000810_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000810_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000811_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000811_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000812_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000812_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000813_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000813_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000814_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000814_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000815_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000815_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000816_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000816_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000817_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000817_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000818_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000818_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000819_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000819_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000820_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000820_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000821_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000821_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000822_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000822_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000823_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000823_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000824_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000824_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000825_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000825_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000826_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000826_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000827_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000827_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000828_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000828_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000829_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000829_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000830_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000830_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm/2000/ac_k0_epm_20000831_v01.cdf to /var/tmp/data/ace/epm/2000/ac_k0_epm_20000831_v01.cdf
+Directory /polar/cammice/2000/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create cammice 
+cammice created successfully
+changed directory to cammice succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/cammice/2000/po_k0_cam_20000905_v01.cdf to /var/tmp/data/polar/cammice/2000/po_k0_cam_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/cammice/2000/po_k0_cam_20000906_v01.cdf to /var/tmp/data/polar/cammice/2000/po_k0_cam_20000906_v01.cdf
+Directory /polar/vis/2000/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create vis 
+vis created successfully
+changed directory to vis succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/vis/2000/po_k0_vis_20000905_v01.cdf to /var/tmp/data/polar/vis/2000/po_k0_vis_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/vis/2000/po_k0_vis_20000906_v01.cdf to /var/tmp/data/polar/vis/2000/po_k0_vis_20000906_v01.cdf
+Directory /geotail/spha/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create spha 
+spha created successfully
+changed directory to spha succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/spha/2000/ge_k0_spha_20000904_v01.cdf to /var/tmp/data/geotail/spha/2000/ge_k0_spha_20000904_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/spha/2000/ge_k0_spha_20000905_v01.cdf to /var/tmp/data/geotail/spha/2000/ge_k0_spha_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/spha/2000/ge_k0_spha_20000906_v01.cdf to /var/tmp/data/geotail/spha/2000/ge_k0_spha_20000906_v01.cdf
+Directory /goes/8_ep8/2000/ does not exist, creating.
+chdir successful to goes 
+cant chdir, trying to create 8_ep8 
+8_ep8 created successfully
+changed directory to 8_ep8 succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/goes/8_ep8/2000/g8_k0_ep8_20000906_v03.cdf to /var/tmp/data/goes/8_ep8/2000/g8_k0_ep8_20000906_v03.cdf
+symbolic link created from /ncf/rumba1/istp/goes/8_ep8/2000/g8_k0_ep8_20000907_v03.cdf to /var/tmp/data/goes/8_ep8/2000/g8_k0_ep8_20000907_v03.cdf
+Directory /lanl/89_mpa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 89_mpa 
+89_mpa created successfully
+changed directory to 89_mpa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/89_mpa/2000/l9_k0_mpa_20000906_v02.cdf to /var/tmp/data/lanl/89_mpa/2000/l9_k0_mpa_20000906_v02.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/89_mpa/2000/l9_k0_mpa_20000907_v02.cdf to /var/tmp/data/lanl/89_mpa/2000/l9_k0_mpa_20000907_v02.cdf
+Directory /geotail/pwi/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create pwi 
+pwi created successfully
+changed directory to pwi succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/pwi/2000/ge_k0_pwi_20000904_v01.cdf to /var/tmp/data/geotail/pwi/2000/ge_k0_pwi_20000904_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/pwi/2000/ge_k0_pwi_20000905_v01.cdf to /var/tmp/data/geotail/pwi/2000/ge_k0_pwi_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/pwi/2000/ge_k0_pwi_20000906_v01.cdf to /var/tmp/data/geotail/pwi/2000/ge_k0_pwi_20000906_v01.cdf
+Directory /cluster/c2/jp/pse/2000/ does not exist, creating.
+chdir successful to cluster 
+cant chdir, trying to create c2 
+c2 created successfully
+changed directory to c2 succesfully
+cant chdir, trying to create jp 
+jp created successfully
+changed directory to jp succesfully
+cant chdir, trying to create pse 
+pse created successfully
+changed directory to pse succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pse/2000/c2_jp_pse_20000901_v08.cdf to /var/tmp/data/cluster/c2/jp/pse/2000/c2_jp_pse_20000901_v08.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pse/2000/c2_jp_pse_20001001_v07.cdf to /var/tmp/data/cluster/c2/jp/pse/2000/c2_jp_pse_20001001_v07.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pse/2000/c2_jp_pse_20001101_v03.cdf to /var/tmp/data/cluster/c2/jp/pse/2000/c2_jp_pse_20001101_v03.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pse/2000/c2_jp_pse_20001201_v02.cdf to /var/tmp/data/cluster/c2/jp/pse/2000/c2_jp_pse_20001201_v02.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pse/2000/c2_jp_pse_20000901_v09.cdf to /var/tmp/data/cluster/c2/jp/pse/2000/c2_jp_pse_20000901_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pse/2000/c2_jp_pse_20001001_v08.cdf to /var/tmp/data/cluster/c2/jp/pse/2000/c2_jp_pse_20001001_v08.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pse/2000/c2_jp_pse_20001101_v04.cdf to /var/tmp/data/cluster/c2/jp/pse/2000/c2_jp_pse_20001101_v04.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pse/2000/c2_jp_pse_20001201_v03.cdf to /var/tmp/data/cluster/c2/jp/pse/2000/c2_jp_pse_20001201_v03.cdf
+Directory /wind/wav_h0/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create wav_h0 
+wav_h0 created successfully
+changed directory to wav_h0 succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/wav_h0/2000/wi_h0_wav_20000905_v01.cdf to /var/tmp/data/wind/wav_h0/2000/wi_h0_wav_20000905_v01.cdf
+Directory /cluster/ct/jp/pse/2000/ does not exist, creating.
+chdir successful to cluster 
+cant chdir, trying to create ct 
+ct created successfully
+changed directory to ct succesfully
+cant chdir, trying to create jp 
+jp created successfully
+changed directory to jp succesfully
+cant chdir, trying to create pse 
+pse created successfully
+changed directory to pse succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/ct/jp/pse/2000/ct_jp_pse_20000901_v08.cdf to /var/tmp/data/cluster/ct/jp/pse/2000/ct_jp_pse_20000901_v08.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/ct/jp/pse/2000/ct_jp_pse_20001001_v07.cdf to /var/tmp/data/cluster/ct/jp/pse/2000/ct_jp_pse_20001001_v07.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/ct/jp/pse/2000/ct_jp_pse_20001101_v03.cdf to /var/tmp/data/cluster/ct/jp/pse/2000/ct_jp_pse_20001101_v03.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/ct/jp/pse/2000/ct_jp_pse_20001201_v02.cdf to /var/tmp/data/cluster/ct/jp/pse/2000/ct_jp_pse_20001201_v02.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/ct/jp/pse/2000/ct_jp_pse_20000901_v09.cdf to /var/tmp/data/cluster/ct/jp/pse/2000/ct_jp_pse_20000901_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/ct/jp/pse/2000/ct_jp_pse_20001001_v08.cdf to /var/tmp/data/cluster/ct/jp/pse/2000/ct_jp_pse_20001001_v08.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/ct/jp/pse/2000/ct_jp_pse_20001201_v03.cdf to /var/tmp/data/cluster/ct/jp/pse/2000/ct_jp_pse_20001201_v03.cdf
+Directory /lanl/89_spa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 89_spa 
+89_spa created successfully
+changed directory to 89_spa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/89_spa/2000/l9_k0_spa_20000906_v01.cdf to /var/tmp/data/lanl/89_spa/2000/l9_k0_spa_20000906_v01.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/89_spa/2000/l9_k0_spa_20000907_v01.cdf to /var/tmp/data/lanl/89_spa/2000/l9_k0_spa_20000907_v01.cdf
+Directory /cluster/c2/jp/pmp/2000/ does not exist, creating.
+chdir successful to cluster 
+chdir successful to c2 
+chdir successful to jp 
+cant chdir, trying to create pmp 
+pmp created successfully
+changed directory to pmp succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pmp/2000/c2_jp_pmp_20000901_v09.cdf to /var/tmp/data/cluster/c2/jp/pmp/2000/c2_jp_pmp_20000901_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001001_v11.cdf to /var/tmp/data/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001001_v11.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001101_v04.cdf to /var/tmp/data/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001101_v04.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001201_v04.cdf to /var/tmp/data/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001201_v04.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pmp/2000/c2_jp_pmp_20000901_v10.cdf to /var/tmp/data/cluster/c2/jp/pmp/2000/c2_jp_pmp_20000901_v10.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001001_v12.cdf to /var/tmp/data/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001001_v12.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001101_v05.cdf to /var/tmp/data/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001101_v05.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001201_v05.cdf to /var/tmp/data/cluster/c2/jp/pmp/2000/c2_jp_pmp_20001201_v05.cdf
+Directory /soho/def_at/2000/ does not exist, creating.
+cant chdir, trying to create soho 
+soho created successfully
+changed directory to soho succesfully
+cant chdir, trying to create def_at 
+def_at created successfully
+changed directory to def_at succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/soho/def_at/2000/so_at_def_20000901_v01.cdf to /var/tmp/data/soho/def_at/2000/so_at_def_20000901_v01.cdf
+symbolic link created from /ncf/rumba1/istp/soho/def_at/2000/so_at_def_20000902_v01.cdf to /var/tmp/data/soho/def_at/2000/so_at_def_20000902_v01.cdf
+symbolic link created from /ncf/rumba1/istp/soho/def_at/2000/so_at_def_20000903_v01.cdf to /var/tmp/data/soho/def_at/2000/so_at_def_20000903_v01.cdf
+Directory /wind/epact/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create epact 
+epact created successfully
+changed directory to epact succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/epact/2000/wi_k0_epa_20000905_v01.cdf to /var/tmp/data/wind/epact/2000/wi_k0_epa_20000905_v01.cdf
+Directory /wind/pre_at/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create pre_at 
+pre_at created successfully
+changed directory to pre_at succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000906_v04.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000906_v04.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000907_v03.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000907_v03.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000913_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000913_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000908_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000908_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000909_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000909_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000910_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000910_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000911_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000911_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000912_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000912_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000914_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000914_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000915_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000915_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000916_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000916_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000917_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000917_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000918_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000918_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000919_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000919_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000920_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000920_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000921_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000921_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000922_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000922_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000923_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000923_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000924_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000924_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000925_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000925_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000926_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000926_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000927_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000927_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000928_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000928_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000929_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000929_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20000930_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20000930_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001001_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001001_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001002_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001002_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001003_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001003_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001004_v02.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001004_v02.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001005_v01.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001005_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001006_v01.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001006_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001007_v01.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001007_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001008_v01.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001008_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001009_v01.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001009_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/pre_at/2000/wi_at_pre_20001010_v01.cdf to /var/tmp/data/wind/pre_at/2000/wi_at_pre_20001010_v01.cdf
+Directory /lanl/90_mpa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 90_mpa 
+90_mpa created successfully
+changed directory to 90_mpa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/90_mpa/2000/l0_k0_mpa_20000906_v02.cdf to /var/tmp/data/lanl/90_mpa/2000/l0_k0_mpa_20000906_v02.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/90_mpa/2000/l0_k0_mpa_20000907_v02.cdf to /var/tmp/data/lanl/90_mpa/2000/l0_k0_mpa_20000907_v02.cdf
+Directory /lanl/94_mpa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 94_mpa 
+94_mpa created successfully
+changed directory to 94_mpa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/94_mpa/2000/l4_k0_mpa_20000906_v02.cdf to /var/tmp/data/lanl/94_mpa/2000/l4_k0_mpa_20000906_v02.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/94_mpa/2000/l4_k0_mpa_20000907_v02.cdf to /var/tmp/data/lanl/94_mpa/2000/l4_k0_mpa_20000907_v02.cdf
+Directory /lanl/90_spa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 90_spa 
+90_spa created successfully
+changed directory to 90_spa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/90_spa/2000/l0_k0_spa_20000906_v01.cdf to /var/tmp/data/lanl/90_spa/2000/l0_k0_spa_20000906_v01.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/90_spa/2000/l0_k0_spa_20000907_v01.cdf to /var/tmp/data/lanl/90_spa/2000/l0_k0_spa_20000907_v01.cdf
+Directory /lanl/94_spa/2000/ does not exist, creating.
+chdir successful to lanl 
+cant chdir, trying to create 94_spa 
+94_spa created successfully
+changed directory to 94_spa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/lanl/94_spa/2000/l4_k0_spa_20000906_v01.cdf to /var/tmp/data/lanl/94_spa/2000/l4_k0_spa_20000906_v01.cdf
+symbolic link created from /ncf/rumba1/istp/lanl/94_spa/2000/l4_k0_spa_20000907_v01.cdf to /var/tmp/data/lanl/94_spa/2000/l4_k0_spa_20000907_v01.cdf
+Directory /cluster/c3/jp/pse/2000/ does not exist, creating.
+chdir successful to cluster 
+cant chdir, trying to create c3 
+c3 created successfully
+changed directory to c3 succesfully
+cant chdir, trying to create jp 
+jp created successfully
+changed directory to jp succesfully
+cant chdir, trying to create pse 
+pse created successfully
+changed directory to pse succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pse/2000/c3_jp_pse_20000901_v08.cdf to /var/tmp/data/cluster/c3/jp/pse/2000/c3_jp_pse_20000901_v08.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pse/2000/c3_jp_pse_20001001_v07.cdf to /var/tmp/data/cluster/c3/jp/pse/2000/c3_jp_pse_20001001_v07.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pse/2000/c3_jp_pse_20001101_v03.cdf to /var/tmp/data/cluster/c3/jp/pse/2000/c3_jp_pse_20001101_v03.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pse/2000/c3_jp_pse_20001201_v02.cdf to /var/tmp/data/cluster/c3/jp/pse/2000/c3_jp_pse_20001201_v02.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pse/2000/c3_jp_pse_20000901_v09.cdf to /var/tmp/data/cluster/c3/jp/pse/2000/c3_jp_pse_20000901_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pse/2000/c3_jp_pse_20001001_v08.cdf to /var/tmp/data/cluster/c3/jp/pse/2000/c3_jp_pse_20001001_v08.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pse/2000/c3_jp_pse_20001201_v03.cdf to /var/tmp/data/cluster/c3/jp/pse/2000/c3_jp_pse_20001201_v03.cdf
+Directory /ace/swe/2000/ does not exist, creating.
+chdir successful to ace 
+cant chdir, trying to create swe 
+swe created successfully
+changed directory to swe succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/ace/swe/2000/ac_k0_swe_20000828_v01.cdf to /var/tmp/data/ace/swe/2000/ac_k0_swe_20000828_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe/2000/ac_k0_swe_20000829_v01.cdf to /var/tmp/data/ace/swe/2000/ac_k0_swe_20000829_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe/2000/ac_k0_swe_20000830_v01.cdf to /var/tmp/data/ace/swe/2000/ac_k0_swe_20000830_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe/2000/ac_k0_swe_20000831_v01.cdf to /var/tmp/data/ace/swe/2000/ac_k0_swe_20000831_v01.cdf
+Directory /fast/acf/2000/ does not exist, creating.
+chdir successful to fast 
+cant chdir, trying to create acf 
+acf created successfully
+changed directory to acf succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000416_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000416_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000417_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000417_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000418_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000418_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000419_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000419_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000420_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000420_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000421_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000421_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000422_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000422_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000423_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000423_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000424_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000424_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000425_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000425_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000426_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000426_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000427_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000427_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000428_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000428_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000429_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000429_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/acf/2000/fa_k0_acf_20000430_v01.cdf to /var/tmp/data/fast/acf/2000/fa_k0_acf_20000430_v01.cdf
+Directory /wind/3dp/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create 3dp 
+3dp created successfully
+changed directory to 3dp succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/3dp/2000/wi_k0_3dp_20000905_v01.cdf to /var/tmp/data/wind/3dp/2000/wi_k0_3dp_20000905_v01.cdf
+Directory /fast/dcf/2000/ does not exist, creating.
+chdir successful to fast 
+cant chdir, trying to create dcf 
+dcf created successfully
+changed directory to dcf succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000416_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000416_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000417_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000417_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000418_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000418_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000419_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000419_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000420_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000420_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000421_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000421_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000422_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000422_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000423_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000423_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000424_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000424_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000425_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000425_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000426_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000426_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000427_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000427_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000428_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000428_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000429_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000429_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/dcf/2000/fa_k0_dcf_20000430_v01.cdf to /var/tmp/data/fast/dcf/2000/fa_k0_dcf_20000430_v01.cdf
+Directory /cluster/c3/jp/pmp/2000/ does not exist, creating.
+chdir successful to cluster 
+chdir successful to c3 
+chdir successful to jp 
+cant chdir, trying to create pmp 
+pmp created successfully
+changed directory to pmp succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pmp/2000/c3_jp_pmp_20000901_v09.cdf to /var/tmp/data/cluster/c3/jp/pmp/2000/c3_jp_pmp_20000901_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001001_v11.cdf to /var/tmp/data/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001001_v11.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001101_v04.cdf to /var/tmp/data/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001101_v04.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001201_v04.cdf to /var/tmp/data/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001201_v04.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pmp/2000/c3_jp_pmp_20000901_v10.cdf to /var/tmp/data/cluster/c3/jp/pmp/2000/c3_jp_pmp_20000901_v10.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001001_v12.cdf to /var/tmp/data/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001001_v12.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001101_v05.cdf to /var/tmp/data/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001101_v05.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001201_v05.cdf to /var/tmp/data/cluster/c3/jp/pmp/2000/c3_jp_pmp_20001201_v05.cdf
+Directory /polar/def_pa/2000/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create def_pa 
+def_pa created successfully
+changed directory to def_pa succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/def_pa/2000/po_pa_def_20000905_v01.cdf to /var/tmp/data/polar/def_pa/2000/po_pa_def_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/def_pa/2000/po_pa_def_20000906_v01.cdf to /var/tmp/data/polar/def_pa/2000/po_pa_def_20000906_v01.cdf
+Directory /geotail/mgf/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create mgf 
+mgf created successfully
+changed directory to mgf succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/mgf/2000/ge_k0_mgf_20000904_v01.cdf to /var/tmp/data/geotail/mgf/2000/ge_k0_mgf_20000904_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/mgf/2000/ge_k0_mgf_20000905_v01.cdf to /var/tmp/data/geotail/mgf/2000/ge_k0_mgf_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/mgf/2000/ge_k0_mgf_20000906_v01.cdf to /var/tmp/data/geotail/mgf/2000/ge_k0_mgf_20000906_v01.cdf
+Directory /darn/pykk/2000/ does not exist, creating.
+cant chdir, trying to create darn 
+darn created successfully
+changed directory to darn succesfully
+cant chdir, trying to create pykk 
+pykk created successfully
+changed directory to pykk succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/darn/pykk/2000/dn_k0_pykk_20000906_v01.cdf to /var/tmp/data/darn/pykk/2000/dn_k0_pykk_20000906_v01.cdf
+symbolic link created from /ncf/rumba1/istp/darn/pykk/2000/dn_k0_pykk_20000907_v01.cdf to /var/tmp/data/darn/pykk/2000/dn_k0_pykk_20000907_v01.cdf
+Directory /ace/epm_k1/2000/ does not exist, creating.
+chdir successful to ace 
+cant chdir, trying to create epm_k1 
+epm_k1 created successfully
+changed directory to epm_k1 succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000801_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000801_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000802_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000802_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000803_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000803_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000804_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000804_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000805_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000805_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000806_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000806_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000807_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000807_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000808_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000808_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000809_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000809_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000810_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000810_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000811_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000811_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000812_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000812_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000813_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000813_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000814_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000814_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000815_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000815_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000816_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000816_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000817_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000817_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000818_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000818_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000819_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000819_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000820_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000820_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000821_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000821_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000822_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000822_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000823_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000823_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000824_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000824_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000825_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000825_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000826_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000826_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000827_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000827_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000828_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000828_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000829_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000829_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000830_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000830_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/epm_k1/2000/ac_k1_epm_20000831_v01.cdf to /var/tmp/data/ace/epm_k1/2000/ac_k1_epm_20000831_v01.cdf
+Directory /darn/hank/2000/ does not exist, creating.
+chdir successful to darn 
+cant chdir, trying to create hank 
+hank created successfully
+changed directory to hank succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/darn/hank/2000/dn_k0_hank_20000906_v01.cdf to /var/tmp/data/darn/hank/2000/dn_k0_hank_20000906_v01.cdf
+symbolic link created from /ncf/rumba1/istp/darn/hank/2000/dn_k0_hank_20000907_v01.cdf to /var/tmp/data/darn/hank/2000/dn_k0_hank_20000907_v01.cdf
+Directory /geotail/def_at/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create def_at 
+def_at created successfully
+changed directory to def_at succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/def_at/2000/ge_at_def_20000827_v01.cdf to /var/tmp/data/geotail/def_at/2000/ge_at_def_20000827_v01.cdf
+Directory /fast/ees/2000/ does not exist, creating.
+chdir successful to fast 
+cant chdir, trying to create ees 
+ees created successfully
+changed directory to ees succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000416_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000416_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000417_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000417_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000418_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000418_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000419_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000419_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000420_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000420_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000421_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000421_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000422_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000422_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000423_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000423_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000424_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000424_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000425_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000425_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000426_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000426_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000427_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000427_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000428_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000428_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000429_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000429_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ees/2000/fa_k0_ees_20000430_v01.cdf to /var/tmp/data/fast/ees/2000/fa_k0_ees_20000430_v01.cdf
+Directory /polar/ceppad/2000/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create ceppad 
+ceppad created successfully
+changed directory to ceppad succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/ceppad/2000/po_k0_cep_20000905_v01.cdf to /var/tmp/data/polar/ceppad/2000/po_k0_cep_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/ceppad/2000/po_k0_cep_20000906_v01.cdf to /var/tmp/data/polar/ceppad/2000/po_k0_cep_20000906_v01.cdf
+Directory /geotail/pre_or/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create pre_or 
+pre_or created successfully
+changed directory to pre_or succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/pre_or/2000/ge_or_pre_20000904_v01.cdf to /var/tmp/data/geotail/pre_or/2000/ge_or_pre_20000904_v01.cdf
+Directory /fast/ies/2000/ does not exist, creating.
+chdir successful to fast 
+cant chdir, trying to create ies 
+ies created successfully
+changed directory to ies succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000416_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000416_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000417_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000417_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000418_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000418_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000419_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000419_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000420_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000420_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000421_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000421_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000422_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000422_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000423_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000423_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000424_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000424_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000425_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000425_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000426_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000426_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000427_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000427_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000428_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000428_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000429_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000429_v01.cdf
+symbolic link created from /ncf/rumba1/istp/fast/ies/2000/fa_k0_ies_20000430_v01.cdf to /var/tmp/data/fast/ies/2000/fa_k0_ies_20000430_v01.cdf
+Directory /goes/0_mag/2000/ does not exist, creating.
+chdir successful to goes 
+cant chdir, trying to create 0_mag 
+0_mag created successfully
+changed directory to 0_mag succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/goes/0_mag/2000/g0_k0_mag_20000906_v03.cdf to /var/tmp/data/goes/0_mag/2000/g0_k0_mag_20000906_v03.cdf
+symbolic link created from /ncf/rumba1/istp/goes/0_mag/2000/g0_k0_mag_20000907_v03.cdf to /var/tmp/data/goes/0_mag/2000/g0_k0_mag_20000907_v03.cdf
+Directory /polar/efi/2000/ does not exist, creating.
+chdir successful to polar 
+cant chdir, trying to create efi 
+efi created successfully
+changed directory to efi succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/polar/efi/2000/po_k0_efi_20000905_v01.cdf to /var/tmp/data/polar/efi/2000/po_k0_efi_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/polar/efi/2000/po_k0_efi_20000906_v01.cdf to /var/tmp/data/polar/efi/2000/po_k0_efi_20000906_v01.cdf
+Directory /soho/cost/2000/ does not exist, creating.
+chdir successful to soho 
+cant chdir, trying to create cost 
+cost created successfully
+changed directory to cost succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/soho/cost/2000/so_k0_cst_20000901_v01.cdf to /var/tmp/data/soho/cost/2000/so_k0_cst_20000901_v01.cdf
+symbolic link created from /ncf/rumba1/istp/soho/cost/2000/so_k0_cst_20000902_v01.cdf to /var/tmp/data/soho/cost/2000/so_k0_cst_20000902_v01.cdf
+symbolic link created from /ncf/rumba1/istp/soho/cost/2000/so_k0_cst_20000903_v01.cdf to /var/tmp/data/soho/cost/2000/so_k0_cst_20000903_v01.cdf
+Directory /ace/swe_k1/2000/ does not exist, creating.
+chdir successful to ace 
+cant chdir, trying to create swe_k1 
+swe_k1 created successfully
+changed directory to swe_k1 succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000801_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000801_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000802_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000802_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000803_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000803_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000804_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000804_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000805_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000805_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000806_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000806_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000807_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000807_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000808_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000808_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000809_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000809_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000810_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000810_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000811_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000811_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000812_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000812_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000813_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000813_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000814_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000814_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000815_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000815_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000816_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000816_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000817_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000817_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000818_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000818_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000819_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000819_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000820_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000820_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000821_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000821_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000822_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000822_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000823_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000823_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000824_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000824_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000825_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000825_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000826_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000826_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000827_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000827_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000828_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000828_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000829_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000829_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000830_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000830_v01.cdf
+symbolic link created from /ncf/rumba1/istp/ace/swe_k1/2000/ac_k1_swe_20000831_v01.cdf to /var/tmp/data/ace/swe_k1/2000/ac_k1_swe_20000831_v01.cdf
+Directory /geotail/efd/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create efd 
+efd created successfully
+changed directory to efd succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/efd/2000/ge_k0_efd_20000904_v01.cdf to /var/tmp/data/geotail/efd/2000/ge_k0_efd_20000904_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/efd/2000/ge_k0_efd_20000905_v01.cdf to /var/tmp/data/geotail/efd/2000/ge_k0_efd_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/efd/2000/ge_k0_efd_20000906_v01.cdf to /var/tmp/data/geotail/efd/2000/ge_k0_efd_20000906_v01.cdf
+Directory /sampex/30f/2000/ does not exist, creating.
+chdir successful to sampex 
+cant chdir, trying to create 30f 
+30f created successfully
+changed directory to 30f succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000102_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000102_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000103_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000103_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000104_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000104_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000105_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000105_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000106_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000106_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000107_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000107_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000108_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000108_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000109_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000109_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000110_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000110_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000111_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000111_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000112_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000112_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000113_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000113_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000114_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000114_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000115_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000115_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000116_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000116_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000117_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000117_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000118_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000118_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000119_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000119_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000120_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000120_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000121_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000121_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000122_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000122_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000123_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000123_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000124_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000124_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000125_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000125_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000126_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000126_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000127_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000127_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000128_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000128_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000129_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000129_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000130_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000130_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000131_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000131_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000201_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000201_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000202_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000202_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000203_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000203_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000204_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000204_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000205_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000205_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000206_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000206_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000207_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000207_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000208_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000208_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000209_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000209_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000210_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000210_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000211_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000211_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000212_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000212_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000213_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000213_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000214_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000214_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000215_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000215_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000216_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000216_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000217_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000217_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000218_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000218_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000219_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000219_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000220_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000220_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000221_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000221_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000222_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000222_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000223_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000223_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000224_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000224_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000225_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000225_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000226_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000226_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000227_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000227_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000228_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000228_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000229_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000229_v01.cdf
+symbolic link created from /ncf/rumba1/istp/sampex/30f/2000/sx_k0_30f_20000101_v01.cdf to /var/tmp/data/sampex/30f/2000/sx_k0_30f_20000101_v01.cdf
+Directory /wind/wav_h1/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create wav_h1 
+wav_h1 created successfully
+changed directory to wav_h1 succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000801_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000801_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000802_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000802_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000803_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000803_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000804_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000804_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000805_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000805_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000806_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000806_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000807_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000807_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000808_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000808_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000809_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000809_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000810_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000810_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000811_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000811_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000812_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000812_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000813_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000813_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000814_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000814_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000815_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000815_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000816_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000816_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000817_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000817_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000818_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000818_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000819_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000819_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000820_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000820_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000821_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000821_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000822_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000822_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000823_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000823_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000824_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000824_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000825_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000825_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000826_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000826_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000827_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000827_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000828_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000828_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000829_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000829_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000830_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000830_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000831_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000831_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000701_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000701_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000702_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000702_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000703_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000703_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000704_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000704_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000705_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000705_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000706_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000706_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000707_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000707_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000708_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000708_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000709_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000709_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000710_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000710_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000711_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000711_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000712_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000712_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000713_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000713_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000714_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000714_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000715_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000715_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000716_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000716_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000717_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000717_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000718_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000718_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000719_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000719_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000720_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000720_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000721_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000721_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000722_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000722_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000723_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000723_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000724_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000724_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000725_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000725_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000726_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000726_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000727_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000727_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000728_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000728_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000729_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000729_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000730_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000730_v01.cdf
+symbolic link created from /ncf/rumba1/istp/wind/wav_h1/2000/wi_h1_wav_20000731_v01.cdf to /var/tmp/data/wind/wav_h1/2000/wi_h1_wav_20000731_v01.cdf
+Directory /cluster/c4/jp/pse/2000/ does not exist, creating.
+chdir successful to cluster 
+cant chdir, trying to create c4 
+c4 created successfully
+changed directory to c4 succesfully
+cant chdir, trying to create jp 
+jp created successfully
+changed directory to jp succesfully
+cant chdir, trying to create pse 
+pse created successfully
+changed directory to pse succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pse/2000/c4_jp_pse_20000901_v08.cdf to /var/tmp/data/cluster/c4/jp/pse/2000/c4_jp_pse_20000901_v08.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pse/2000/c4_jp_pse_20001001_v07.cdf to /var/tmp/data/cluster/c4/jp/pse/2000/c4_jp_pse_20001001_v07.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pse/2000/c4_jp_pse_20001101_v03.cdf to /var/tmp/data/cluster/c4/jp/pse/2000/c4_jp_pse_20001101_v03.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pse/2000/c4_jp_pse_20001201_v02.cdf to /var/tmp/data/cluster/c4/jp/pse/2000/c4_jp_pse_20001201_v02.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pse/2000/c4_jp_pse_20000901_v09.cdf to /var/tmp/data/cluster/c4/jp/pse/2000/c4_jp_pse_20000901_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pse/2000/c4_jp_pse_20001001_v08.cdf to /var/tmp/data/cluster/c4/jp/pse/2000/c4_jp_pse_20001001_v08.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pse/2000/c4_jp_pse_20001201_v03.cdf to /var/tmp/data/cluster/c4/jp/pse/2000/c4_jp_pse_20001201_v03.cdf
+Directory /goes/8_mag/2000/ does not exist, creating.
+chdir successful to goes 
+cant chdir, trying to create 8_mag 
+8_mag created successfully
+changed directory to 8_mag succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/goes/8_mag/2000/g8_k0_mag_20000906_v03.cdf to /var/tmp/data/goes/8_mag/2000/g8_k0_mag_20000906_v03.cdf
+symbolic link created from /ncf/rumba1/istp/goes/8_mag/2000/g8_k0_mag_20000907_v03.cdf to /var/tmp/data/goes/8_mag/2000/g8_k0_mag_20000907_v03.cdf
+Directory /cluster/c4/jp/pmp/2000/ does not exist, creating.
+chdir successful to cluster 
+chdir successful to c4 
+chdir successful to jp 
+cant chdir, trying to create pmp 
+pmp created successfully
+changed directory to pmp succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pmp/2000/c4_jp_pmp_20000901_v09.cdf to /var/tmp/data/cluster/c4/jp/pmp/2000/c4_jp_pmp_20000901_v09.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001001_v11.cdf to /var/tmp/data/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001001_v11.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001101_v04.cdf to /var/tmp/data/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001101_v04.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001201_v04.cdf to /var/tmp/data/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001201_v04.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pmp/2000/c4_jp_pmp_20000901_v10.cdf to /var/tmp/data/cluster/c4/jp/pmp/2000/c4_jp_pmp_20000901_v10.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001001_v12.cdf to /var/tmp/data/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001001_v12.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001101_v05.cdf to /var/tmp/data/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001101_v05.cdf
+symbolic link created from /ncf/rumba1/istp/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001201_v05.cdf to /var/tmp/data/cluster/c4/jp/pmp/2000/c4_jp_pmp_20001201_v05.cdf
+Directory /wind/wav/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create wav 
+wav created successfully
+changed directory to wav succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/wav/2000/wi_k0_wav_20000905_v01.cdf to /var/tmp/data/wind/wav/2000/wi_k0_wav_20000905_v01.cdf
+Directory /soho/cels/2000/ does not exist, creating.
+chdir successful to soho 
+cant chdir, trying to create cels 
+cels created successfully
+changed directory to cels succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/soho/cels/2000/so_k0_cel_20000901_v01.cdf to /var/tmp/data/soho/cels/2000/so_k0_cel_20000901_v01.cdf
+symbolic link created from /ncf/rumba1/istp/soho/cels/2000/so_k0_cel_20000902_v01.cdf to /var/tmp/data/soho/cels/2000/so_k0_cel_20000902_v01.cdf
+symbolic link created from /ncf/rumba1/istp/soho/cels/2000/so_k0_cel_20000903_v01.cdf to /var/tmp/data/soho/cels/2000/so_k0_cel_20000903_v01.cdf
+Directory /geotail/cpi/2000/ does not exist, creating.
+chdir successful to geotail 
+cant chdir, trying to create cpi 
+cpi created successfully
+changed directory to cpi succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/geotail/cpi/2000/ge_k0_cpi_20000904_v01.cdf to /var/tmp/data/geotail/cpi/2000/ge_k0_cpi_20000904_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/cpi/2000/ge_k0_cpi_20000905_v01.cdf to /var/tmp/data/geotail/cpi/2000/ge_k0_cpi_20000905_v01.cdf
+symbolic link created from /ncf/rumba1/istp/geotail/cpi/2000/ge_k0_cpi_20000906_v01.cdf to /var/tmp/data/geotail/cpi/2000/ge_k0_cpi_20000906_v01.cdf
+Directory /wind/swe/2000/ does not exist, creating.
+chdir successful to wind 
+cant chdir, trying to create swe 
+swe created successfully
+changed directory to swe succesfully
+cant chdir, trying to create 2000 
+2000 created successfully
+changed directory to 2000 succesfully
+symbolic link created from /ncf/rumba1/istp/wind/swe/2000/wi_k0_swe_20000905_v01.cdf to /var/tmp/data/wind/swe/2000/wi_k0_swe_20000905_v01.cdf

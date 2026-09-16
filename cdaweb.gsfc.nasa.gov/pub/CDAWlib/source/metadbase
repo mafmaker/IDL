@@ -1,0 +1,53 @@
+#$Author: kovalick $
+#$Date: 2001/06/28 18:40:59 $
+#$Header: /home/rumba/cdaweb/dev/control/RCS/metadbase,v 1.66 2001/06/28 18:40:59 kovalick Exp kovalick $
+#$Locker: kovalick $
+#$Revision: 1.66 $
+#---------------------------------------------------------------------------
+#! /bin/sh
+#
+# Set some shell variables
+#
+#  Added umask so that when the metafiles are generated they will have
+#  read write permission for both owner and group. RTB 12/23/98
+#  Added -n 5 so that nice mode is higher than the default. TJK 12/15/99
+#  Added the cp of the sp_phys cdfmetafile to the ftp area for the umich folks. TJK 6/28/2001
+#  Added call to copy MAP files into the system - they arrive in the ~mapgst account.
+#  TJK 7/16/2001
+#
+umask 002
+
+TOP=/ncf/rumba1/istp/
+META=/home/rumba/cdaweb/metadata/
+MASTERDIR=/ncf/rumba1/istp/0MASTERS
+export TOP
+export META
+export MASTERDIR
+
+#cp_to_dir will ingest IMAGE cdf's, mpeg's and sfdu's. Log file is in /disk/rumba/johnson/Image/Logs
+/usr/bin/nice -n 5 /disk/rumba/johnson/Image/cp_to_dir
+#cp_map_to_dir will ingest MAP cdf's into "the system".  Log file is in ~johnson/Map/Logs
+/usr/bin/nice -n 5 /disk/rumba/johnson/Map/cp_map_to_dir
+
+/usr/bin/nice -n 5 /home/rumba/cdaweb/bin/overlap /home/rumba/cdaweb/metadata/metadata_GAP || exit
+
+/usr/bin/nice -n 5 /home/rumba/cdaweb/bin/list_CDFS || exit
+
+/usr/bin/nice -n 5 /home/rumba/cdaweb/bin/generateDatabases || exit
+
+/usr/bin/nice -n 5 /usr/local/lib/rsi/idl_5.2/bin/idl generate_inventory
+
+/usr/bin/nice -n 5 /usr/local/lib/rsi/idl_5.2/bin/idl generate_inventory2
+
+/usr/bin/nice -n 5 /usr/local/lib/rsi/idl_5.2/bin/idl generate_small
+
+/usr/bin/nice -n 5 /home/rumba/cdaweb/bin/update_script.pl 1
+
+/usr/bin/cp /home/rumba/cdaweb/metadata/sp_phys_cdfmetafile.txt /export/rumba8/ftp/pub/test/umich/.
+
+mhmail -subject "CDAWeb tar file ready"  gtl@mpe.mpg.de < /home/rumba/cdaweb/etc/mail_text
+
+mhmail -subject "CDAWeb tar file ready"  C.H.Perry@rl.ac.uk < /home/rumba/cdaweb/etc/mail_text
+
+
+

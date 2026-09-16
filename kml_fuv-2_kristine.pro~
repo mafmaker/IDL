@@ -1,0 +1,917 @@
+;===============================================================================
+;	kml.pro
+;		KML output package for IDL 
+;
+;			2006-10-30 Saito-A
+;
+;	CHANGE
+;		2006-12-15 Saito-A: Clean-up. Cube_KML is added.
+;		2006-12-27 nobuyuki: add Normal in Plygon_KML & Cube_KML
+;		2007-02-18 Saito-A: Satellite_KML, Map_KML & Arrow_KML are added.
+;		2007-02-22 Saito-A: Satellite_KML, Map_KML bugs are fixed.
+;               2007-04-09 Immel,T: Map_KML and Main changed to import
+;                                   IMAGE-FUV Data
+;		2007-04-10 Saito-A: Shift of Map_Data to +-180, ext. png convert
+;               2007-04-10 Immel,T: Time array now loaded with correct
+;                                   start time (though assuming 2
+;                                   minute interval)
+;               2007-06-08 Immel,T: N-S hemisphere mapping both work
+;
+;===============================================================================
+;===============================================================================
+	Function  Open_KML, File_Name, File_Unit
+;===============================================================================
+;	Open KML file
+;
+;	Input: KML file name
+;	Output: File Unit Number
+;	Return: File Open Status
+;	Usage:
+;	      I_err=Open_KML('test.kml',I_Unit)
+;
+;		2006-10-30 Saito-A
+;
+;-------------------------------------------------------------------------------
+openw,File_Unit,File_Name, ERR=error_ID, /GET_LUN
+Error_ID=0
+
+printf, File_Unit, '<?xml version="1.0" encoding="UTF-8"?> '
+printf, File_Unit, '<kml xmlns="http://earth.google.com/kml/2.0"> <Document>'
+
+return, Error_ID
+
+end
+
+;===============================================================================
+	Pro  Close_KML, File_Unit
+;===============================================================================
+;	Close KML file
+;
+;	Input: File Unit Number
+;	Usage:
+;	       Close_KML,  I_Unit
+;
+;		2006-10-30 Saito-A
+;
+;-------------------------------------------------------------------------------
+
+printf, File_Unit,  '</Document> </kml>'
+close, File_Unit
+Free_LUN, File_Unit
+
+end
+
+;===============================================================================
+	Pro  Style_KML,  File_Unit, Style_Name, Style_Text
+;===============================================================================
+	printf, File_Unit,  '<Style id="'+Style_Name+'">'
+	printf, File_Unit,  Style_Text
+	printf, File_Unit,  '</Style>'
+	end
+
+	
+;===============================================================================
+	Pro  Begin_Folder_KML,  File_Unit, NAME=Name, TIME=Time
+;===============================================================================
+;	Begin Foler in KML file
+;
+;	Input: File Unit Number 
+;       Input(Optional)
+;              Name: Name of Folder [String]
+;	       Time: Time in KML format e.g., "2006-12-15T17:00:25Z"
+;	Usage: 
+;	       Begin_Folder_KML, I_Unit
+;	       Begin_Folder_KML, I_Unit, Name='Folder 1'
+;	       Begin_Folder_KML, I_Unit, Name='Folder 1', Time='2006-12-15'
+;
+;		2006-10-30 Saito-A
+;
+;-------------------------------------------------------------------------------
+;-------------------------------------------------------------------------------
+Default_Name='Folder'
+if KEYWORD_SET(Name) EQ 0 then Name=Default_Name
+;-------------------------------------------------------------------------------
+
+printf, File_Unit,  '<Folder><name> '+Name+' </name>'
+if KEYWORD_SET(Time) then printf, File_Unit,  '<TimeStamp><when>'+Time+'</when></TimeStamp>'
+
+end
+	
+;===============================================================================
+	Pro  End_Folder_KML, File_Unit
+;===============================================================================
+;	End Foler in KML file
+;
+;	Input: File Unit Number & Folder Name
+;	Usage: 
+;	       End_Folder_KML, I_Unit
+;
+;		2006-10-30 Saito-A
+;
+;-------------------------------------------------------------------------------
+
+printf, File_Unit,  '</Folder>'
+
+end
+	
+;===============================================================================
+	Pro  LookAt_KML,  File_Unit, Point, NAME=Name
+;===============================================================================
+;	
+;	Google Earth "LookAt" output for Given Location[Lat, Long, Alt[km]]
+;
+;	Input: File_Unit: File Unit Number
+;	       Location: [Lat, Long, Alt[km]]
+;       Input(Optional)
+;              Name: Name of LookAt Point [String]
+;	Usage:
+;	        Lookat_KML, I_Unit,[35., 135., 100.]
+;	        Lookat_KML, I_Unit,[35., 135., 100.], Name='point'
+;
+;		2006-10-30 Saito-A
+;
+;-------------------------------------------------------------------------------
+Default_Name='LookAt'
+if KEYWORD_SET(Name) EQ 0 then Name=Default_Name
+;-------------------------------------------------------------------------------
+
+Location=Point
+
+Min_Alt_km=10.
+TILT=45.
+HEADING=0.
+
+	if Location(1) GE 180. then Location(1)=Location(1)-360.
+	if Location(2) LE Min_Alt_km then Location(2)=Min_Alt_km
+
+	printf, File_Unit,  '<Placemark> <name>'+Name+'</name>'
+	printf, File_Unit,  "<LookAt><longitude>"+string(Location(1))+$
+		"</longitude><latitude>"+string(Location(0))+$
+		"</latitude><altitude>0</altitude><range>"+$
+		string(Location(2)*1000.)+"</range> <tilt>"+string(TILT)+$
+		"</tilt><heading>"+string(HEADING)+$
+		"</heading></LookAt></Placemark>"
+	end
+
+
+;===============================================================================
+	Pro  Point_KML,  File_Unit, Point, NAME=Name, TIME=time, S_TIME=s_time, E_TIME=e_time, DESCRI=Descri, STYLE_NAME=Style_Name
+;===============================================================================
+;	
+;	Google Earth "Point" output for Given Point[Lat, Long, Alt[km]]
+;
+;	Input: File_Unit: File Unit Number
+;	       Point: [Lat, Long, Alt[km]]
+;       Input(Optional)
+;              Name: Name of Point [String]
+;	       Time: Time in KML format e.g., "2006-12-15T17:00:25Z"
+;	       S_Time: Start Time in KML format e.g., "2006-12-15T17:00:25Z"
+;	       E_Time: End Time in KML format e.g., "2006-12-15T17:00:25Z"
+;	       Descri: Description of the Point shown in "Baloon"
+;	       Style_Name: Name of Style ID, which is specifed Style_KML
+;	Usage:
+;		Point_KML,  I_Unit, [35., 135., 100.]
+;		Point_KML,  I_Unit, [35., 135., 100.], Name='point1'
+;	
+;
+;		2006-10-30 Saito-A
+;
+;-------------------------------------------------------------------------------
+Default_Name='Point'
+if KEYWORD_SET(Name) EQ 0 then Name=Default_Name
+;-------------------------------------------------------------------------------
+
+Location=Point
+
+	if Location(1) GE 180. then Location(1)=Location(1)-360.
+
+	printf, File_Unit,  '<Placemark> <name>'+Name+'</name>'
+if KEYWORD_SET(Descri) then printf, File_Unit, '<description>'+Descri+'</description>'
+if KEYWORD_SET(Time) then printf, File_Unit,  '<TimeStamp><when>'+Time+'</when></TimeStamp>'
+if KEYWORD_SET(S_Time) then begin
+	printf, File_Unit,  '<TimeSpan><begin>'+S_Time+'</begin>'
+if KEYWORD_SET(E_Time) then printf, File_Unit,  '<end>'+E_Time+'</end>'
+	printf, File_Unit,  '</TimeSpan>'
+endif
+if KEYWORD_SET(Style_Name) then printf, File_Unit, '<styleUrl>#'+Style_Name+'</styleUrl>'
+	printf, File_Unit,  "<Point><coordinates>"+string(Location(1))+$
+		","+string(Location(0))+","+string(Location(2)*1000.)+$
+		"</coordinates>" +$
+		"<altitudeMode>absolute</altitudeMode>"+$
+;		"<extrude>1</extrude>"+$
+		"</Point></Placemark>"
+
+	end
+
+;===============================================================================
+	Pro  Line_KML,  File_Unit, Line, NAME=Name, Color=Color, Width=Width, S_TIME=s_time, E_TIME=e_time, TIME=Time
+;===============================================================================
+;	
+;	Google Earth "Line" output for Given Line (3, *)
+;
+;	Input: File_Unit: File Unit Number
+;	       Line: (3, *), ([Lat, Long, Alt[km]], *)
+;	Input(Optional)
+;	       Name: Name of Line [String]
+;	       Color: Color in KML format, #TTBBGGRR
+;	       Time: Time in KML format e.g., "2006-12-15T17:00:25Z"
+;	Usage:
+;	       Line=[[33.8, 133.8, 2.],[33.9, 133.9, 2.]]
+;	       Line_KML, I_Unit, Line
+;	       Line_KML, I_Unit, Line, Name='Line' 
+;	       Line_KML, I_Unit, Line, Name='Line', Color='5500ff00', Width=3
+;
+;		2006-10-30 Saito-A
+;
+;-------------------------------------------------------------------------------
+Default_Color='5500ff00'
+Default_Name='Line'
+Default_Width=3
+if KEYWORD_SET(Name) EQ 0 then Name=Default_Name
+if KEYWORD_SET(Color) EQ 0 then Color=Default_Color
+if KEYWORD_SET(Width) EQ 0 then Width=Default_Width
+;-------------------------------------------------------------------------------
+	Num_Point=N_elements(Line(0,*))
+
+        printf, File_Unit,  '<Placemark> <name>'+Name+'</name>'
+if KEYWORD_SET(S_Time) then begin
+	printf, File_Unit,   '<TimeSpan><begin>'+S_Time+'</begin>'
+if KEYWORD_SET(E_Time) then printf, File_Unit,   '<end>'+E_Time+'</end>'
+	printf, File_Unit,   '</TimeSpan>'
+endif
+if KEYWORD_SET(Time) then printf, File_Unit,  '<TimeStamp><when>'+Time+'</when></TimeStamp>'
+	printf, File_Unit,  '<Style> <LineStyle> <color>'+COLOR+'</color>'
+        printf, File_Unit,  '<width>'+string(Width,format='(i)')+'</width>'
+	printf, File_Unit,  '</LineStyle> </Style>'
+	printf, File_Unit,  '<LineString> <tessellate>1</tessellate>'
+;        printf, File_Unit,  '<altitudeMode>relativeToGround</altitudeMode>'
+        printf, File_Unit,   '<altitudeMode>absolute</altitudeMode>'
+        printf, File_Unit,  '<coordinates>'
+
+	for I_Point=0, Num_Point-1 do begin
+	 if Line(1,I_Point) GE 180. then Line(1,I_Point)=Line(1,I_Point)-360.
+		printf, File_Unit,   Line(1, I_Point),', ',  Line(0, I_point),$
+			', ', Line(2, I_point)*1000.
+	endfor
+
+        printf, File_Unit,  '</coordinates> </LineString> </Placemark>'
+
+	end
+
+;===============================================================================
+	Pro  Polygon_KML, File_Unit, Polygon, NAME=Name, Color=Color, TIME=Time, Normal=Normal
+;===============================================================================
+;	
+;	Google Earth "Polygon" output for Given Polygon (3, *)
+;
+;	Input: File_Unit: File Unit Number
+;	       Polygon: (3, *), ([Lat, Long, Alt[km]], *)
+;	Input(Optional)
+;	       Name: Name of Polygon [String]
+;	       Color: Color in KML format, #TTBBGGRR
+;	       Time: Time in KML format e.g., "2006-12-15T17:00:25Z"
+;	       Normal: direction of Normal ( 1 or -1 )
+;	Usage:
+;	 Polygon=[[35., 135., 3.], [35, 134, 3.], [34., 134., 3.],[34, 135, 3.]]
+;	 Polygon_KML, I_Unit, Polygon
+;	 Polygon_KML, I_Unit, Polygon, Name='poly', Color='55ff0000'
+;
+;		2006-10-30 Saito-A
+;		2006-12-27 nobuyuki add Normal
+;
+;-------------------------------------------------------------------------------
+Default_Color='5500ff00'
+Default_Name='Polygon'
+Default_Normal=1
+if KEYWORD_SET(Color) EQ 0 then Color=Default_Color
+if KEYWORD_SET(Name) EQ 0 then Name=Default_Name
+if KEYWORD_SET(Normal) EQ 0 then Normal=Default_Normal
+;-------------------------------------------------------------------------------
+	Num_Point=N_elements(Polygon(0,*))
+
+        printf, File_Unit,  '<Placemark> <name>'+Name+'</name>'
+if KEYWORD_SET(Time) then printf, File_Unit,  '<TimeStamp><when>'+Time+'</when></TimeStamp>'
+        printf, File_Unit,   '<Style><PolyStyle> '
+        printf, File_Unit,   '<color>'+COLOR+'</color> '
+        printf, File_Unit,   '<outline>0</outline></PolyStyle></Style> '
+        printf, File_Unit,   '<Polygon> <altitudeMode>absolute</altitudeMode> '
+        printf, File_Unit,   '<outerBoundaryIs> <LinearRing> <coordinates> '
+
+	if ( Normal EQ 1 ) then begin
+		for I_Point=0, Num_Point-1 do begin
+			printf, File_Unit,   Polygon(1,I_point),", ", $
+			Polygon(0, I_point),", ", Polygon(2, I_point)*1000.
+		endfor
+	endif else begin 
+		if (Normal EQ -1) then begin
+                	for I_Point=Num_Point-1, 0, -1 do begin
+                         printf, File_Unit,   Polygon(1,I_point),", ", $
+                         Polygon(0, I_point),", ", Polygon(2, I_point)*1000.
+                	endfor
+		endif
+	endelse
+
+        printf, File_Unit,   '</coordinates> </LinearRing>'
+        printf, File_Unit,   '</outerBoundaryIs> </Polygon> '
+        printf, File_Unit,   '</Placemark> '
+	end
+
+;===============================================================================
+	Pro  Cube_KML,  File_Unit, Center, Width=Width, Name=Name, Color=Color, TIME=Time
+;===============================================================================
+;	
+;	Google Earth "Cube" output for Given Location (3)
+;
+;	Input: 
+;	       File_Unit: File Unit Number
+;	       Center: [Lat, Long, Alt[km]]
+;	Input(Optional)
+;	       Width: Size of Cube in [Lat, Long, Alt[km]]
+;	       Name: Name of Cube [String]
+;	       Color: Color in KML format, #TTBBGGRR
+;	       Time: Time in KML format e.g., "2006-12-15T17:00:25Z"
+;	Usage:
+;	 Center=[35., 135.,100.]
+;	 Cube_KML, I_Unit,Center
+;	 Cube_KML, I_Unit,Center,Width=[0.5,1,.1.],Name='Name',Color='5500ff00'
+;
+;		2006-12-15 Saito-A
+;		2006-12-27 nobuyuki add Normal
+;
+;-------------------------------------------------------------------------------
+Surface=fltarr(3,4)
+ID=indgen(3)
+;-------------------------------------------------------------------------------
+Default_Width=[1., 1., 100.]
+Default_Color='5500ff00'
+Default_Name='Cube'
+if KEYWORD_SET(Width) EQ 0 then Width=Default_Width
+if KEYWORD_SET(Color) EQ 0 then Color=Default_Color
+if KEYWORD_SET(Name) EQ 0 then Name=Default_Name
+;-------------------------------------------------------------------------------
+
+Begin_Folder_KML, File_Unit, Name=Name
+if KEYWORD_SET(Time) then printf, File_Unit,  '<TimeStamp><when>'+Time+'</when></TimeStamp>'
+;------
+for I_POS_NEG=-1, 1, 2 do begin
+ for I_surface=0, 3-1 do begin
+  for I_Corner=0, 3, 3 do Surface(ID(0),I_Corner)=Center(ID(0))-Width(ID(0))/2.
+  for I_Corner=1, 2 do Surface(ID(0),I_Corner)=Center(ID(0))+Width(ID(0))/2.
+  for I_Corner=0, 1 do Surface(ID(1),I_Corner)=Center(ID(1))-Width(ID(1))/2.
+  for I_Corner=2, 3 do Surface(ID(1),I_Corner)=Center(ID(1))+Width(ID(1))/2.
+  for I_Corner=0, 3 do Surface(ID(2),I_Corner)=Center(ID(2))+I_POS_NEG*Width(ID(2))/2.
+  Polygon_KML, File_Unit, Surface, Color=Color, Normal=-1*I_POS_NEG
+  ID=shift(ID,1)
+ endfor
+endfor
+;------
+End_Folder_KML, File_Unit
+
+end
+
+;===============================================================================
+	Function  Color_KML, Value, Min_Value, Max_Value, COLOR_TB=Color_Tb, TRANSPARENCY=Transparency
+;===============================================================================
+;
+;       Make Color string for Google Earth
+;
+;	Input: 
+;	  Value: Value for setting color
+;	  Min_Value: Value for the minimum: Blue
+;	  Max_Value: Value for the maximum: Red
+;	Input(Optional)
+;	  Color_Tb: Color Table Number
+;	          =1: Rainbow
+;	          =2: Blue-Red
+;	          =3: Black-White
+;	  Transparency: Transparency [2digit]:from 00 to ff (ff is opaque)
+;
+;	Return: Color code in KML format, #TTBBGGRR
+;	Usage:
+;	  I_Color=Color_KML(60., 0., 100.)
+;	  I_Color=Color_KML(60., 0., 100., Transparency='55')
+;	  I_Color=Color_KML(60., 0., 100., Color_TB=2, Transparency='55')
+;	
+;               2006-04-01 Saito-A
+;
+;-------------------------------------------------------------------------------
+Default_Color_Tb=1
+Default_Transparency='ff'
+if KEYWORD_SET(Color_TB) EQ 0 then Color_TB=Default_Color_TB
+if KEYWORD_SET(Transparency) EQ 0 then Transparency=Default_Transparency
+;-------------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------------
+case Color_Tb of
+1: begin
+ RED=  [0, 255,   0,   0, 255, 255]
+ GREEN=[0,   0,   0, 255, 255,   0]
+ BLUE= [0, 255, 255,   0,   0,   0]
+ dum_arr=[0,10,30,110,170,255] 
+ RED=Interpol(RED, dum_arr, indgen(256))
+ GREEN=Interpol(GREEN, dum_arr, indgen(256))
+ BLUE=Interpol(BLUE, dum_arr, indgen(256))
+end
+2: begin
+ RED=[0,255]
+ GREEN=[0,0]
+ BLUE=[255,0]
+end
+3: begin
+ RED=[0,255]
+ GREEN=[0,255]
+ BLUE=[0,255]
+end
+else: begin
+ RED=[0,255]
+ GREEN=[0,0]
+ BLUE=[255,0]
+end
+endcase
+;-------------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------------
+Num_Level=256
+RED=Interpol(RED, num_Level)
+GREEN=Interpol(GREEN, num_Level)
+BLUE=Interpol(BLUE, num_Level)
+;-------------------------------------------------------------------------------
+
+;-------------------------------------------------------------------------------
+RATIO=(float(Value)-float(Min_Value))/(float(Max_Value)-float(Min_Value))
+
+if RATIO GT 1. then RATIO=1.
+if RATIO LT 0. then RATIO=0.
+
+I_COLOR=fix(RATIO * (Num_Level-1))
+COLOR=string(BLUE(I_COLOR),GREEN(I_COLOR),RED(I_COLOR),format='(3z2.2)')
+;-------------------------------------------------------------------------------
+
+return, TRANSPARENCY+COLOR
+end
+
+
+;===============================================================================
+Pro Satellite_KML, File_Unit, Year, Month, Day, Time, Lat, Lon, Alt, Plot_Data, Min_V=Min_V, Max_V=Max_V, BAD_DATA=BAD_DATA, Plot_Interval=Plot_Interval, Name=Name, Alt_Plot=Alt_Plot
+;===============================================================================
+;
+;       Plot Satellite data on KML
+;
+;	Input: 
+;	  Year, Month, Day:
+;	  Time: Time of data in Hours in the day: float(Num_Data)
+;	  Lat, Lon, Alt:  Location of data: float(Num_Data)
+;	  Plot_Data: Data array: float(Num_Data)
+;	Input(Optional)
+;	  Min_Value: Value for the minimum: Blue
+;	  Max_Value: Value for the maximum: Red
+;	  BAD_DATA: Be not plotted.
+;	  Plot_Interval: Plot every "Plot_Interval" data
+;	  Name: Name of data, used for folder name
+;	Input Keyword(Optional)
+;	  Alt_Plot: Change Altitude according to Data Values
+;	
+;		2007-02-09 Saito-A
+;
+;-------------------------------------------------------------------------------
+;===============================================================================
+
+Data_Alt_km=Alt(0)
+Alt_Factor=Data_Alt_km/(Max_V-Min_V)
+
+;-------------------------------------------------------------------------------
+BAD_DATA_FLAG=1
+if KEYWORD_SET(Min_V) EQ 0 then Min_V=min(Plot_Data)
+if KEYWORD_SET(Max_V) EQ 0 then Max_V=max(Plot_Data)
+if KEYWORD_SET(Plot_Interval) EQ 0 then Plot_Interval=1
+if KEYWORD_SET(Name) EQ 0 then Name='Data'
+if KEYWORD_SET(BAD_DATA) EQ 0 then BAD_DATA_FLAG=0
+;-------------------------------------------------------------------------------
+
+;--- Set Date strings ---
+DATE=string(format='((I4),"-",(I2.2),"-",(I2.2))',YEAR,MONTH,DAY)
+;------------------------
+
+;--- Number of Data  ---
+Num_Data=N_elements(Time)
+;-----------------------
+
+;--- Draw Line in KML ---
+Line=fltarr(3,2)
+Begin_Folder_KML, File_Unit,Name=Name+' '+Date
+
+for I_time=0L, Num_Data-1-Plot_Interval, Plot_Interval do begin
+
+if BAD_DATA_FLAG EQ 1 then begin
+if (Plot_Data(I_time) EQ BAD_DATA ) OR (Plot_Data(I_time+Plot_Interval) EQ BAD_DATA) then begin
+goto, SKIP_PLOT
+endif
+endif
+
+ 
+	I_Color=Color_KML(Plot_Data(I_time),min_v, max_v)
+	I_Width=8.
+
+Line(0,*)=[lat(I_time), lat(I_time+Plot_Interval)]
+Line(1,*)=[lon(I_time), lon(I_time+Plot_Interval)]
+;--- Altitude Plot or Normal Plot ---
+if KEYWORD_SET(Alt_Plot) eq 0 then begin
+	Line(2,*)=[alt(I_time), alt(I_time+Plot_Interval)]
+endif else begin
+	Line(2,*)=[alt(I_time)+(Plot_Data(I_time)-min_v)*Alt_Factor, alt(I_time+Plot_Interval)+(Plot_Data(I_time+Plot_Interval)-min_v)*Alt_Factor]
+endelse
+;-------------------------------------
+
+HOUR=fix(time(I_time))
+MIN=fix(time(I_time)*60.-HOUR*60.)
+SEC=fix(time(I_time)*3600.-HOUR*60.*60.-MIN*60.)
+Time_String=DATE+"T"+string(HOUR, MIN, SEC, format='((I2.2),":",(I2.2),":",(I2.2),"Z")')
+
+Line_KML, File_Unit, Line, Color=I_Color, Time=Time_String, Width=I_Width
+
+SKIP_PLOT:
+endfor
+
+End_Folder_KML, File_Unit
+;------------------------
+
+end
+
+;=============================
+Pro Cbar_KML, File_Unit,Cbar_Xsize,Cbar_Ysize,cbar_annotation
+;=============================
+;
+; Simple code to add a color bar to the Google Earth window
+; This color bar is a png, created in the z-buffer in the main portion
+; of kml_fuv-2
+;
+
+Printf,File_Unit,"<ScreenOverlay><Icon><href>./fuv_data/cbar.png </href></Icon>"
+Printf,File_Unit,"<name>SI-12 Count Rate</name>"
+Printf,File_Unit,'<overlayXY x="0" y="0" xunits="fraction" yunits="fraction"/>'
+Printf,File_Unit,'<screenXY x="0.01" y="0.017" xunits="fraction" yunits="fraction"/>
+Printf,File_Unit,'<size x='+cbar_xsize+' y='+cbar_ysize+' xunits="pixels" yunits="pixels"/>
+Printf,File_Unit, '<color>80ffffff</color>'
+Printf,File_Unit,'</ScreenOverlay>'
+
+end
+
+;===============================================================================
+Pro Map_KML, File_Unit, Year, Month, Day, Time, Min_Lat, Max_Lat, Min_Lon, Max_Lon, Alt, Map_Data, Min_V=Min_V, Max_V=Max_V, BAD_DATA=BAD_DATA, Plot_interval=Plot_interval, Transparency=Transparency, Name=Name,multi_lat=multi_lat
+;===============================================================================
+;
+;       Plot MAP data on KML
+;
+;	Input: 
+;	  Time: Time of data in Hours in the day: float(Num_Data)
+;	  Map_Data: Data array, (Time, Longitude, Latitude): 
+;	                             float(Num_Data, Num_Long, Num_Lat)
+;	  Year, Month, Day:
+;	  Min_Lat, Max_Lat, Min_Lon, Max_Lon: Four corners of Image
+;	  Alt: Altitude
+;	Input(Optional)
+;	  Min_V: Value for the minimum: Blue
+;	  Max_V: Value for the maximum: Red
+;	  BAD_DATA: Be not plotted.
+;	  Plot_Interval: Plot every "Plot_Interval" data
+;	  Transparency: Transparency of Image
+;	  Name: Name of data, used for folder name
+;	
+;		2007-02-09 Saito-A
+;
+;		CHAGE:
+;			2007-003-26 Saito-A: Transparency
+;
+;-------------------------------------------------------------------------------
+;===============================================================================
+figs_dir="./fuv_data/"
+BAD_DATA_FLAG=1
+multi_lats=0
+;-------------------------------------------------------------------------------
+if KEYWORD_SET(Min_V) EQ 0 then Min_V=min(Map_Data)
+if KEYWORD_SET(Max_V) EQ 0 then Max_V=max(Map_Data)
+if KEYWORD_SET(Plot_Interval) EQ 0 then Plot_Interval=1
+if KEYWORD_SET(BAD_DATA) EQ 0 then BAD_DATA_FLAG=0
+if KEYWORD_SET(Transparency) EQ 0 then Transparency='ff'
+if KEYWORD_SET(Name) EQ 0 then Name='Data'
+if KEYWORD_SET(multi_lat) gt 0 then multi_lats=1
+
+;-------------------------------------------------------------------------------
+
+;----
+INTERVAL_HOUR=time(Plot_Interval)-time(0)
+;----
+
+;--- Set Date strings ---
+DATE=string(format='((I4),"-",(I2.2),"-",(I2.2))',YEAR,MONTH,DAY)
+YEAR2=string(format='(I4)',YEAR)
+MONTH2=string(format='(I2.2)',MONTH)
+;------------------------
+
+;--- Number of Data  ---
+Num_X=N_elements(Map_Data(0,*,0))
+Num_Y=N_elements(Map_Data(0,0,*))
+Num_Data=N_elements(Time)
+;-----------------------
+
+;--- Draw ---
+Begin_Folder_KML, File_Unit, Name=Name+' '+Date
+
+;=============================================================== Time LooP =====
+for I_time=0L, Num_Data-Plot_Interval, Plot_Interval do begin
+
+;--- hold index for latitudes
+  lat_dex=I_time
+  if multi_lats eq 0 then lat_dex=0
+
+;--- Convert to Byte array               ---
+;--- Use blue color table: Bad data = 255B ---
+
+  if (BAD_DATA_FLAG EQ 1) then begin
+	BAD_INDEX=where(Map_Data(I_time,*,*) EQ BAD_DATA, Num_BAD)
+  endif
+
+  HIGH_INDEX=where(Map_Data(I_time,*,*) GE Max_V, Num_High)
+  LOW_INDEX=where(Map_Data(I_time,*,*) LE Min_V, Num_Low)
+
+  IMAGE=byte((Map_Data(I_time,*,*)-Min_V)/(Max_V-Min_V)*253)
+  if Num_LOW GT 0 then IMAGE(LOW_INDEX)=0B
+  if Num_HIGH GT 0 then IMAGE(HIGH_INDEX)=254B
+  if (BAD_DATA_FLAG EQ 1) then begin
+	if Num_BAD GT 0 then IMAGE(BAD_INDEX)=255B
+  endif
+  IMAGE=reform(Image(0,*,*))
+
+;stop
+
+;--- Time String ---
+HOUR=fix(time(I_time))
+MIN=fix(time(I_time)*60.-HOUR*60.)
+SEC=fix(time(I_time)*3600.-HOUR*60.*60.-MIN*60.)
+S_Time=DATE+"T"+string(HOUR, MIN, SEC, format='((I2.2),":",(I2.2),":",(I2.2),"Z")')
+
+E_HOUR=fix(time(I_time)+INTERVAL_HOUR)
+E_MIN=fix((time(I_time)+INTERVAL_HOUR)*60.-E_HOUR*60.)
+E_SEC=fix((time(I_time)+INTERVAL_HOUR)*3600.-E_HOUR*60.*60.-E_MIN*60.)
+E_Time=DATE+"T"+string(E_HOUR, E_MIN, E_SEC, format='((I2.2),":",(I2.2),":",(I2.2),"Z")')
+;-------------------
+
+;-------------------
+Fig_Name=figs_dir+DATE+'_'+string(HOUR,MIN,SEC,format='((I2.2),"_",(I2.2),"_",(I2.2))')
+write_bmp,Fig_Name+'.bmp', IMAGE
+;-------------------
+
+;-------------------
+printf, File_Unit, "<GroundOverlay>"
+printf, File_Unit, "<name>"+string(HOUR,MIN,SEC,format='((I2.2),"_",(I2.2),"_",(I2.2))')+"</name>"
+printf, File_Unit, "<TimeSpan><begin>"+S_Time+"</begin>"
+printf, File_Unit, "<end>"+E_Time+"</end></TimeSpan>"
+;printf, File_Unit, "<TimeStamp><when>"+Time_String+"</when></TimeStamp>"
+printf, File_Unit, "<color>"+Transparency+"ffffff</color>"
+printf, File_Unit, "<Icon><href>"+Fig_Name+'.png'+"</href></Icon>"
+printf, File_Unit, "<altitude>"+String(Alt*1000.)+"</altitude><altitudeMode>absolute</altitudeMode>"
+printf, File_Unit, "<LatLonBox><south>"+string(Min_Lat(lat_dex))+"</south> <north>"+string(Max_Lat(lat_dex))+"</north> <west>"+string(Min_Lon)+"</west> <east>"+string(Max_Lon)+"</east> <rotation>0.</rotation> </LatLonBox>"
+printf, File_Unit, "</GroundOverlay>"
+
+;-------------------
+
+endfor
+
+End_Folder_KML, File_Unit
+;------------------------
+
+end
+
+;===============================================================================
+;
+;	Example of Usage
+;
+;===============================================================================
+;Line=[[33.8, 133.8, 5.],[34.3, 134.3, 5.]]
+;Polygon=[[35., 135., 3.], [35, 134, 3.], [34., 134., 3.],[34, 135, 3.]]
+;Center=[35.,135., 10.]
+;Width=[.1,.1, 10.]
+;
+;	I_err=Open_KML('test.kml',I_Unit)
+;
+;	Begin_Folder_KML, I_Unit
+;	  Point_KML,  I_Unit, Line(*,0), Time='2006-12-15T02:08:30Z', Descri="This is ..."
+;	  Lookat_KML, I_Unit,Line(*,1)
+;	  Line_KML, I_Unit, Line, Color='550000ff', Width=10
+;	  Polygon_KML, I_Unit, Polygon, Color='5500ff00', Time='2006-12-17'
+;	  I_Color=Color_KML(60., 0., 100., Transparency='55')
+;	  Cube_KML,  I_Unit, Center, Width=Width, Color=I_Color
+;	End_Folder_KML, I_Unit
+;
+;	Close_KML,  I_Unit
+;end
+;===============================================================================
+;===============================================================================
+;
+;	Example of Map_KML
+;
+;===============================================================================
+;----- Date -----
+;Year=2004
+;Month=10
+;Day=29
+
+;----- Array size -----
+
+
+
+for j = 0, 1 do begin
+
+  if j eq 0 then begin
+    filelist=findfile("./s12*map")
+    loadct, 1
+  endif
+
+  if j eq 1 then begin
+    filelist=findfile("./s13*map")
+    loadct, 8
+  endif
+
+  yearlist=strmid(filelist,5,4)
+  daylist=strmid(filelist,9,3)
+  hourlist=strmid(filelist,12,2)
+  minutelist=strmid(filelist,14,2)
+
+  for iyear=2000,2005 do begin
+    for iday=0,365 do begin
+      timefinder=where(fix(yearlist) eq iyear and fix(daylist) eq iday,found)
+      if found gt 0 then begin
+
+
+        syear=strcompress(iyear,/rem)
+        ydn2md,iyear,iday,month,dom
+        smonth=strcompress(month,/rem) & if month lt 10 then smonth='0'+smonth
+        sday=strcompress(iday, /rem) & if iday lt 100 then sday='0' + sday
+                               if iday lt 10 then sday='0' + sday
+        sdom=strcompress(dom, /rem) & if dom lt 10 then sdom='0' + sdom
+
+        Num_Time=n_elements(filelist)
+
+        Num_Time=found
+
+        min_lat_arr=fltarr(Num_Time)
+        max_lat_arr=fltarr(Num_Time)
+        max_lon_arr=fltarr(Num_Time) + 180.
+        min_lon_arr=fltarr(Num_Time) - 180.
+
+        restore,filelist(timefinder(0)) 
+	
+        Sizer=size(mapim) & Timer=Map_Time(1)/1000.d
+        Start_Hour=fix(Timer/3600.d)
+        Start_Minute=fix((Timer/3600.d - Start_Hour) * 60.d)
+
+        ;if mean([maxlat,minlat]) lt 90 then Hemisphere='South' else $
+        ;  Hemisphere='North'
+
+        Num_Lon=Sizer(1)   ;this won't change
+        Num_Lat=180. / lat_res
+
+        ;data_array=fltarr(Num_Lon,Num_Lat)
+
+        ; Time in hours
+;        Time=findgen(Num_Time)*2./60.   + Start_Hour + Start_Minute/60.
+	Time=float(hourlist) + float(minutelist)/60.
+	
+        MAP_Data=fltarr(Num_Time, Num_Lon, Num_Lat+1) -1
+
+        ;stop
+
+        ;----- Set plot map array -----
+        Max_Latsize=0
+        for I_Time=0, Num_Time-1 do begin
+          ;  data_array(*,*)=-1
+          restore,filelist(timefinder(I_Time))
+          max_lat_arr(I_Time)=maxlat-90
+          min_lat_arr(I_Time)=minlat-90 ;;
+          ;  stop
+
+          Find_Latsize=size(mapim)
+          ;  Max_Latsize=Max_Latsize > Find_Latsize(2)
+
+          ;--- Northern Pole put at 0 Latitude ---
+
+          ;  If hemisphere eq 'North' then map_array=reverse(mapim,2) else $
+          ;	map_array=mapim
+          ;  map_bottom=(round(minlat)/latres) ;this round is maybe not
+          ;     necessary
+          map_bottom=((minlat)/lat_res) ;this round is maybe not necessary
+          Map_Data(I_Time,*,0+map_bottom:Find_Latsize(2)-1 + map_bottom  )=mapim
+
+        endfor
+
+        ;--- Delete unused portions of Map_Data ----
+
+        ;Map_Data=Map_Data(*,*,0:Max_Latsize-1)
+
+        ;---- If necessary, reverse the data so north is up again ----
+
+        ;if Hemisphere eq 'North' then $
+        ;Map_Data=reverse(Map_Data,3) 
+
+        ;----- Shift Longitude -----
+        Map_Data=shift(Map_Data, 0, Num_Lon/2., 0)
+
+        ;----- Location of map -----
+
+        ;if Hemisphere eq 'North' then begin
+        ;  Min_Lat=90. - Max_Latsize * lat_res
+        ;  Max_Lat=90. 
+        ;endif else begin
+        ;  Min_Lat=-90.
+        ;  Max_Lat=-90 + Max_Latsize * lat_res
+        ;endelse
+
+        Min_Lat = -90
+        Max_Lat =  90
+
+        Min_Lon=-180.
+        Max_Lon=180. 
+        Alt=200.
+
+        ;----- Plot parameters, values in Instrument Counts -----
+;        if j eq 0 then max_v=40. else max_v=50.
+
+        max_v=40.
+        min_v=0.
+        Map_Data=Map_Data > 0   ;crucial for funny flatfield effects
+
+        BAD_DATA=-1
+
+        if j eq 0 then Name='IMAGE SI-12' else Name='IMAGE SI-13'
+        Transparency='66'
+
+        ;----- Make images directory -----
+        spawn,'ls fuv_data',dircount
+        if n_elements(dircount) gt 1 then spawn,'rm -f fuv_data/*' else $
+          spawn,'mkdir fuv_data'
+
+
+        ;----- Create color bar
+
+        set_plot,'z'
+        erase
+        cbar_xsize=300 & cbar_ysize=100
+        if j eq 0 then cbar_annotation='SI-12 Counts' else $
+	  cbar_annotation='SI-13 Counts'
+
+        device,set_resolution=[cbar_xsize,cbar_ysize]
+	dummy_min_v=min_v 
+        cbar,[.1,.7,.9,.9],dummy_min_v+1,max_v,cbar_annotation,1.5,/horiz,numticks=3,color_=250
+
+        a=tvread()
+        tvlct,r,g,b,/get
+        write_png,'fuv_data/cbar.png',a,r,g,b
+        set_plot,'X'
+
+
+        ;-----
+
+
+
+        ;----- Make Images & KML file -----
+        if j eq 0 then sinstrument = 'si12_' else sinstrument = 'si13_'
+        outfilebase = sinstrument + syear + '_' + smonth + '_' + sdom
+        I_err=Open_KML( outfilebase+'.kml', KML_Unit)
+
+;        stop
+
+	print,min_v
+
+        Map_KML, KML_Unit, iYear, Month, Dom, Time, Min_Lat, Max_Lat, Min_Lon, Max_Lon, Alt, Map_Data, Min_V=Min_V, Max_V=Max_V, BAD_DATA=BAD_DATA, Transparency=transparency, Name=Name
+
+        Cbar_KML, KML_Unit, cbar_xsize,cbar_ysize
+
+        Close_KML,  KML_Unit
+
+
+        ;----- Zip -----
+
+        spawn, 'rm -f '+outfilebase+'.kmz'
+        spawn, '~/dagik/convert.sh'
+        spawn, 'zip '+outfilebase+'.kmz '+outfilebase+'.kml fuv_data/*png'
+
+
+
+
+        ;  spawn,'zip ' + outfilename + ' fuv.kml fuv_data/*png'
+
+        ;---------------
+
+      endif
+
+    endfor
+
+  endfor
+
+endfor
+
+
+
+
+end
+;===============================================================================

@@ -1,0 +1,11 @@
+PRO trapezium, corner1,corner2,corner3,corner4, color  
+;
+;  This should be called trapezium
+;  provide the x and y coordinates of each corner to get you a nice
+;  filled box.
+;
+;
+
+   ; Call POLYFILL:  
+   POLYFILL, [X0, X0, X1, X1], [Y0, Y1, Y1, Y0], COL = color  
+END  

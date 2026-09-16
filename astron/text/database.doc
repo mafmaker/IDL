@@ -1,0 +1,25 @@
+/database                                                May, 1997
+
+This subdirectory contains the IDL procedures, mostly written by Don Lindler,
+(ACC/Goddard) to create and access an IDL database.   These database 
+procedures are currently used by the ASTRO-UIT, HST-GHRS, HST-STIS, ALEXIS 
+and SOHO science teams.  The LaTex file DATABASE.TEX in the /text directory 
+describes the use of the database procedures with an emphasis on astronomical 
+applications.     Further information on the database software is available 
+in Chapter 3 and Appendix J of "A User's Guide to the GHRS Software" available
+as a postscript file or as .html help from 
+http://hrssun.gsfc.nasa.gov/daf/sw_docs.html
+
+The database procedures require the non-standard system variables
+!PRIV, !TEXTOUT, and !TEXTUNIT.   These can be added to the IDL session 
+using the procedure ASTROLIB.
+
+Sample astronomical catalogs, formatted as IDL databases, are available in the
+/zdbase directory.   These include the Yale Bright Star Catalog, the 
+RC3 Galaxy catalog, and a catalog of HST observations.
+
+Due to a bug in the procedures DB_ENT2EXT and DBENT2HOST prior to August 1995,
+databases created with the /IEEE keyword on non-IEEE machines did not properly
+format multiple-valued items.   A procedure DBREPAIR is available from 
+Wayne Landsman (landsman@mpb.gsfc.nasa.gov) which can fix improperly 
+created databases.

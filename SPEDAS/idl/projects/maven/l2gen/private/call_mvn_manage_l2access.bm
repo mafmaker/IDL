@@ -1,0 +1,4 @@
+instr = ['pfp', 'sta', 'swe']
+For j = 0, n_elements(instr)-1 Do mvn_manage_l2access, instr[j], /use_end_date
+exit
+

@@ -1,0 +1,42 @@
+#$Author: kovalick $
+#$Date: 1999/08/05 19:42:10 $
+#$Header: /home/rumba/cdaweb/dev/control/RCS/metadbase,v 1.40 1999/08/05 19:42:10 kovalick Exp kovalick $
+#$Locker: kovalick $
+#$Revision: 1.40 $
+#---------------------------------------------------------------------------
+#! /bin/sh
+#
+# Set some shell variables
+#
+#  Added umask so that when the metafiles are generated they will have
+#  read write permission for both owner and group. RTB 12/23/98
+
+umask 002
+
+TOP=/ncf/rumba1/istp/
+META=/home/rumba/cdaweb/metadata/
+MASTERDIR=/ncf/rumba1/istp/0MASTERS
+export TOP
+export META
+export MASTERDIR
+#
+nice /home/rumba/cdaweb/bin/overlap /home/rumba/cdaweb/metadata/metadata_GAP || exit
+
+nice /home/rumba/cdaweb/bin/list_CDFS || exit
+
+nice /home/rumba/cdaweb/bin/generateDatabases || exit
+
+nice /usr/local/lib/rsi/idl_5.2/bin/idl generate_inventory
+
+nice /usr/local/lib/rsi/idl_5.2/bin/idl generate_inventory2
+
+nice /usr/local/lib/rsi/idl_5.2/bin/idl generate_small
+
+nice /home/rumba/cdaweb/bin/update_script.pl 3
+
+mhmail -subject "CDAWeb tar file ready"  gtl@mpe.mpg.de < /home/rumba/cdaweb/etc/mail_text
+
+mhmail -subject "CDAWeb tar file ready"  C.H.Perry@rl.ac.uk < /home/rumba/cdaweb/etc/mail_text
+
+
+

@@ -1,0 +1,49 @@
+pro read_atm, path
+
+; read the PLOTATM file from trans
+
+@/od/lumm/New_trans/plot/common
+
+on_ioerror, error
+
+msg_out, "Reading file PLOTATM"
+openr, unit, path+"/PLOTATM", /get_lun, /f77
+l1=0L
+readu, unit, l1
+messag=string(replicate(32B,l1))
+readu, unit, messag
+
+readu, unit, l1
+crs_file=string(replicate(32B,l1))
+readu, unit, crs_file
+
+jmax=0L
+mmax=jmax
+readu, unit, mmax, jmax
+altitude=fltarr(mmax)
+readu, unit, altitude
+altitude=altitude*1e-5
+
+work=fltarr(mmax,jmax)
+readu, unit, work
+if jmax ge 1 then n2=work(*,0)
+if jmax ge 2 then o2=work(*,1)
+if jmax ge 3 then o=work(*,2)
+
+t_n=fltarr(mmax)
+readu, unit, t_n
+
+n_e=fltarr(mmax)
+readu, unit, n_e
+
+t_e=fltarr(mmax)
+readu, unit, t_e
+
+free_lun, unit
+
+return
+
+error: prnt_error, !err_string
+return
+
+end

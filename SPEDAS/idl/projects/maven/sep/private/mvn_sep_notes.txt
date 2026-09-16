@@ -1,0 +1,47 @@
+2013-12-04/23:20     ,  PFDPU first turned on.
+2013-12-05/19:05     ,  SEP turned on first time in space
+2013-12-07              SEP turned on second time
+2014-3-4             ,  SEP1 Attenuator off (no longer looking at sun)
+2014-03-08/10:40     ,  SEQ counter for both SEPs reset - reason unknown
+2014-3-12/16:40      ,  PFDPU turned on after 51 hour down time. 
+2014-03-17/22:41:17  ,  New EEPROM load and reset (power cycle)  Changed to MAP 8
+2014-3-19/12         ,  Particle instruments turned on
+2014-3-20/06         ,  Cruciform test
+2014-03-21/02:45:26  ,  Very coherent 0.19 Hertz RH circular polarize wave train. Many examples.
+2014-03-26/09:28:24  ,  IP shock crossing,  Nice waves seen 
+2014-3-26/10         ,  First high flux with MAP8 - still not high enough to trigger ATTs,  Archive data
+2014-3-29/18:00      ,  >600 kev electron fluxes without many ions.  Good calibration period.
+2014-03-31/01:31:00  ,  Minor wave period
+2014-03-31/12:36:16  ,  Minor waves during very quiet intervals
+2014-04-07/08:55:48  ,  small waves
+2014-04-07/15:06:00  ,  RH waves
+2014-04-07/19:06:30  ,  RH waves
+2014-04-08/14:54:59  ,  LH waves
+2014-04-09/01:17:20  ,  Mix of LH and RH waves last over 1 hour
+2014-04-09/11:53     ,  weak LH waves
+2014-04-10           ,  Notice that 1B Open detector is getting noisier - hopefully just sunlight creeping into FOV
+
+2014-04-16           ,  Mag Rolls
+
+2014-05-03           ,  Clean SEP with ions and no electrons
+2014-05-06           ,  Clean SEP with electrons and no ions
+2014-05-07           ,  Noise measurement commanded off - Looking for interference with T measurement Should turn back on one week later
+
+2014-07-14/10:00     , few hours with low energy ions.  Probably not PUO because they are observed in all look directions
+ 
+2014-07-16/21:18           ,  All instruments turned off to prepare for MOI
+
+2014-09-22/01:40     ,  MOI  - start of 35 hour orbits,
+2014-09-22/20        ,  SEP turned on.
+2014-10-19/18:31     ,  Comet Siding Spring CA time,   High energy ion flux drops out at this time
+2014-10-19/20:04     ,  Expected Peak Dust flux from Siding Spring encounter
+
+2014-10-20/21:40     ,  Nice 10 second period oscillations in SEP1_B-O detector
+
+2014-11-7            , Mag rolls (attenuator closed)
+
+2014-11-09/05:21     , Start of SEP APP scan #2  - Really great flux oscillations at ~10 second period.
+2014-12-04/02:21:20  , Orbit 351; Quasi periodic SEP flux oscillations - very weak ~200 seconds.
+
+
+2015-03-04           , Largest shock to date,  VSW changes from 300 to 500 km/s

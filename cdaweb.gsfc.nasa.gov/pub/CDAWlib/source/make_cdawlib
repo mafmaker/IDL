@@ -1,0 +1,9 @@
+#!/bin/sh
+#Run this shell program in order to re-compile the
+#CDAWlib/web IDL software.  The output from this file
+#is an IDL save file which contains all of the compiled
+#source for the s/w.  The save file is nominally stored
+#in ~cdaweb/lib and called spdflib.dat.  This file is
+#what the CDAWeb perl scripts will be looking for in order
+#to be able to process a CDAWeb plot or listing request.
+idl make_cdawlib

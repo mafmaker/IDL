@@ -1,0 +1,104 @@
+pro read_dep, path, e_path
+
+; read the PLOTDEP file from trans
+
+;common grid, energy, altitude, angle, mu_weight
+;common header, messag, crs_file, nmax, mmax, kmax, jmax, ex_states, $
+;  ion_states
+;common engdep, exdep_n2, exdep_o2, exdep_o, iondep_n2, iondep_o2, $
+;  iondep_o, dep_electron, edep
+@common
+
+on_ioerror, error
+
+if not keyword_set(e_path) then e_path=""
+msg_out, "Reading file PLOTDEP"
+openr, unit, path+"/PLOTDEPxdr"+e_path, /get_lun, /xdr
+
+l1=0L
+readu, unit, l1
+messag=string(replicate(32B,l1))
+readu, unit, messag
+
+readu, unit, l1
+crs_file=string(replicate(32B,l1))
+readu, unit, crs_file
+
+jmax=0L
+mmax=0L
+readu, unit, jmax, mmax
+
+altitude=fltarr(mmax)
+readu, unit, altitude
+altitude=altitude*1e-5
+
+ex_states=lonarr(jmax)
+readu, unit, ex_states
+
+if jmax ge 1 then begin 
+   exdep_n2=fltarr(mmax, ex_states(0))
+   readu, unit, exdep_n2
+endif
+
+if jmax ge 2 then begin 
+   exdep_o2=fltarr(mmax, ex_states(1))
+   readu, unit, exdep_o2
+endif
+
+if jmax ge 3 then begin 
+   exdep_o=fltarr(mmax, ex_states(2))
+   readu, unit, exdep_o
+endif
+
+if jmax ge 4 then begin 
+   exdep_co=fltarr(mmax, ex_states(3))
+   readu, unit, exdep_o
+endif
+
+if jmax ge 5 then begin 
+   exdep_co2=fltarr(mmax, ex_states(4))
+   readu, unit, exdep_o
+endif
+
+ion_states=lonarr(jmax)
+readu, unit, ion_states
+
+if jmax ge 1 then begin 
+   iondep_n2=fltarr(mmax, ion_states(0))
+   readu, unit, iondep_n2
+endif
+
+if jmax ge 2 then begin 
+   iondep_o2=fltarr(mmax, ion_states(1))
+   readu, unit, iondep_o2
+endif
+
+if jmax ge 3 then begin 
+   iondep_o=fltarr(mmax, ion_states(2))
+   readu, unit, iondep_o
+endif
+
+if jmax ge 4 then begin 
+   iondep_co=fltarr(mmax, ion_states(3))
+   readu, unit, iondep_o
+endif
+
+if jmax ge 5 then begin 
+   iondep_co2=fltarr(mmax, ion_states(4))
+   readu, unit, iondep_o
+endif
+
+dep_electron=fltarr(mmax)
+readu, unit, dep_electron
+
+edep=fltarr(mmax,jmax)
+readu, unit, edep
+
+free_lun, unit
+
+return
+
+error: prnt_error, !err_string
+return
+
+end

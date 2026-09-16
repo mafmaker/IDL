@@ -1,0 +1,106 @@
+#!/bin/sh
+#############################################################################
+#
+# put - RCS check in wrapper script for CDAW10 source files
+#       (modified for use w/ CDAWEB source files)
+#
+# Jason Mathews
+#
+# Modification History:
+#
+#  V1.0  9/08/94, J Mathews	Original version.
+#  V1.1  9/22/94, J Mathews     Changed default mode to verbose.
+#  V1.2  9/04/96, J Mathews     Correct check of control area.
+#
+#############################################################################
+
+PATH=/usr/bin:$PATH
+MAILHANDLER=kovalick@cdi
+HOME=/home/rumba/cdaweb/dev
+progname=`basename $0`
+usage="Usage: $progname [-q] filename..."
+quiet=0
+files=""
+
+while test $# -ne 0; do
+  case "$1" in
+    -q) quiet=1;;
+    -*) echo "$progname: illegal option $1"
+	echo "$progname: ERROR: $usage"
+	exit 1;;
+    *) files="$files `basename $1`";;
+  esac
+  shift
+done
+
+if test -z "$files"; then
+	echo $usage
+	echo "\nOPTIONS:"
+	echo "  -q Quiet mode [default=verbose]"
+	echo "\nExamples: $progname -q cdsutils.pro selcomp.pro"
+        exit 1
+fi
+
+# test if user is in the official control area.
+#DIR=`pwd`
+control=0
+# Control area from rumba is /disk/rumba/... but /home/rumba elsewhere
+# so skip first 5 letters of path.
+eval `echo $DIR | awk '{ if (substr($1,6,18)=="/rumba/cdaweb/dev/") \
+        print "control=1" }'`
+if test $control -eq 1; then
+#if test "$DIR" = $HOME/control -o "$DIR" = $HOME/source; then
+	echo "$progname: ERROR: cannot checkin files to CDAWEB"
+	echo "control or source directories.\n"
+	echo "Please change to user working directory."
+	exit 1
+fi
+
+# setup cmd options
+if test $quiet -eq 1; then
+	opts="-q"
+else
+	opts=""
+fi
+
+for f in $files
+do
+   if test ! -s $f; then
+	echo $progname: ERROR: file \'$f\' does not exist or has zero length.
+    else
+	umask 002
+	# force removal of control copy
+	rm -f $HOME/control/$f
+	cp $f $HOME/control/
+	if test $? -ne 0; then
+		echo $progname: ERROR: unable to copy $f to control directory
+	else
+		chgrp -f cdaweb $HOME/control/$f
+		ci $opts $HOME/control/$f
+		if test $? -ne 0; then
+			echo $progname: ERROR: unable to check in $f
+		else
+			# remove old source copy if present.
+			if test -f $HOME/source/$f; then
+				rm -f $HOME/source/$f 2>/dev/null
+			fi
+			cp $f $HOME/source/
+			if test $? -ne 0; then
+				echo $progname: ERROR: unable to copy $f to $HOME/source.
+				echo "SUBJECT: CDAWeb automatic alert!\n\
+file $f was checked into RCS by $USER\n\
+error copying to $HOME/source" | mail $MAILHANDLER
+				echo error notification has been sent to $MAILHANDLER.
+			else
+				# update group ownership and permission modes.
+				chgrp -f cdaweb $HOME/source/$f
+				chmod -f -w $HOME/source/$f
+#				chmod -f 444 $HOME/source/$f
+				echo $f checked in.
+			fi
+			# remove working copy of file.
+			rm -f $f
+		fi
+	fi
+    fi
+done

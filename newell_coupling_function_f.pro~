@@ -1,0 +1,7 @@
+
+function newell_coupling_function_f,imfbx,imfby,imfbz,swvel
+
+   clock_angle=imf_clock_angle_f(imfby,imfbz)
+  
+
+  return,ncf

@@ -1,0 +1,46 @@
+pro set_flx_surf_event, event
+
+@common
+@common_w
+
+; the DONE button is the only one that can create an event.  Once an
+; event is encountered, read the buttons and return to the main panel.
+
+widget_control, b_emax, get_value=emax
+widget_control, b_fmin, get_value=fmin
+widget_control, b_zmax, get_value=zmax
+widget_control, b_zmin, get_value=zmin
+flx_param.fmin=fmin
+flx_param.emax=emax
+flx_param.alt_r(1) = zmax
+flx_param.alt_r(0) = zmin
+widget_control, event.top, /destroy
+
+return
+end
+
+
+
+pro set_flx_surf
+
+@common
+@common_w
+
+emax=flx_param.emax
+fmin=flx_param.fmin
+zmax = flx_param.alt_r(1)
+zmin = flx_param.alt_r(0)
+
+s1=widget_base(/column, title='Set Parameters', $
+               xoffset=300, yoffset=200)
+b_emax=cw_field(s1, title='emax (eV) =', value=emax, /float)
+b_fmin=cw_field(s1, title='min. flux =', value=fmin, /float)
+b_zmax=cw_field(s1, title='max. altitude =', value=zmax, /float)
+b_zmin=cw_field(s1, title='min. altitude =', value=zmin, /float)
+b_done=widget_button(s1, value='DONE')
+
+widget_control, s1, /realize
+xmanager, 'set_flx_surf', s1, group_leader=main_base, /modal
+
+return
+end

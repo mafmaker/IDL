@@ -1,0 +1,127 @@
+#!/bin/sh
+#############################################################################
+#
+# get - RCS check out wrapper script for CDAW10 source files
+#	(modified for use w/ CDAWEB source files)
+# Jason Mathews
+#
+# Modification History:
+#
+#  V1.0  9/08/94, J Mathews	Original version.
+#  V1.1  9/22/94, J Mathews	Changed default mode to verbose.
+#				Move file out of control area into cwd.
+#  V2.0  8/05/96, T. Kovalick   Modified for use w/ cdaweb s/w on rumba.
+#  V2.1  9/04/96, J. Mathews    Correct check of control area.
+#############################################################################
+PATH=/usr/bin:$PATH
+HOME=/home/rumba/cdaweb/dev
+progname=`basename $0`
+usage="Usage: $progname [-q] [-l] [-r] filename..."
+lock=0
+files=""
+quiet=0
+
+while test $# -ne 0; do
+  case "$1" in
+    -r);;
+    -l) lock=1;;
+    -q) quiet=1;;
+    -*) echo "$progname: illegal option $1"
+	echo "$progname: ERROR: $usage"
+	exit 1;;
+    *) files="$files `basename $1`";;
+  esac
+  shift
+done
+
+if test -z "$files"; then
+	echo $usage
+	echo "\nOPTIONS:"
+	echo "  -r Retrieves the latest revision (This is the default)"
+	echo "  -l Retrieves the latest revision and locks it"
+	echo "  -q Quiet (default=verbose)"
+	echo "\nExamples: $progname -l cdsutils.pro selcomp.pro"
+        exit 1
+fi
+
+# Test if user is in the official control area to prevent checking out files there.
+DIR=`pwd`
+control=0
+# Control area from rumba is /disk/rumba/... but /home/rumba elsewhere
+# so skip first 5 letters of path.
+eval `echo $DIR | awk '{ if (substr($1,6,18)=="/rumba/cdaweb/dev/") \
+	print "control=1" }'`
+if test $control -eq 1; then
+#if test "$DIR" = $HOME/control -o "$DIR" = $HOME/source \
+#	-o "$DIR" = $HOME/control/RCS; then
+	echo "$progname: ERROR: cannot checkout files from cdaweb development"
+	echo "control or source directories.\n"
+	echo "Please change to your user working directory."
+	exit 1
+fi
+
+if test ! -w $DIR; then
+	echo "$progname: ERROR: cannot checkout files into current directory"
+	echo "You have no write permission to $DIR"
+	echo "Please change to your user working directory."
+	exit
+fi
+
+# setup cmd options
+if test $lock -eq 1; then
+	opts="-l"
+else
+	opts=""
+fi
+
+if test $quiet -eq 1; then
+	opts="$opts -q"
+fi
+
+for f in $files
+do
+# do operation by default.
+   doit=1
+   if test -f $f; then
+	echo "overwrite existing $f? (y/n)[n]: \c"
+	# get confirmation from user
+	ans=`line | sed -e 's/[ \t]//g' -e 'y/Y/y/'`
+	if test "$ans" != "y"; then
+	    doit=0
+	    echo canceled get operation.
+	fi
+    fi
+
+    if test $doit -eq 1; then
+# check out locked version from RCS.
+	TARGET=$HOME/control/$f
+# remove working copy if it already exists.
+	if test -f $TARGET; then
+		rm -f $TARGET
+	fi
+	umask 0
+	co $opts $TARGET
+	if test $? -ne 0; then
+		echo get: ERROR: unable to get $f
+	else
+		chgrp -f cdaweb $TARGET
+		if test -f $f; then
+			rm -f $f 2>/dev/null
+		fi
+		cp $TARGET .
+		if test $? -eq 0; then
+			chmod u+w $f
+# if quiet mode is on then show final status here,
+# otherwise co already displayed the status.
+			if test $quiet -eq 1; then
+				echo $f copied.
+			fi
+		else
+			echo $progname: ERROR: cannot copy $f from
+			echo RCS copy $TARGET to `pwd`
+		fi # end test status
+	# allow group members to remove target
+#		chmod g+w $TARGET
+	fi	# end test co
+    fi	# end test doit
+done

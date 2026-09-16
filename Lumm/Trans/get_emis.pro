@@ -1,0 +1,53 @@
+pro get_emis, t_altitude, emis, path
+
+; Driver to get N2(1N) profiles from the transport code
+
+@common
+
+if n_elements(path) le 0 then $
+   path = '/mydisks/home/lmp/Trans/Output/' + mk_path('/mydisks/home/lmp/Trans/Output')
+
+read_exr, path, ''
+
+t_altitude=altitude             ; needs to be a different name
+                                ; (altitude is in a common block...)
+; read the EMISS file from the trans directory
+file=path+'/EMISS'
+spawn, 'wc -l '+path+'/EMISS', out
+lines = long(out(0))
+openr, unit, file, /get
+ll=replicate({specie:0, state:0, ion_ex:0, br:0., name:'', ww:0.},  $
+             lines)
+form='(i1,i2,i3,e8.2,2x,a13,2x,f5.1)'
+readf, unit, ll, form=form
+free_lun, unit
+
+emis = replicate({name:'', wavelength:0., brightness:0.,  $
+                  emission:fltarr(mmax)}, lines)
+for i=0, lines-1 do begin
+   case ll(i).specie of
+      1: begin
+         if ll(i).ion_ex eq 1 then exr = exr_n2(*,ll(i).state-1) $
+              else exr = ion_n2(*,ll(i).state-1)
+      end
+      2: begin
+         if ll(i).ion_ex eq 1 then exr = exr_o2(*,ll(i).state-1) $
+              else exr = ion_o2(*,ll(i).state-1)
+      end
+      3: begin
+         if ll(i).ion_ex eq 1 then exr = exr_o(*,ll(i).state-1) $
+              else exr = ion_o(*,ll(i).state-1)
+      end
+   endcase
+   emis(i).name = ll(i).name
+   emis(i).wavelength = ll(i).ww
+   emis(i).emission = exr*ll(i).br ;brightness in R
+   emis(i).brightness = (-1e5)*trap(emis(i).emission, altitude) ; in R
+                                ; (note: trap gets negative
+                                ; value since the arrays are in
+                                ; decending order)
+endfor
+
+return
+end
+

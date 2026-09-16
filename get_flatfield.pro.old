@@ -1,0 +1,98 @@
+;
+; Program : get_flatfield.pro
+; Author  : Thomas Immel
+;
+; new proggie that will return a properly sized flatfield
+; given year and date, since the flatfield seems to change
+; all the time, whether or not the field of view gets tweaked.
+;
+; INPUTS
+;
+;  Year - 4 or more digits please
+;  Day - day of year
+;  inst - 0 - wic
+;         1 - wic low res   ;never happens.
+;	  2 - si13
+;	  3 - si12
+; 
+;  uses flatfields in si_flatfield2.idl where the variables restored here 
+;  are the string arrays yearlist and daylist, as well as flatfields.
+;
+;  Does not yet provide WIC flatfield. The inst flag does nothing yet.
+;
+;
+
+function get_flatfield,year,day,inst
+
+  yr=long(year)
+  dy=long(day)
+  time=yr* 1000 + dy
+
+
+if inst eq 2 then begin
+
+restore,'/disks/neo/home/immel/sci/fuv/flatfield/s13_flatfield_dbase.idl' 
+
+
+;  if inst eq 2 then $
+; restore,'/disks/neo/home/immel/sci/fuv/flatfield/s13_flatfield_dbase.idl' $
+;  else $
+;  restore,'/disks/neo/home/immel/sci/fuv/flatfield/s12_flatfield_dbase.idl'
+
+
+
+  yearlist=long(yearlist)
+  daylist=long(daylist)
+  list=yearlist * 1000 + daylist
+
+
+  daydiff=abs(time - list)	;abs would be nice, but since the 
+				;antenna flew off, you really want
+				;a negative number here, check for
+				;that first
+
+				;if the day is before 278, always grab the
+				;flatfield before 278. Otherwise, always
+				;go forward. That is a nice hack
+
+  print,daydiff
+
+
+  if time gt 2000278 then thing=where(daydiff eq min(daydiff) and list gt 2000278) $
+     else thing=where(daydiff eq min(daydiff) and list lt 2000278)
+
+  print,thing(0)
+
+;--- day 278, 2000 was boom loss. Deal with that!
+
+  print,list(thing(0)), 'Would use this flatfield'
+
+  flatfield=flatfields(thing(0),*)
+  thing=fltarr(128) & thing(*)=1
+  flatfield=thing#reform(flatfield)
+
+endif
+
+
+if inst eq 3 then begin		;s12 correction is crude now
+
+restore,'$FUV_HOME/flatfield/flat_s12_2000_255_mod.sav' 
+  if time lt 2000278 then flatfield=flat_field $
+  else begin
+	new=rot(flat_field,-1.85,/interp)
+  	line=total(new,1)/128
+	ones=fltarr(128) & ones(*)=1
+	flatfield=ones#line
+  endelse
+
+
+endif
+
+if inst eq 0 then begin
+  restore,'$FUV_HOME/flatfield/wic_flatfield.idl'
+  flatfield=flat_arr
+endif
+
+return,flatfield
+
+end

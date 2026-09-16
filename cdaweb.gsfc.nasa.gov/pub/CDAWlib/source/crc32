@@ -1,0 +1,198 @@
+
+
+
+cksum(1)							     cksum(1)
+
+
+
+NAME
+  cckkssuumm	- Displays the checksum	and byte count of a file
+
+SYNOPSIS
+
+  cckkssuumm	[_f_i_l_e ...]
+
+STANDARDS
+
+  Interfaces documented	on this	reference page conform to industry standards
+  as follows:
+
+  cckkssuumm:  XPG4,	XPG4-UNIX
+
+  Refer	to the ssttaannddaarrddss(5) reference page for more information	about indus-
+  try standards	and associated tags.
+
+FLAGS
+
+  None
+
+PARAMETERS
+
+  _f_i_l_e	   The pathname	of a file to be	checked.
+
+	   If no file is specified, standard input is used.
+
+DESCRIPTION
+
+  The cckkssuumm command reads the files specified by the _f_i_l_e argument and calcu-
+  lates	a 32-bit checksum Cyclic Redundancy Check (CRC)	and the	byte count
+  for each file. If no files are specified, standard input is read. The
+  checksum, number of bytes, and filename are written to standard output. If
+  standard input is used, no pathname is printed.
+
+  The cckkssuumm command can	be used	to compare a suspect file copied or communi-
+  cated	over noisy transmission	lines against an exact copy of a trusted
+  file.	The comparison made by the cckkssuumm command may not be cryptographically
+  secure; however, it is unlikely that an accidentally damaged file will pro-
+  duce the same	checksum as the	original file.
+
+  [Digital]  The cckkssuumm command uses a different	algorithm than the ssuumm com-
+  mand to calculate the	32-bit checksum	CRC.  The cckkssuumm	command	uses a CRC
+  algorithm based on the Ethernet standard frame check.	 In addition, the sum
+  block	count is an octet count	in cckkssuumm.
+
+  [Digital]  The IEEE Std 1003.2-1992 and X/Open CAE specifications require a
+  slightly different method of calculating checksum values.  To	obtain these
+  new standards, set the environment variable CCMMDD__EENNVV to _x_p_g_4 as follows:
+
+	eexxppoorrtt CCMMDD__EENNVV==xxppgg44
+
+
+  [Digital]  To	maintain compatibility if the environment variable CCMMDD__EENNVV is
+  not set, the default action of the cckkssuumm command reports the traditional
+  checksum values.
+
+  The CRC checksum is obtained in the following	way:
+
+  The encoding is defined by the generating polynomial:
+
+  _G(_x) = _x32 + _x26 + _x23 + _x22 + _x16 + _x12 + _x11 + _x10 + _x8 + _x7 + _x5 +	_x4 +
+  _x2 + _x + 1
+
+  Mathematically, the CRC value	corresponding to a given file is defined by
+  the following	procedure:
+
+   11..  The _n bits to be	evaluated are considered to be the coefficients	of a
+       mod 2 polynomial	_M(_x) of	degree _n-1.  These _n bits are the bits from
+       the file, with the most significant bit being the most significant bit
+       of the first octet of the file and the last bit being the least signi-
+       ficant bit of the last octet, padded with zero bits (if necessary) to
+       achieve an integral number of octets, followed by one or	more octets
+       representing the	length of the file as a	binary value, least signifi-
+       cant octet first.  The smallest number of octets	capable	of represent-
+       ing this	integer	is used.
+
+   22..  _M(_x) is multiplied by _x32 (that is, shifted left	32 bits) and divided
+       by _G(_x) using mod 2 division, producing a remainder _R(_x)	of degree
+       less than or equal to 31.
+
+   33..  The coefficients	of _R(_x)	are considered to be a 32-bit sequence.
+
+   44..  The bit sequence	is complemented	and the	result is the CRC.
+
+ENVIRONMENT VARIABLES
+
+  The following	environment variables affect the execution of cckkssuumm:
+
+  CCMMDD__EENNVV  [Digital]  If this variable is set to _x_p_g_4, the method of calcu-
+	   lating checksum values specified by IEEE Std	1003.2-1992 (POSIX.2)
+	   and X/Open CAE specifications is used.
+
+  LLAANNGG	   Provides a default value for	the internationalization variables
+	   that	are unset or null. If LLAANNGG is unset or null, the correspond-
+	   ing value from the default locale is	used. If any of	the interna-
+	   tionalization variables contain an invalid setting, the utility
+	   behaves as if none of the variables had been	defined.
+
+  LLCC__AALLLL   If set to a non-empty string	value, overrides the values of all
+	   the other internationalization variables.
+
+  LLCC__CCTTYYPPEE Determines the locale for the interpretation	of sequences of	bytes
+	   of text data	as characters (for example, single-byte	as opposed to
+	   multi-byte characters in arguments).
+
+  LLCC__MMEESSSSAAGGEESS
+	   Determines the locale for the format	and contents of	diagnostic
+	   messages written to standard	error.
+
+  NNLLSSPPAATTHH  Determines the location of message catalogues for the processing
+	   of LLCC__MMEESSSSAAGGEESS.
+
+EXAMPLES
+
+  To display the checksum and the size,	in bytes, of ffiillee11 and ffiillee22, enter:
+
+       cckkssuumm ffiillee11 ffiillee22
+
+       3995432187      1390    file1
+       3266927833      20912   file2
+
+  This output shows that the checksum of the ffiillee11 file	is 3995432187 and
+  contains 1390	bytes, and that	the checksum of	the ffiillee22 file is 3266927833
+  and contains 20912 bytes.
+
+EXIT VALUES
+
+  The following	exit values are	returned:
+
+  00   All files	were processed successfully
+
+  >>00  An error occurred
+
+RELATED	INFORMATION
+
+  Commands:  ssuumm(1), wwcc(1)
+
+  Standards:  ssttaannddaarrddss(5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+quiet/fit_bin_cts2.idl
+quiet/fit_bin_cts2.idlf
+quiet/fit_s13_bin_cts2.idl
+quiet/fit_s13_bin_cts2.idlf
+quiet/fit_bastille_s13_bin_cts2.idl
+quiet/quick_f107.idl
+quiet/s13_quick_f107.idl
+flatfield/wic_bias.idl
+flatfield/si_flatfield_dbase.idl
+flatfield/wic_flatfield.idl

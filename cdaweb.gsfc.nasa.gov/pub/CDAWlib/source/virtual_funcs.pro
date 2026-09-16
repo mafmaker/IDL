@@ -1,0 +1,2098 @@
+;$Author: kovalick $
+;$Date: 2001/04/23 19:35:11 $
+;$Header: /home/rumba/cdaweb/dev/control/RCS/virtual_funcs.pro,v 1.0 
+;$Locker: kovalick $
+;$Revision: 1.64 $
+
+; Ancillary routines ------------------------------------
+    
+FUNCTION atan2d,x1,x2
+   RETURN,DOUBLE(ATAN(x1,x2)/!DTOR)
+END
+FUNCTION dfmag,x1,x2,x3
+   RETURN,SQRT(x1*x1+x2*x2+x3*x3)
+END
+FUNCTION sind,x
+   RETURN,DOUBLE(sin(x/57.2958))
+END
+FUNCTION cosd,x
+   RETURN,DOUBLE(cos(x/57.2958))
+END
+PRO dunit,vector,uvector
+   uvector = DBLARR(3) & tmp = DBLARR(3)
+   dmag=dfmag(vector(0),vector(1),vector(2))
+   IF (dmag NE 0) THEN BEGIN
+      tmp=vector/dmag
+   ENDIF ELSE BEGIN
+      tmp=0.0
+   ENDELSE
+   uvector = tmp
+END
+PRO vector_to_ra_dec,x,y,z,ra,dec
+   IF((x EQ y) AND (x EQ 0)) THEN BEGIN
+     dec = 90.*z/ABS(z)
+     ra  = 0
+   ENDIF ELSE BEGIN
+     dec = atan2d(z,SQRT(x*x+y*y))
+     ra  = atan2d(y,x)
+   ENDELSE
+   IF(ra LT 0) THEN ra=ra+360
+END 
+
+PRO get_rotm,axis,angle,m
+
+    ;routine to calculate rotation matrix about an arbitrary axis
+    ;inputs
+    ;   axis    3 element vector defining the axis of rotation
+    ;   angle   scalar giving the angle of rotation
+    ;outputs
+    ;   m       3x3 array containing the rotation matrix
+    ;  REF: Spacecraft Attitude Determination and Control,
+    ;       J.R.Wertz, ed., 1991, eq (E-6).
+
+    m = DBLARR(3,3)
+
+    s=DOUBLE(sind(angle))
+    c=DOUBLE(cosd(angle))
+    c1=1-c
+
+    e1=axis(0)
+    e2=axis(1)
+    e3=axis(2)
+
+    m(0,0) = c1*e1*e1 + c
+    m(1,0) = c1*e1*e2 + e3*s
+    m(2,0) = c1*e1*e3 - e2*s
+
+    m(0,1) = c1*e1*e2 - e3*s
+    m(1,1) = c1*e2*e2 + c
+    m(2,1) = c1*e2*e3 + e1*s
+
+    m(0,2) = c1*e1*e3 + e2*s
+    m(1,2) = c1*e2*e3 - e1*s
+    m(2,2) = c1*e3*e3 + c
+
+END
+
+
+
+; Main routine ---------------------------------------------------
+
+PRO uvilook,time,o_gci,a_gci3,dsp_angle,filter,versStr,l0,ra,dec $
+                ,system=system,help=help,vers=vers
+
+      IF(KEYWORD_SET(help)) THEN BEGIN
+       PRINT,''
+       PRINT,' PRO uvilook,time,o_gci,a_gci3,dsp_angle,filter $
+       PRINT,'             versStr,10,ra,dec
+       PRINT,''
+       PRINT,' routine calculates central look direction of uvi
+       PRINT,' field of view (in gci coordinates).
+       PRINT,'
+       PRINT,' input
+       PRINT,'    time            obsolete variable, not used
+       PRINT,'    o_gci           orbital position vector
+       PRINT,'    a_gci3          s/c attitude vector (gci)
+       PRINT,'    dsp_angle       despun nadir offset angle
+       PRINT,'    filter          filter index (see below)
+       PRINT,'
+       PRINT,' output
+       PRINT,'    versStr         sw version string
+       PRINT,'    10              look direction of uvi fov
+       PRINT,'    ra              right ascension of look direction
+       PRINT,'    dec             declination of look direction
+       PRINT,'
+       PRINT,' keywords
+       PRINT,'    system          (in) detector in use
+       PRINT,'
+       PRINT,' library routines
+       PRINT,'    dcross_product
+       PRINT,'    dunit
+       PRINT,'    dmmult
+       PRINT,'    vector_to_ra_dec
+       PRINT,'    get_rotm
+       PRINT,'               
+       PRINT,'
+       PRINT,' notes:
+       PRINT,' filter  = 0  BKG
+       PRINT,'         = 1  1304
+       PRINT,'         = 2  1356
+       PRINT,'         = 3  LBHS
+       PRINT,'         = 4  LBHL
+       PRINT,'         = 5  SOLR
+       PRINT,'
+       PRINT,' system  =1 PRI, =2 SEC 
+       PRINT,'
+       RETURN
+      ENDIF
+
+      versStr = 'v1.1b 10/97'
+      IF(kEYWORD_SET(vers)) THEN BEGIN
+         PRINT,''
+         PRINT,  versStr
+         PRINT,''
+         RETURN
+      ENDIF
+
+      primary = 1  & secondary = 2
+      IF(NOT KEYWORD_SET(system)) THEN BEGIN
+         MESSAGE,/INFO,'Assuming primary detector in use.'
+         system=primary
+      ENDIF ELSE BEGIN
+         CASE system OF
+          primary :
+          secondary :
+          ELSE : MESSAGE,'ERROR: Unsupported system value: ' $
+                      +STRTRIM(STRING(system),2)
+         ENDCASE
+      ENDELSE 
+
+;     calculate look direction in spacecraft frame (lsc).
+;     defined as a unit vector positioned at the spacecraft,
+;     perpendicular to the attitude vector, coplanar with
+;     the attitude and position vectors, and pointing in 
+;     the opposite sense of the position vector.  the
+;     position vector is assumed to point from the center
+;     of the earth to the spacecraft.  the look vector will
+;     be converted to a unit vector and positioned at the
+;     spacecraft after it has been converted to the image
+;     reference frame.
+;     lsc = (r x a) x a
+      dtemp = DOUBLE(CROSSP(o_gci,a_gci3))
+      lsc   = DOUBLE(CROSSP(dtemp,a_gci3))
+
+;     calculate look direction in despun platform frame (ldsp).
+;     defined as look direction in spaceraft frame rotated
+;     about the z-axis by the despun offset angle.
+      get_rotm,a_gci3,dsp_angle,m
+      ldsp = TRANSPOSE(TRANSPOSE(m) # lsc)
+      ldsp = REFORM(ldsp)
+
+;     transform from dsp reference frame to uvi reference frame.
+;     this corresponds to the alignment cube placement relative
+;     to the dsp.  this is the mean pointing error relative to
+;     the dsp, but does not include the filter-dependent pointing
+;     error.
+      ;conversion to change from pixels to degrees 
+      pix_conv = 8.0D/228.
+
+      ;mean cross track error in pixels
+      CASE system OF
+       primary   : mean_cross_track = 7.0 
+       secondary : mean_cross_track = 41.6  
+       ELSE : MESSAGE,'ERROR: Unknown system value: '+STRTRIM(STRING(system),2)
+      ENDCASE
+
+      dtemp=DOUBLE(CROSSP(a_gci3,ldsp))
+      dunit,dtemp,y_img_axis
+      get_rotm,y_img_axis,mean_cross_track*pix_conv,m
+
+      luvi = TRANSPOSE(TRANSPOSE(m) # ldsp)
+      luvi = REFORM(luvi)
+
+
+;     transform from uvi reference frame to image plane reference frame.
+;     the corresponds to the look direction for the center of the image
+;     plane and is different for each detector and filter combination.
+;     cross track error in pixels
+  
+      CASE system OF
+       primary   : BEGIN
+                   CASE filter OF
+                    0 :   cross_track =  0.0 ;bkg
+                    1 :   cross_track =  0.9 ;1304
+                    2 :   cross_track =  2.1 ;1356
+                    3 :   cross_track =  0.0 ;LBHS
+                    4 :   cross_track = -5.3 ;LBHL
+                    5 :   cross_track =  0.0 ;SOLR
+                    ELSE: cross_track =  0.0
+                   ENDCASE
+                   END
+       secondary : BEGIN
+                   CASE filter OF
+                    0 :   cross_track =  0.0 ;bkg
+                    1 :   cross_track =  0.7 ;1304
+                    2 :   cross_track =  2.7 ;1356
+                    3 :   cross_track =  0.0 ;LBHS
+                    4 :   cross_track = -5.3 ;LBHL
+                    5 :   cross_track =  0.0 ;SOLR
+                    ELSE: cross_track =  0.0
+                   ENDCASE
+                   END
+       ELSE : MESSAGE,'ERROR: Unknown system value: '+STRTRIM(STRING(system),2)
+      ENDCASE
+    
+      dtemp=DOUBLE(CROSSP(a_gci3,luvi))
+      dunit,dtemp,y_img_axis
+      get_rotm,y_img_axis,cross_track*pix_conv,m
+
+      limg = TRANSPOSE(TRANSPOSE(m) # luvi)
+      limg = REFORM(limg)
+
+
+;     convert look direction to unit vector
+      dunit,limg,l0
+
+;     calculate right ascension & declination (gci)
+      vector_to_ra_dec,l0(0),l0(1),l0(2),ra,dec 
+
+END
+;+
+;
+; NAME: Function VTYPE_NAMES
+;
+; PURPOSE: Returns array of names or index numbers where the var_type is
+;          equal to "data".
+;
+
+function vtype_names, buf, NAMES=NAMES
+
+  tagnames = tag_names(buf)
+  tagnums = n_tags(buf)
+  vnames=strarr(tagnums)
+  vindices=intarr(tagnums)
+; Determine names and indices
+   ii=0
+   for i=0, tagnums-1 do begin
+    tagnames1=tag_names(buf.(i))
+    if(tagindex('VAR_TYPE', tagnames1) ge 0) then begin
+        if(buf.(i).VAR_TYPE eq 'data') then begin
+           vnames(ii)=tagnames(i)
+           vindices(ii)=i
+           ii=ii+1
+        endif
+    endif
+   endfor
+
+   wc=where(vnames ne '',wcn)
+   if(wc(0) lt 0) then begin
+    vnames(0)=wc
+    vindices(0)=wc
+   endif else begin
+    vnames=vnames(wc)
+    vindices=vindices(wc)
+   endelse
+
+if(keyword_set(NAMES)) then NAMES=vnames
+return, vindices
+end
+
+;+
+;
+; NAME: Function Trap 
+;
+; PURPOSE: Trap malformed idl structures or invalid arguments. 
+;
+; INPUT;  a   an idl structure
+
+function buf_trap, a 
+
+  ibad=0
+  str_tst=size(a)
+  if(str_tst(str_tst(0)+1) ne 8) then begin
+    ibad=1
+    v_data='DATASET=UNDEFINED'
+    v_err='ERROR=a'+strtrim(string(i),2)+' not a structure.'
+    v_stat='STATUS=Cannot plot this data'
+    a=create_struct('DATASET',v_data,'ERROR',v_err,'STATUS',v_stat)
+  endif else begin
+; Test for errors trapped in conv_map_image
+   atags=tag_names(a)
+   rflag=tagindex('DATASET',atags)
+   if(rflag(0) ne -1) then ibad=1
+  endelse
+
+return, ibad
+end
+
+;+
+;
+; NAME: Function VV_NAMES
+;
+; PURPOSE: Returns array of virtual variable names or index numbers.
+;
+
+function vv_names, buf, NAMES=NAMES
+
+  tagnames = tag_names(buf)
+  tagnums = n_tags(buf)
+  vnames=strarr(tagnums)
+  vindices=intarr(tagnums)
+; Determine names and indices
+   ii=0
+   for i=0, tagnums-1 do begin
+    tagnames1=tag_names(buf.(i))
+    if(tagindex('VIRTUAL', tagnames1) ge 0) then begin
+        if(buf.(i).VIRTUAL) then begin
+           vnames(ii)=tagnames(i)
+           vindices(ii)=i
+           ii=ii+1
+        endif
+    endif
+   endfor
+   wc=where(vnames ne '',wcn)
+   if(wc(0) lt 0) then begin
+    vnames(0)=wc
+    vindices(0)=wc
+   endif else begin
+    vnames=vnames(wc)
+    vindices=vindices(wc)
+   endelse
+ 
+if(keyword_set(NAMES)) then NAMES=vnames
+return, vindices 
+end
+
+;+
+; NAME: Function CHECK_MYVARTYPE
+;
+; PURPOSE:
+; Check that all variables in the original variable list are declared as
+; data otherwise set to ignore_data
+; Find variables w/ var_type == data
+;
+; CALLING SEQUENCE:
+;
+;          status = check_myvartype(buf,org_names)
+;
+; VARIABLES:
+;
+; Input:
+;  buf        - an IDL structure built w/in read_myCDF
+;  org_names  - list of original variables input to read_myCDF. Any
+;               variables in this list will remain tagged as
+;               VAR_TYPE= data otherwise VAR_TYPE = metadata.
+;
+; Output:
+;  buf    - an IDL structure containing the populated virtual
+;               variables
+;  status - 0 ok else failed
+; 
+; Keyword Parameters:
+;
+;
+; REQUIRED PROCEDURES:
+;
+function check_myvartype, nbuf, org_names
+   status=0
+   var_names=strarr(1)
+   var_indices = vtype_names(nbuf,NAMES=var_names)
+   if(var_indices(0) lt 0) then begin
+     print, "ERROR= No var_type=DATA variable found in conv_pos.pro"
+     print, "ERROR= Message: ",var_indices(0)
+     status = -1
+     return, status
+   endif
+   org_names=strupcase(org_names)
+   for i=0, n_elements(var_indices)-1 do begin
+    wc=where(org_names eq var_names(i),wcn)
+    if(wc(0) lt 0) then nbuf.(var_indices(i)).var_type="ignore_data"
+    ;if(wc(0) lt 0) then nbuf.(var_indices(i)).var_type="metadata"
+   endfor
+
+return, status
+end
+
+;+
+; NAME: Function ALTERNATE_VIEW
+;
+; PURPOSE: Find virtual variables and replace their data w/ the component0
+;          data 
+;
+; CALLING SEQUENCE:
+;
+;          new_buf = alternate_view(buf,org_names)
+;
+; VARIABLES:
+;
+; Input:
+;
+;  buf        - an IDL structure built w/in read_myCDF
+;  org_names  - list of original variables input to read_myCDF. Any
+;               variables in this list will remain tagged as 
+;               VAR_TYPE= data otherwise VAR_TYPE = support_data.
+;
+; Output:
+;
+;  new_buf    - an IDL structure containing the populated virtual 
+;               variable 
+;  
+; Keyword Parameters: 
+;
+;
+; REQUIRED PROCEDURES:
+;
+;   none
+;
+;-------------------------------------------------------------------
+; History
+;
+;         1.0  R. Baldwin  HSTX     1/6/98 
+;		Initial version
+;
+;-------------------------------------------------------------------
+
+function alternate_view, buf,org_names
+
+status=0
+
+; Establish error handler
+  catch, error_status
+  if(error_status ne 0) then begin
+   print, "ERROR= number: ",error_status," in alternate_view"
+   print, "ERROR= Message: ",!ERR_STRING
+   status = -1
+   return, status
+  endif
+
+; Find virtual variables
+   vvtag_names=strarr(1) 
+   vvtag_indices = vv_names(buf,NAMES=vvtag_names)
+   if(vvtag_indices(0) lt 0) then begin
+     print, "ERROR= No VIRTUAL variable found in alternate_view"
+     print, "ERROR= Message: ",vvtag_indices(0)
+     status = -1
+     return, status
+   endif
+
+   tagnames = tag_names(buf)
+   tagnums = n_tags(buf)
+
+   for i=0, n_elements(vvtag_indices)-1 do begin
+    
+;    variable_name=arrayof_vvtags(i) 
+;    tag_index = tagindex(variable_name, tagnames)
+
+    tagnames1=tag_names(buf.(vvtag_indices(i)))
+
+;now look for the COMPONENT_0 attribute tag for this VV.
+;TJK had to change to check for 'ge 0', otherwise it wasn't true...
+
+    if(tagindex('COMPONENT_0', tagnames1) ge 0) then $
+              component0=buf.(vvtag_indices(i)).COMPONENT_0
+
+; Check if the component0 variable exists 
+
+    component0_index = tagindex(component0,tagnames)
+
+;print, buf.(vvtag_indices(i)).handle 
+    vartags = tag_names(buf.(vvtag_indices(i)))
+    findex = tagindex('FUNCTION', vartags) ; find the FUNCTION index number
+    if (findex(0) ne -1) then $
+     func_name=strlowcase(buf.(vvtag_indices(i)).(findex(0)))
+; Loop through all vv's and assign image handle to all w/ 0 handles RTB 12/98
+; Check if handle = 0 and if function = 'alternate_view'
+ if(func_name eq 'alternate_view') then begin
+;print, func_name 
+;print, vvtag_names(i)
+    if(component0_index ge 0) then begin
+; WARNING if /NODATASTRUCT keyword not set an error will occur here
+;TJK - changed this from tagnames to tagnames1
+      if(tagindex('HANDLE',tagnames1) ge 0) then $
+        buf.(vvtag_indices(i)).HANDLE=buf.(component0_index).HANDLE $
+
+      else print, "Set /NODATASTRUCT keyword in call to read_myCDF";
+    endif else begin
+     print, "ERROR= No COMPONENT0 variable found in alternate_view"
+     print, "ERROR= Message: ",component0_index
+     status = -1
+     return, status
+    endelse 
+  endif
+;print, buf.(vvtag_indices(i)).handle 
+   endfor
+
+; Check that all variables in the original variable list are declared as
+; data otherwise set to support_data
+; Find variables w/ var_type == data
+
+   status = check_myvartype(buf, org_names)
+
+return, buf
+end
+;+
+; NAME: Function CROP_IMAGE
+;
+; PURPOSE: Crop [60,20,*] images into [20,20,*]
+;
+; CALLING SEQUENCE:
+;
+;          new_buf = crop_image(buf,org_names)
+;
+; VARIABLES:
+;
+; Input:
+;
+;  buf        - an IDL structure built w/in read_myCDF
+;  org_names  - list of original variables input to read_myCDF. Any
+;               variables in this list will remain tagged as 
+;               VAR_TYPE= data otherwise VAR_TYPE = support_data.
+;  index      - variable index, so we deal with one variable at a time.
+;
+; Output:
+;
+;  new_buf    - an IDL structure containing the populated virtual 
+;               variable 
+;
+; History: Written by RCJ 12/00, based on alternate_view
+;-
+
+function crop_image, buf, org_names, index=index
+status=0
+print, 'In Crop_image'
+; Establish error handler
+catch, error_status
+if(error_status ne 0) then begin
+   print, "ERROR= number: ",error_status," in crop_image"
+   print, "ERROR= Message: ",!ERR_STRING
+   status = -1
+   return, status
+endif
+
+tagnames = tag_names(buf)
+tagnames1=tag_names(buf.(index))
+;now look for the COMPONENT_0 attribute tag for this VV.
+if(tagindex('COMPONENT_0', tagnames1) ge 0) then $
+   component0=buf.(index).COMPONENT_0
+; Check if the component0 variable exists 
+component0_index = tagindex(component0,tagnames)
+; this line is useful if we are just replacing the old data w/ the new:
+;buf.(index).HANDLE=buf.(component0_index).HANDLE
+;handle_value,buf.(index).handle,img
+handle_value,buf.(component0_index).handle,img
+; Rick Burley says that from the original 60x20 image
+; we need to extract a 20x20 image:
+buf.(index).handle=handle_create()
+handle_value,buf.(index).handle,img(19:38,*,*),/set
+
+; Check that all variables in the original variable list are declared as
+; data otherwise set to support_data
+; Find variables w/ var_type == data
+
+status = check_myvartype(buf, org_names)
+
+return, buf
+end
+
+;+
+; NAME: Function clean_data 
+;
+; pURPOSE: Remove data 3*sigma from mean 
+;
+; INPUT:
+;
+;    data          simple data array 
+;
+; KEYWORDS:
+;    FILLVAL       the fill value to be used to replace outlying data.
+;
+; CALLING SEQUENCE:
+;
+;         data = clean_data(data,keywords...)
+;
+
+
+
+function clean_data, data, FILLVAL=FILLVAL
+
+ if not keyword_set(FILLVAL) then FILLVAL=1.0+e31;
+   
+   w=where(data ne FILLVAL,wn)
+   if(wn eq 0) then begin
+     print, "ERROR = No valid data found in function clean_data";
+     print, "STATUS = No valid data found. Re-select time interval.";
+   endif
+   
+;   mean= total(data(w[0:(wn-1)]))/fix(wn)
+   result = moment(data(w[0:(wn-1)]),sdev=sig)
+   mean=result[0]
+   sig3=3.0*sig
+   
+   w=where(abs(data-mean) gt sig3, wn);
+
+   if(wn gt 0) then data[w] = FILLVAL
+
+return, data
+end
+
+;+
+; NAME: Function CONV_POS 
+;
+; PURPOSE: Find virtual variables and compute their data w/ the component0,
+;          component1,... data.  This function specifically converts position
+;          information from 1 coordinate system into another. 
+;
+; INPUT:
+;
+;    buf           an IDL structure
+;    org_names     an array of original variables sent to read_myCDF
+;
+; KEYWORDS:
+;    COORD         string corresponding to coordinate transformation
+;	           default(SYN-GCI)
+;	           (ANG-GSE)
+;    TSTART        start time for synthetic data
+;    TSTOP         start time for synthetic data
+;
+; CALLING SEQUENCE:
+;
+;         newbuf = conv_pos(buf,org_names,keywords...)
+;
+
+function conv_pos, buf, org_names, COORD=COORD, TSTART=TSTART, $ 
+                   TSTOP=TSTOP, DEBUG=DEBUG, INDEX=INDEX
+
+ status=0
+; Establish error handler
+ catch, error_status
+ if(error_status ne 0) then begin
+   print, "ERROR= number: ",error_status," in conv_pos.pro"
+   print, "ERROR= Message: ",!ERR_STRING
+   status = -1
+   return, status
+ endif
+  
+ org_names=strupcase(org_names)
+ if keyword_set(DEBUG) then DEBUG=1L else DEBUG=0L
+ if not keyword_set(INDEX) then INDEX=0L;
+ if not keyword_set(COORD) then COORD="SYN-GCI";
+ if (keyword_set(TSTART) and keyword_set(TSTOP))then begin
+        start_time = 0.0D0 ; initialize
+        b = size(TSTART) & c = n_elements(b)
+        if (b(c-2) eq 5) then start_time = TSTART $ ; double float already
+        else if (b(c-2) eq 7) then start_time = encode_cdfepoch(TSTART); string
+        stop_time = 0.0D0 ; initialize
+        b = size(TSTOP) & c = n_elements(b)
+        if (b(c-2) eq 5) then stop_time = TSTOP $ ; double float already
+        else if (b(c-2) eq 7) then stop_time = encode_cdfepoch(TSTOP); string
+ endif
+
+ m3int=fix((stop_time - start_time)/(180.0*1000.0))
+ t3min=dblarr(m3int+1)
+ failed=0 
+ 
+ dep=parse_mydepend0(buf)  
+ depends=tag_names(dep)
+ depend0=depends(dep.num)
+ epoch1='Epoch1'
+ namest=strupcase(tag_names(buf))
+
+ if((COORD eq "SYN-GCI") or (COORD eq "SYN-GEO")) then begin
+; Determine time array 
+ depend0=strupcase(buf.(INDEX).depend_0)
+ incep=where(namest eq depend0,w)
+ incep=incep(0)
+ names=tag_names(buf.(incep))
+ ntags=n_tags(buf.(incep))
+; Check to see if HANDLE a tag name
+ wh=where(names eq 'HANDLE',whn)
+ if(whn) then begin
+  handle_value, buf.(incep).HANDLE,time 
+  datsz=size(time)
+ endif else begin
+  time=buf.(incep).dat
+ endelse
+; Determine position array 
+;help, buf.sc_pos_syngci, /struct
+  vvtag_names=strarr(1)
+  vvtag_indices = vv_names(buf,NAMES=vvtag_names)
+  vvtag_names = strupcase(vvtag_names)
+
+  cond0=buf.(vvtag_indices(0)).COMPONENT_0 
+  x0=execute('handle_value, buf.'+cond0+'.HANDLE,data') 
+  fillval=buf.(vvtag_indices(0)).fillval 
+  rmin=buf.(vvtag_indices(0)).VALIDMIN(0) 
+  tmin=buf.(vvtag_indices(0)).VALIDMIN(1) 
+  pmin=buf.(vvtag_indices(0)).VALIDMIN(2) 
+  rmax=buf.(vvtag_indices(0)).VALIDMAX(0) 
+  tmax=buf.(vvtag_indices(0)).VALIDMAX(1) 
+  pmax=buf.(vvtag_indices(0)).VALIDMAX(2) 
+;  x0=execute('cond0=buf.'+vvtag_indices(0)+'.COMPONENT_0') 
+;  x0=execute('handle_value, buf.'+org_names(0)+'.HANDLE,data') 
+;  x0=execute('fillval=buf.'+org_names(0)+'.fillval') 
+
+; if(COORD eq "SYN-GCI") then begin
+  r=data(0,*)
+  theta=data(1,*)
+  phi=data(2,*)
+
+; Check for radius in kilometers; switch to Re
+  wrr=where(((r gt 36000.0) and (r lt 48000.0)),wrrn)
+  if(wrrn gt 0) then r[wrr] = r[wrr]/6371.2 
+
+; Check validity of data; if outside min and max set to fill
+  rhi=where(r gt rmax,rhin)
+  if(rhin gt 0) then r[rhi]=fillval
+  rlo=where(r lt rmin,rlon)
+  if(rlon gt 0) then r[rlo]=fillval
+
+  thi=where(theta gt tmax,thin)
+  if(thin gt 0) then theta[thi]=fillval
+  tlo=where(theta lt tmin,tlon)
+  if(tlon gt 0) then theta[tlo]=fillval
+
+  phii=where(phi gt pmax,phin)
+  if(phin gt 0) then phi[phii]=fillval
+  plo=where(phi lt pmin,plon)
+  if(plon gt 0) then phi[plo]=fillval
+;
+  num=long(n_elements(time))
+  stime=time-time(0)
+  dtime=(time(num-1) - time(0))/1000.0
+  d_m3time=dtime/(60.0*3.0)  ; 3min/interval=(secs/interval) / (secs/3min)
+  m3time=fix(d_m3time)
+
+; Compute syn_phi, syn_r, and syn_theta
+   syn_phi=dblarr(m3int+1)
+   syn_theta=dblarr(m3int+1)
+   syn_r=dblarr(m3int+1)
+   newtime=dblarr(m3int+1)
+   tst_theta=dblarr(num)
+
+; Clean up any bad data; set to fill values outside 3-sigma 
+   phi=clean_data(phi,FILLVAL=fillval)
+   theta=clean_data(theta,FILLVAL=fillval)
+   r=clean_data(r,FILLVAL=fillval)
+
+   wcp=where(phi ne fillval,wcnp)
+   wct=where(theta ne fillval,wcnt)
+   wcr=where(r ne fillval,wcnr)
+   if((wcnp le 0) or (wcnt le 0) or (wcnr le 0)) then begin
+     print, 'ERROR= Data all fill'
+     print, 'STATUS= No valid data found for this time period'
+     return, -1
+   endif
+   if((wcnp eq 1) or (wcnt eq 1) or (wcnr eq 1)) then begin
+     print, 'ERROR= Only valid point'
+     print, 'STATUS= Only one valid point found for this time period'
+     return, -1
+   endif
+; For short intervals < 10 points use wcnp otherwise average the 1st 10 points
+; to obtain extrapolation parameters
+   ;wcnp=wcnp-1  
+   ;if(wcnp gt 10) then wcnp=10 else wcnp=wcnp-1  
+; Compute average of all points
+   mphi= total(phi(wcp[0:(wcnp-1)]))/fix(wcnp)
+   mr= total(r(wcr[0:(wcnr-1)]))/fix(wcnr)
+   mtheta= total(theta(wct[0:(wcnt-1)]))/fix(wcnt)
+   ampl=double(max(theta(wct)))
+;print, mphi, mr, mtheta, ampl
+   wc=where(theta eq ampl,wcn)
+
+  dphi=phi(wcp[wcnp-1]) - phi(wcp[0])
+  dr=r(wcr[wcnr-1]) - r(wcr[0])
+  dtheta=theta(wct[wcnt-1]) - theta(wct[0])
+  phi_rate=dphi/d_m3time
+  r_rate=dr/d_m3time
+  theta_rate=dtheta/d_m3time
+  nominal_rate=0.75
+  new_rate= double(360.0/(nominal_rate + phi_rate))
+;  print, nominal_rate, phi_rate, new_rate, r_rate
+
+;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+; Skip latitude daily variation approximation
+;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;  iter=0 
+;  sign=0
+;  corr_coef=0.0
+;  while(corr_coef lt 0.75) do begin 
+;   T=time(wc(0))/180000.0
+;;   T1=time(wc(0)-1)/180000.0
+;;   T2=time(wc(0)-2)/180000.0
+;;   T3=time(wc(0)+1)/180000.0
+;;   T4=time(wc(0)+2)/180000.0
+;   if(iter eq 0) then T=double(T)
+;;   if(iter eq 1) then T=double((T+T1)/2.0)
+;;   if(iter eq 2) then T=double((T1+T2)/2.0)
+;;   if(iter eq 3) then T=double((T+T3)/2.0)
+;;   if(iter eq 4) then T=double((T4+T3)/2.0)
+;;print, ampl,  T, mphi, mr, mtheta
+;
+;; determine array for correlation test
+;   for i=0L,num-1 do begin
+;      tm=time(i)/(180.0*1000.0)
+;;     tst_theta(i) = ampl*sin((2.0*(!pi))*(tm-T)/480.08898)
+;      if(sign eq 0) then tst_theta(i) = ampl*double(cos((2.0*(!pi))*(tm-T)/new_rate))
+;      if(sign eq 1) then tst_theta(i) = ampl*double(sin((2.0*(!pi))*(tm-T)/new_rate))
+;   endfor
+;
+;   corr_coef=correlate(theta,tst_theta)
+;   if(DEBUG) then print, iter," CC = ", corr_coef
+;
+;;   if(iter eq 4) then begin
+;     if(sign eq 0) then begin
+;        iter=0 
+;        sign = 1
+;     endif
+;;   endif
+;   iter=iter+1
+;;   if(iter gt 5) then goto, break   
+;   if(iter gt 1) then goto, break   
+;  endwhile
+;  break:
+;
+;   if(corr_coef lt 0.75) then failed=1
+;
+  failed=1  ; forces average theta variation to be used approx. 0.0
+; Generate 3-min data
+   for i=0L,m3int do begin   
+    tm = (start_time)/180000.0 + i
+    t3min(i)=i*180000.0 + start_time
+    half=m3int/2
+    it=i-(half+1)
+    syn_phi(i) = mphi + phi_rate*it
+    ; syn_r(i) = mr + r_rate*i
+    syn_r(i) = mr 
+   if(failed) then begin
+;    if(abs(mtheta) > 2.0) then begin
+;      print, 'WARNING: Check daily latitude variation.' 
+;      return, -1;
+;    endif
+      syn_theta(i) = 0.0  ; Can't compute daily variation; use this estimate
+    ; syn_theta(i) = mtheta ; Can't compute daily variation; use this estimate
+    ; syn_theta(i) = mtheta + theta_rate*i 
+   endif else begin
+;     syn_theta(i) = ampl*sin((2.0*(!pi))*(tm-T)/480.08898)
+    if(sign eq 0) then syn_theta(i) = ampl*double(cos((2.0*(!pi))*(tm-T)/new_rate))
+    if(sign eq 1) then syn_theta(i) = ampl*double(sin((2.0*(!pi))*(tm-T)/new_rate))
+   endelse  
+  endfor
+
+;      print, t3min(0), syn_r(0), syn_theta(0), syn_phi(0)
+; Convert spherical to cartesian 
+;    Determine the offset of the given point from the origin.
+  gei=dblarr(3,m3int+1)
+  geo=dblarr(3,m3int+1)
+  deg2rd=!pi/180.0 
+  j=-1
+  for i=0L, m3int do begin 
+      CT = SIN(syn_theta(i)*deg2rd)
+      ST = COS(syn_theta(i)*deg2rd)
+      CP = COS(syn_phi(i)*deg2rd)
+      SP = SIN(syn_phi(i)*deg2rd)
+; Save syn-geo 
+       geo(0,i)=syn_r(i)
+       geo(1,i)=syn_theta(i)
+       geo(2,i)=syn_phi(i)
+;     Convert GEO spherical coordinates SGEO(1,2,3) [R,LAT,LON]
+;          to GEO cartesian coordinates in REs GEO(1,2,3) [X,Y,Z].
+      RHO =    syn_r(i) * ST
+      xgeo = RHO * CP
+      ygeo = RHO * SP
+      zgeo = syn_r(i) * CT
+      xgei=0.0 & ygei=0.0 & zgei=0.0
+; Rotate 3-min vectors from geo to gci
+      epoch=t3min(i) 
+;      cdf_epoch, epoch, yr, mo, dy, hr, mn, sc, milli, /break
+;      if((i mod 100) eq 0) then print, epoch, yr, mo, dy, hr, mn, sc, milli
+      geigeo,xgei,ygei,zgei,xgeo,ygeo,zgeo,j,epoch=epoch
+;       if((i mod 100) eq 0) then print, xgei,ygei,zgei,xgeo,ygeo,zgeo
+       gei(0,i)=xgei 
+       gei(1,i)=ygei 
+       gei(2,i)=zgei 
+  endfor
+
+; Modify existing structure 
+
+  nbuf=buf
+; Modify depend0 (Epoch1), but don't add it again!!
+  dc=where(depends eq 'EPOCH1',dcn)
+  if(not dcn) then begin
+   nu_ep_handle=handle_create(value=t3min)
+   ;x0=execute('nbuf.'+depend0+'.handle=nu_ep_handle')
+   x0=execute('temp_buf=nbuf.'+depend0)
+   new=create_struct('EPOCH1',temp_buf)
+   x0=execute('new.'+epoch1+'.handle=nu_ep_handle')
+   x0=execute('new.'+epoch1+'.VARNAME=epoch1')
+   x0=execute('new.'+epoch1+'.LABLAXIS=epoch1')
+  endif
+; Modify position data
+  if(COORD eq "SYN-GCI") then begin
+    nu_dat_handle=handle_create(value=gei)
+    vin=where(vvtag_names eq 'SC_POS_SYNGCI',vinn)
+    if(vinn) then begin
+      nbuf.(vvtag_indices(vin(0))).handle=nu_dat_handle
+      nbuf.(vvtag_indices(vin(0))).depend_0=epoch1
+    endif
+  endif
+  if(COORD eq "SYN-GEO") then begin
+    nu_dat_handle=handle_create(value=geo)
+    vin=where(vvtag_names eq 'SC_POS_SYNGEO',vinn)
+    if(vinn) then begin
+      nbuf.(vvtag_indices(vin(0))).handle=nu_dat_handle
+      nbuf.(vvtag_indices(vin(0))).depend_0=epoch1
+    endif
+  endif
+
+  cond0=strupcase(cond0) 
+  pc=where(org_names eq cond0,pcn)
+  blank=' '
+  if(pc(0) eq -1) then begin
+    nbuf.epoch.var_type='metadata'
+    nbuf.sc_pos_geo.depend_0=blank
+  endif
+
+  if(not dcn) then nbuf=create_struct(nbuf,new)
+ endif
+
+ if(COORD eq "ANG-GSE") then begin
+  nbuf=buf 
+  vvtag_names=strarr(1)
+  vvtag_indices = vv_names(buf,NAMES=vvtag_names)
+
+; Determine time array 
+; depend0=depends(INDEX)
+; incep=where(vvtag_names eq namest(INDEX),w)
+; incep=incep(0)
+ ;depend0=buf.(vvtag_indices(incep)).DEPEND_0
+ depend0=buf.(INDEX).DEPEND_0
+;print, depend0, INDEX
+ incep=tagindex(depend0, namest)
+ incep=incep(0)
+ names=tag_names(buf.(incep))
+ ntags=n_tags(buf.(incep))
+; Check to see if HANDLE a tag name
+ wh=where(names eq 'HANDLE',whn)
+ if(whn) then begin
+  handle_value, buf.(incep).HANDLE,time 
+  datsz=size(time)
+ endif else begin
+  time=buf.(incep).dat
+ endelse
+; Determine position array 
+;  indat=where(vvtag_names eq namest(INDEX),w)
+;  indat = indat(0)
+  cond0=buf.(INDEX).COMPONENT_0 
+  ;cond0=buf.(vvtag_indices(indat)).COMPONENT_0 
+;print, cond0, INDEX
+  x0=execute('handle_value, buf.'+cond0+'.HANDLE,data') 
+
+; Convert BGSE vector to angular BGSE; 
+  data_sz=size(data)
+  ang_gse=dblarr(data_sz(1),data_sz(2))
+;  cart_polar,data[0,*],data[1,*],data[2,*],ang_gse[0,*],ang_gse[1,*],$
+;             ang_gse[2,*],1,/degrees
+; ang_gse[0,*]=sqrt(data[0,*]*data[0,*]+data[1,*]*data[1,*]+data[2,*]*data[2,*])
+  ang_gse[0,*]=sqrt(data[0,*]^2+data[1,*]^2+data[2,*]^2)
+  ang_gse[1,*]=90.0-(!radeg*acos(data[2,*]/ang_gse[0,*])) 
+  ang_gse[2,*]=!radeg*atan(data[1,*],data[0,*]) 
+  wc=where(ang_gse[2,*] lt 0.0,wcn)
+  if(wcn gt 0) then ang_gse[2,wc] = ang_gse[2,wc]+360.0
+  nu_dat_handle=handle_create(value=ang_gse)
+  ;nbuf.(vvtag_indices(indat)).handle=nu_dat_handle
+  nbuf.(INDEX).handle=nu_dat_handle
+ endif
+
+
+; Check that all variables in the original variable list are declared as
+; data otherwise set to metadata 
+; Find variables w/ var_type == data
+
+   status = check_myvartype(nbuf, org_names)
+
+return, nbuf 
+end 
+
+
+;to get help: IDL> ptg,/help
+; ancillary routines --------------------------------------------
+
+FUNCTION dtand,x
+    RETURN,DOUBLE(TAN(x*!DTOR))
+END
+
+FUNCTION datand,x
+    RETURN,DOUBLE(ATAN(x)/!DTOR)
+END
+
+FUNCTION fgeodeP,a,b,v1x,v1y,v1z,v2x,v2y,v2z
+    RETURN,v1x*v2x + v1y*v2y + v1z*v2z * a*a/(b*b)
+END
+
+;---------------------------------------------------------------
+
+PRO vector_to_ra_decP,x,y,z,ra,dec
+
+
+    fill_value = -1.D31
+    ndx = WHERE(z NE 0,count)
+    IF(count GT 0) THEN dec(ndx) = 90.*z(ndx)/ABS(z(ndx))
+
+    tmp = SQRT(x*x + y*y)
+    ndx = WHERE(tmp NE 0,count)
+    IF (count GT 0) THEN BEGIN
+      dec(ndx) = atan2d(z(ndx),tmp(ndx))
+      ra(ndx)  = atan2d(y(ndx),x(ndx))
+    ENDIF
+
+    ndx = WHERE((ra LT 0) AND (ra NE fill_value),count)
+    IF (count GT 0) THEN ra(ndx) = ra(ndx) + 360.
+
+END
+
+;---------------------------------------------------------------
+PRO drtollP,x,y,z,lat,lon,r
+
+; RTB gci point validity check
+    if((abs(x) gt 10000.0) or (abs(y) gt 10000.0) or (abs(z) gt 10000.0)) $
+    then begin
+      lat = -1.0e+31
+      lon = -1.0e+31
+        r = -1.0e+31
+    endif else begin
+      lat = atan2d(z,SQRT(x*x + y*y))
+      lon = atan2d(y,x)
+      r   = SQRT(x*x + y*y + z*z)
+    endelse
+
+; RTB comment
+ ;     tmp = WHERE(x EQ Y) AND WHERE(x EQ 0)
+ ;     IF ((size(tmp))(0) NE 0) THEN BEGIN
+ ;        lat(tmp)  = DOUBLE(90.D * z(tmp)/ABS(z(tmp)))
+ ;        lon(tmp) = 0.D
+ ;        r = 6371.D
+ ;     ENDIF
+
+       tmp2 = WHERE(lon LT 0) 
+       IF ((size(tmp2))(0) NE 0) THEN BEGIN
+          lon(tmp2) = lon(tmp2) + 360.D
+       ENDIF
+; RTB added 4/98 avoid boundary
+       tmp3 = where(lon eq 0.0)
+       if(tmp3(0) ne -1) then lon(tmp3) = 0.01D
+       tmp4 = where(lon eq 360.0)
+       if(tmp4(0) ne -1) then lon(tmp4) = 359.09D
+
+END
+
+;---------------------------------------------------------------
+
+PRO get_scalarP,Ox,Oy,Oz,Lx,Ly,Lz,emis_hgt,ncols,nrows,s,f
+
+;...  Equatoral radius (km) and polar flattening of the earth
+;     Ref: Table 15.4, 'Explanatory Supplement to the
+;          Astronomical Almanac,' K. Seidelmann, ed. (1992).
+      re_eq = 6378.136D
+      inv_f = 298.257D
+
+;...  initialize output
+      s =  DBLARR(ncols,nrows)
+      s1 = DBLARR(ncols,nrows)
+      s2 = DBLARR(ncols,nrows)
+
+;...  get polar radius
+      re_po = re_eq*(1.D - 1.D /inv_f)
+
+;...  get radii to assumed emission height
+      ree = re_eq + emis_hgt
+      rep = re_po + emis_hgt
+
+;...  get flattening factor based on new radii
+      f = (ree - rep)/ree
+
+;...  get elements of quadratic formula
+      a = fgeodeP(ree,rep,Lx,Ly,Lz,Lx,Ly,Lz)
+      b = fgeodeP(ree,rep,Lx,Ly,Lz,Ox,Oy,Oz) * 2.D
+      c = fgeodeP(ree,rep,Ox,Oy,Oz,Ox,Oy,Oz) - ree*ree
+
+;...  check solutions to quadratic formula
+      determinant = b*b - 4.D * a*c 
+;...  remove points off the earth
+      determinant = determinant > 0. 
+      tmp_d2 = WHERE(determinant EQ 0.,count) 
+      IF(count GT 0) THEN b(tmp_d2) = 0.D
+;...  solve quadratic formula (choose smallest solution) 
+      s1 = ( -b + SQRT(determinant) ) / ( 2.D *a ) 
+      s2 = ( -b - SQRT(determinant) ) / ( 2.D *a ) 
+
+      s = s1<s2
+
+END
+
+pro ptg_new,orb,LpixX,LpixY,LpixZ,emis_hgt,gclat,gclon,r,epoch=epoch
+
+     size_L=size(LpixX)
+;... Convert Lpix to a Unit Vector
+     mag = dfmag(LpixX,LpixY,LpixZ)
+
+     LpixX = LpixX/mag
+     LpixY = LpixY/mag
+     LpixZ = LpixZ/mag
+
+; Option which could be included
+;    calculate right ascension and declination
+;     IF(KEYWORD_SET(getra)) THEN $
+;        vector_to_ra_decP,LpixX,LpixY,LpixZ,ra,dec
+
+;... Find scalar (s) such that s*L0 points to
+;    the imaged emission source.  If the line of
+;    sight does not intersect the earth s=0.0
+     Ox = orb(0)
+     Oy = orb(1)
+     Oz = orb(2)
+     get_scalarP,Ox,Oy,Oz,LpixX,LpixY,LpixZ,emis_hgt,size_L(1),size_L(2),s,f
+     posX = Ox + s*LpixX
+     posY = Oy + s*LpixY
+     posZ = Oz + s*LpixZ
+
+;... Convert from GCI to GEO coordinates. 
+     j=1
+     geigeo,posX,posY,posZ,p_geoX,p_geoY,p_geoZ,j,epoch=epoch
+
+;... Get geocentric lat/lon.  this converts from
+;    a 3 element vector to two angles: lat & longitude
+; Each point must be checked for outlying cyl. geo values.
+  for i=0, size_L(1)-1 do begin
+   for j=0, size_L(2)-1 do begin
+     drtollP,p_geoX(i,j),p_geoY(i,j),p_geoZ(i,j),dum1,dum2,dum3
+;print, dum1,dum2, dum3
+     gclat(i,j)=dum1
+     gclon(i,j)=dum2
+     r(i,j)=dum3
+   endfor
+  endfor
+
+     gclat = gclat < 90.
+
+;... Convert to geodetic lat/lon.  F is the flattening
+;    factor of the Earth.  See get_scalar for details.
+;    Ref: Spacecraft Attitude Determination and Control,
+;    J.R. Wertz, ed., 1991, p.821.
+     IF(KEYWORD_SET(geodetic)) THEN BEGIN
+        gdlat = 90.D + 0.D * gclat
+        ndx = WHERE(gclat LT 90.,count)
+        IF(count GT 0) THEN BEGIN
+           gdlat(ndx) = datand(dtand(gclat(ndx))/(1.D - f)*(1.D - f))
+        ENDIF
+        gclat = gdlat
+     ENDIF
+
+
+end
+;-------------------------------------------------------------------------
+;  ROUTINE:	ptg
+;-------------------------------------------------------------------------
+
+PRO ptg,system,time,l0,att,orb,emis_hgt,gclat,gclon $
+       ,geodetic=geodetic,getra=getra,ra=ra,dec=dec,s=s $
+       ,LpixX=LpixX,LpixY=LpixY,LpixZ=LpixZ $
+       ,posX=posX,posY=posY,posZ=posZ, epoch=epoch $
+       ,versStr=versStr,help=help
+
+    IF(KEYWORD_SET(help)) THEN BEGIN
+       PRINT,''
+       PRINT,' PRO ptg,system,time,l0,att,orb,emis_hgt,gclat,gclon
+       PRINT,''
+       PRINT,' Original base code:  UVIPTG'
+       PRINT,' 7/31/95  Author:  G. Germany'
+       PRINT,' Development into PTG: 01/15/98'
+       PRINT,' Authors:  Mitch Brittnacher & John O''Meara'
+       PRINT,''
+       PRINT,' calculates geocentric lat,lon, for a complete image
+       PRINT,' 
+       PRINT,' input
+       PRINT,'    system          =1 primary; =2 secondary
+       PRINT,'    time            time(1)=yyyyddd, time(2)=msec of day 
+       PRINT,'    L0              gci look direction (from uvilook)
+       PRINT,'    att             gci attitude 
+       PRINT,'    orb             gci position
+       PRINT,'    emis_hgt        los altitude
+       PRINT,'
+       PRINT,' output
+       PRINT,'    gclat           geocentric latitude
+       PRINT,'    gclon           geocentric longitude
+       PRINT,'
+       PRINT,' keywords
+       PRINT,'    geodetic        (set) returns geodetic values if set
+       PRINT,'    getra           (set) calulates ra & dec if set
+       PRINT,'       ra           (out) right ascension (deg)
+       PRINT,'      dec           (out) declination (deg)
+       PRINT,'        s           (out) scalar for lpix
+       PRINT,'    lpixX           (out) x component of unit look direction
+       PRINT,'    lpixY           (out) y component of unit look direction
+       PRINT,'    lpixZ           (out) z component of unit look direction
+       PRINT,'     posX           (out) x,y,z components of vector from
+       PRINT,'     posY           (out)       earth center to emission
+       PRINT,'     posZ           (out) 
+       PRINT,'  versStr           (out) software version string
+       PRINT,'
+       PRINT,' external library routines required
+       PRINT,'    ic_gci_to_geo
+       PRINT,'
+       PRINT,' NOTES:
+       PRINT,'
+       PRINT,' 1. Unlike UVIPTG, this routine returns latitude and longitude
+       PRINT,'    for all pixels in an image.  It does the calculation in a
+       PRINT,'    fraction of the time required by UVIPTG.
+       PRINT,'
+       PRINT,' 2. The default lat/lon values are in geocentric coordinates.
+       PRINT,'    Geographic (geocentric) coordinates assume the earth is
+       PRINT,'    a sphere and are defined from the center of the sphere.
+       PRINT,'    For geodetic coordinates, the earth is assumed to be an 
+       PRINT,'    ellipsoid of revolution.  See the routine fgeode for 
+       PRINT,'    details.  
+       PRINT,'    Geodetic coordinates are defined from the normal to the 
+       PRINT,'    geode surface.  To enable geodetic calculations, set the 
+       PRINT,'    keyword /GEODETIC.
+       PRINT,' 
+       PRINT,' 3. The look direction for a specified pixel (Lpix) is
+       PRINT,'    calculated from the look direction of the center of the
+       PRINT,'    UVI field of view (L0) by successive rotations in
+       PRINT,'    row and column directions.  Each pixel is assumed to have
+       PRINT,'    a fixed angular width.  The angular distance from the center
+       PRINT,'    of the pixel to the center of the fov is calculated and then
+       PRINT,'    L0 is rotated into Lpix.
+       PRINT,'
+       PRINT,'    Unlike UVIPTG, this routine explicitly calculates three
+       PRINT,'    orthogonal axes whereas UVIPTG implicitly assumed the image
+       PRINT,'    z-axis was given by the attitude vector.
+       PRINT,'
+       PRINT,' 4. The secondary and primary detectors have different 
+       PRINT,'    orientations and require different rotations between L0 and 
+       PRINT,'    Lpix.
+       PRINT,'    
+       PRINT,' 5. Geocentric lat/lon values are the intersection
+       PRINT,'    of the look direction for the specified pixel (Lpix) and
+       PRINT,'    the surface of the earth.  The geocentric values are then
+       PRINT,'    transformed into geodetic values.  The vector from the
+       PRINT,'    center of the earth to the intersection is pos so that
+       PRINT,'    pos = orb + S*Lpix, where orb is the GCI orbit vector
+       PRINT,'    and S is a scalar.
+       PRINT,'
+       PRINT,' 6. The intersection of Lpix and the earth is calculated first
+       PRINT,'    in GCI coordinates and then converted to geographic 
+       PRINT,'    coordinates.  The conversion is by means of ic_gci_to_geo.  
+       PRINT,'    This routine and its supporting routines, was taken from 
+       PRINT,'    the CDHF and is part of the ICSS_TRANSF_orb call.
+       PRINT,'
+       PRINT,' 7. The viewed emissions are assumed to originate emis_hgt km
+       PRINT,'    above the surface of the earth.  See get_scalar for details.
+       PRINT,'
+       PRINT,'10. The keywords POS(xyz) are needed for LOS corrections.
+       PRINT,'
+       RETURN
+     ENDIF   
+
+     versStr = 'PTG v1.0  1/98'
+     ncols = 200
+     nrows = 228
+     zrot  = DBLARR(ncols,nrows)
+     yrot  = DBLARR(ncols,nrows)
+     gclat = DBLARR(ncols,nrows)
+     gclon = DBLARR(ncols,nrows)
+     r     = DBLARR(ncols,nrows)
+     ra    = DBLARR(ncols,nrows)
+     dec   = DBLARR(ncols,nrows)
+
+     primary   = 1
+     secondary = 2
+     fill_value = -1.D31
+
+;... Define orthonormal coordinate axes
+     xax = l0/dfmag(l0(0),l0(1),l0(2))
+     yax = CROSSP(att,l0)
+     yax = yax/dfmag(yax(0),yax(1),yax(2))
+     zax = CROSSP(xax,yax)
+
+;... single pixel angular resolution
+     pr = 0.03449D       ; 9-bin mean primary detector 9/26/97 (Pyth)
+     pc = 0.03983D       ; same
+
+;... initialize output arrays to default
+     gclat(*,*) = fill_value
+     gclon(*,*) = fill_value
+        ra(*,*) = fill_value
+       dec(*,*) = fill_value
+
+;... find rotation angles for each pixel
+     IF (system EQ secondary) THEN BEGIN
+       a = (FINDGEN(200)-99.5)*pc
+       b = REPLICATE(1.,228)
+       zrot = a#b
+       c = (FINDGEN(228)-113.5)*pr
+       d = REPLICATE(1.,200)
+       yrot = d#c 
+     ENDIF ELSE BEGIN 
+       IF (system EQ primary) THEN BEGIN
+         a = (FINDGEN(200)-99.5)*pc
+         b = REPLICATE(1.,228)
+         zrot = a#b
+         c = -(FINDGEN(228)-113.5)*pr
+         d = REPLICATE(1.,200)
+         yrot = d#c 
+       ENDIF ELSE BEGIN 
+         ;  error trap
+         RETURN 
+       ENDELSE 
+     ENDELSE
+
+;... Determine Lpix
+     tanz = tan(zrot*!DTOR)
+     tany = tan(yrot*!DTOR)
+ 
+     lpx = 1.D /SQRT(1.D + tany*tany + tanz*tanz)
+     lpy = lpx*tanz
+     lpz = lpx*tany
+ 
+     LpixX = lpx*xax(0) + lpy*yax(0) + lpz*zax(0)
+     LpixY = lpx*xax(1) + lpy*yax(1) + lpz*zax(1)
+     LpixZ = lpx*xax(2) + lpy*yax(2) + lpz*zax(2)
+
+     ptg_new, orb,LpixX,LpixY,LpixZ,emis_hgt,gclat,gclon,r,epoch=epoch
+
+;... Convert Lpix to a Unit Vector
+;     mag = dfmag(LpixX,LpixY,LpixZ)
+;
+;     LpixX = LpixX/mag
+;     LpixY = LpixY/mag
+;     LpixZ = LpixZ/mag
+;
+;;    calculate right ascension and declination
+;     IF(KEYWORD_SET(getra)) THEN $
+;        vector_to_ra_decP,LpixX,LpixY,LpixZ,ra,dec
+;
+;;... Find scalar (s) such that s*L0 points to
+;;    the imaged emission source.  If the line of
+;;    sight does not intersect the earth s=0.0
+;;help,orb
+;     Ox = orb(0)
+;     Oy = orb(1)
+;     Oz = orb(2)
+;     get_scalarP,Ox,Oy,Oz,LpixX,LpixY,LpixZ,emis_hgt,ncols,nrows,s,f
+;
+;     posX = Ox + s*LpixX
+;     posY = Oy + s*LpixY
+;     posZ = Oz + s*LpixZ
+;;
+;; RTB replace  MSFC GCI to GEO routine w/ geopack
+;     j=1
+;     geigeo,posX,posY,posZ,p_geoX,p_geoY,p_geoZ,j,epoch=epoch
+;
+;; SOMETHING WRONG HERE !!!!!
+;;... Convert from GCI to GEO coordinates.  ROTM is the
+;;    rotation matrix.
+;;      ic_gci_to_geo,time,rotm
+;;      p_geoX = rotm(0,0)*posX + rotm(1,0)*posY + rotm(2,0)*posZ
+;;      p_geoY = rotm(0,1)*posX + rotm(1,1)*posY + rotm(2,1)*posZ
+;;      p_geoZ = rotm(0,2)*posX + rotm(1,2)*posY + rotm(2,2)*posZ
+;
+;
+;;... Get geocentric lat/lon.  this converts from
+;;    a 3 element vector to two angles: lat & longitude
+;; Each point must be checked for outlying cyl. geo values.
+;  for i=0, 199 do begin
+;   for j=0, 227 do begin
+;     drtollP,p_geoX(i,j),p_geoY(i,j),p_geoZ(i,j),dum1,dum2,dum3
+;     gclat(i,j)=dum1
+;     gclon(i,j)=dum2
+;     r(i,j)=dum3
+;   endfor
+;  endfor
+;
+;     gclat = gclat < 90.
+;
+;;... Convert to geodetic lat/lon.  F is the flattening
+;;    factor of the Earth.  See get_scalar for details.
+;;    Ref: Spacecraft Attitude Determination and Control,
+;;    J.R. Wertz, ed., 1991, p.821.
+;     IF(KEYWORD_SET(geodetic)) THEN BEGIN
+;        gdlat = 90.D + 0.D * gclat
+;        ndx = WHERE(gclat LT 90.,count)
+;        IF(count GT 0) THEN BEGIN
+;;           gdlat(ndx) = datand(dtand(gclat(ndx))/(1.D - f)*(1.D - f))
+;        ENDIF
+;        gclat = gdlat
+;     ENDIF
+
+END
+
+;+
+; NAME: Function CONV_MAP_IMAGE
+;
+; PURPOSE: Convert provided idl structure to structure containing neccesary 
+;          variables for an auroral image map.  Use variables pointed to by
+;          COMPONENT variable attributes to compute geodetic latitude and
+;          longitude. Populate GEOD_LAT & GEOD_LONG variables w/ the computed
+;          values. Return the modifiy idl structure. 
+;
+;  NEED TO REMOVE UVI DEPENDANCIES.......
+; 
+; CALLING SEQUENCE: 
+;
+;          new_buf = conv_map_image(buf,org_names)
+;
+; VARIABLES:
+;
+; Input:
+;
+;  buf        - an IDL structure built w/in read_myCDF
+;  org_names  - list of original variables input to read_myCDF. Any
+;               variables in this list will remain tagged as
+;               VAR_TYPE= data otherwise VAR_TYPE = support_data.
+;
+; Output:
+;
+;  new_buf    - an IDL structure containing the populated virtual
+;               variable
+; 
+; Keyword Parameters:
+;
+;
+; REQUIRED PROCEDURES:
+;
+;   none
+;
+;-------------------------------------------------------------------
+; History
+;
+;         1.0  R. Baldwin  HSTX     1/30/98
+;               Initial version
+;
+;-------------------------------------------------------------------
+
+function conv_map_image, buf, org_names, DEBUG=DEBUG
+
+; Trap any errors propogated through buf
+   if(buf_trap(buf)) then begin
+    print, "idl structure bad (conv_map_image)
+    return, buf 
+   endif
+
+; Check tags 
+  tagnames=tag_names(buf)
+;
+print, 'In Conv_map_image'
+
+;TJK added 6/10/98 - if the 1st image virtual variable handle or dat structure
+;elements are already set, then return buf as is (because the other
+;image variables, if requested, have already been set on the 1st call to this
+;function.
+
+vv_tagnames=strarr(1)
+vv_tagindx = vv_names(buf,names=vv_tagnames) ;find the virtual vars
+vtags = tag_names(buf.(vv_tagindx(0))) ;tags for the 1st Virtual image var.
+if (vv_tagindx(0) lt 0) then return, -1
+
+; Segment below replaced to handle movie vv's
+; RTB 12/98
+;v = tagindex('DAT',vtags)
+;if (v(0) ne -1) then begin
+;   im_val = buf.(vv_tagindx(0)).dat
+;endif else begin
+;   if (buf.(vv_tagindx(0)).handle ne 0) then return, buf
+;   im_val = 0
+;endelse
+;im_size = size(im_val)
+;print, 'size', im_size
+;if (im_val(0) ne 0 or im_size(0) eq 3) then begin
+;  im_val = 0B ;free up space
+;  return, buf
+;endif
+;end TJK check to see if Virtual image variables already set
+;
+; Find vv's that aren't set (handle=0) and save index; then populate 
+; if variable name found.
+ireturn=1
+;print, vv_tagnames
+;print, org_names
+im_val_arr=intarr(n_elements(vv_tagindx))
+for ig=0, n_elements(vv_tagindx)-1 do begin ; RTB added 9/98
+ vtags=tag_names(buf.(vv_tagindx(ig)))
+ v = tagindex('DAT',vtags)
+ if (v(0) ne -1) then begin
+   im_val = buf.(vv_tagindx(ig)).dat
+ endif else begin
+   im_val = buf.(vv_tagindx(ig)).handle
+   if (im_val eq 0) then ireturn=0
+ endelse
+ im_val_arr(ig)=im_val
+ im_size = size(im_val)
+ im_val=0
+ if (im_val(0) ne 0 or im_size(0) eq 3) then begin
+  im_val = 0B ;free up space
+  ireturn=0
+ endif
+endfor
+if(ireturn) then return, buf ; Return only if all orig_names are already
+
+   a0=tagindex(tagnames,'IMAGE_DATA')
+   if(a0 ne -1) then begin
+    image_handle=buf.(a0).handle
+    image_depend0=strupcase(buf.(a0).depend_0)
+    handle_value, buf.(a0).handle, im_data
+    im_sz=size(im_data)
+    im_data=0B ; Release image data after we know the dimensionality
+   endif
+
+   a0=tagindex(tagnames,image_depend0)
+   if(a0 ne -1) then begin
+    handle_value, buf.(a0).handle, im_time
+   endif
+;
+;   a0=tagindex(tagnames,'GCI_LOOK_DIR')
+;   if(a0 ne -1) then begin
+;    handle_value, buf.(a0).handle, look
+;   endif
+; help, look
+;
+   a0=tagindex(tagnames,'ATTITUDE')
+   if(a0 ne -1) then begin
+    handle_value, buf.(a0).handle, attit
+   endif
+;   attit=[-0.34621945,0.93623523,-0.059964006]
+;
+   a0=tagindex(tagnames,'GCI_POSITION')
+   if(a0 ne -1) then begin
+    handle_value, buf.(a0).handle, gpos 
+   endif
+;   gpos=[11776.447,7885.8336,55474.6585]
+;
+   a0=tagindex(tagnames,'SYSTEM')
+   if(a0 ne -1) then begin
+    handle_value, buf.(a0).handle, sys 
+   endif
+;
+   a0=tagindex(tagnames,'FILTER')
+   if(a0 ne -1) then begin
+    handle_value, buf.(a0).handle, filt 
+   endif
+;
+   a0=tagindex(tagnames,'DSP_ANGLE')
+   if(a0 ne -1) then begin
+    handle_value, buf.(a0).handle, dsp 
+   endif
+  
+; Call uviptg.pro to generate geodetic lat & lon registration of polar
+; images   
+; uviptg constants
+  emis_hgt=120.D0 ; km 
+; Process each time frame
+ jcol=im_sz(2)
+ irow=im_sz(1)
+ if(im_sz(0) eq 2) then ntimes=1 else ntimes=im_sz(3)
+ geod_lat=temporary(fltarr(irow,jcol,ntimes))
+ geod_lon=temporary(fltarr(irow,jcol,ntimes))
+ time=intarr(2)
+
+ for it=0, ntimes-1 do begin 
+; Load ancillary data  
+;  L0=double(look(*,it))
+  L0=dblarr(3)
+  att=double(attit(*,it))
+ ; att=double(attit)
+  orb=double(gpos(*,it))
+  ;orb=double(gpos)
+  if(sys(it) lt 0) then system=sys(it)+3 else system=sys(it)
+  filter=fix(filt(it))-1
+  dsp_angle=double(dsp(it))
+
+   gdlat=DBLARR(jcol,irow)
+   gdlon=DBLARR(jcol,irow)
+
+  epoch=im_time(it)
+; Compute time(1)=yyyyddd and time(2) msec of day from Epoch
+  cdf_epoch, im_time(it), year, month, day,hr,min,sec,milli,/break
+;print, im_time(it), year, month, day,hr,min,sec,milli
+  ical,year,doy,month,day,/idoy
+;print, year,doy,month,day
+  time=fltarr(2)
+  time(0)=year*1000+doy
+  time(1)=(hr*(3600)+min*60+sec)*1000+milli
+
+; Use uvilook program to compute 2nd detector gci_look
+
+ uvilook,time,orb,att,dsp_angle,filter,dummy,L0, $
+              system=system
+
+;print, system,time,L0,att,orb,emis_hgt,dsp_angle
+
+    ptg,system,time,L0,att,orb,emis_hgt,gdlat,gdlon $
+       ,getra=getra,ra=ra,dec=dec,s=s $
+       ,LpixX=LpixX,LpixY=LpixY,LpixZ=LpixZ $
+       ,posX=posX,posY=posY,posZ=posZ, epoch=epoch 
+
+    gwc=where(gdlon gt 180.0,gwcn)
+    if(gwc(0) ne -1) then gdlon(gwc)=gdlon(gwc)-360.0
+; Section below commented out 8/25/98
+; Replace any fillval=-1.D31 w/ 999.9
+;     wf=where(gdlat eq -1.D31, wfn)
+;     if(wfn ne 0) then gdlat(wf)=999.9
+;     wf=where(gdlon eq -1.D31, wfn)
+;     if(wfn ne 0) then gdlon(wf)=999.9
+     geod_lat(*,*,it)=transpose(gdlat(*,*))
+     geod_lon(*,*,it)=transpose(gdlon(*,*))
+ endfor
+; RTB removed 08/25/98
+; Check for data quality
+; twc=where(geod_lat gt -90.0,xw)
+; nwc=where(geod_lon gt -360.0,xw)
+; xlat=geod_lat(twc)
+; xlon=geod_lon(nwc)
+; mxlat=max(xlat,min=mnlat)
+; mxlon=max(xlon,min=mnlon)
+;  ;print, 'Min. Max. Lats =', mnlat,mxlat
+;  ;print, 'Min. Max. Lons =', mnlon,mxlon
+; bad=0
+;  if(mxlat eq mnlat) then bad=1
+;  if(mxlon eq mnlon) then bad=1
+;  if(bad) then begin
+;     print, "ERROR= No good GEOD_LAT or GEOD_LON values computed in (conv_map_image)"
+;     print, "ERROR= Message: ", mxlat 
+;     return, -1
+;  endif
+
+; Add to org_names list so that 
+    temp=org_names
+    corg=n_elements(temp)
+    org_names=strarr(n_elements(temp)+2)
+    wc=where(temp ne '',wcn)
+    org_names(wc)=temp(wc)
+; Populate idl structure w/ geod_lat and geod_lon data
+; Create handles and to existing structure
+   a0=tagindex(tagnames,'GEOD_LAT')
+   if(a0 ne -1) then begin
+    gdlat_handle=handle_create(value=geod_lat)
+    buf.(a0).handle=gdlat_handle
+    org_names(corg)='GEOD_LAT'
+   endif else begin
+     print, "ERROR= No GEOD_LAT variable found in cdf (conv_map_image)"
+     print, "ERROR= Message: ", a0
+     return, -1 
+   endelse
+
+   a0=tagindex(tagnames,'GEOD_LONG')
+   if(a0 ne -1) then begin
+    gdlon_handle=handle_create(value=geod_lon)
+    buf.(a0).handle=gdlon_handle
+    org_names(corg+1)='GEOD_LONG'
+   endif else begin
+     print, "ERROR= No GEOD_LONG variable found in cdf (conv_map_image)"
+     print, "ERROR= Message: ", a0
+     return, -1                                                                
+   endelse
+
+; Copy IMAGE_DATA handle to GEOD_IMAGE ; Regular registered map
+   a0=tagindex(tagnames,'GEOD_IMAGE')
+   if(a0 ne -1) then begin
+    buf.(a0).handle=image_handle
+   endif 
+
+; Copy IMAGE_DATA handle to GEOD_IMAGE_P; Geo. fixed registered map
+   a0=tagindex(tagnames,'GEOD_IMAGE_P')
+   if(a0 ne -1) then begin
+    buf.(a0).handle=image_handle
+   endif 
+
+; Copy IMAGE_DATA handle to GEOD_IMAGE_PS; Geo. registered sun-fixed
+   a0=tagindex(tagnames,'GEOD_IMAGE_PS')
+   if(a0 ne -1) then begin
+    buf.(a0).handle=image_handle
+   endif 
+
+; Copy IMAGE_DATA handle to GEOD_IMAGE_O; Geo. map overlay (not-registered) 
+   a0=tagindex(tagnames,'GEOD_IMAGE_O')
+   if(a0 ne -1) then begin
+    buf.(a0).handle=image_handle
+   endif
+
+; Copy IMAGE_DATA handle to GEOD_IMAGE_M; MLT registered map
+   a0=tagindex(tagnames,'GEOD_IMAGE_M')
+   if(a0 ne -1) then begin
+    buf.(a0).handle=image_handle
+   endif
+
+; Copy IMAGE_DATA handle to IMAGE_MOVIE_PS; Geo. registered sun-fixed
+   a0=tagindex(tagnames,'IMAGE_MOVIE_PS')
+   if(a0 ne -1) then begin
+    buf.(a0).handle=image_handle
+   endif
+
+; Copy IMAGE_DATA handle to IMAGE_MOVIE_O; Geo. map overlay (not-registered)
+   a0=tagindex(tagnames,'IMAGE_MOVIE_O')
+   if(a0 ne -1) then begin
+    buf.(a0).handle=image_handle
+   endif
+
+; Copy IMAGE_DATA handle to IMAGE_MOVIE_M; MLT registered map
+   a0=tagindex(tagnames,'IMAGE_MOVIE_M')
+   if(a0 ne -1) then begin
+    buf.(a0).handle=image_handle
+   endif
+
+; Check buf and reset variables not in orignal variable list to metadata
+   status = check_myvartype(buf, org_names)
+
+return, buf
+end
+
+
+FUNCTION calc_p, buf, org_names, INDEX=INDEX, DEBUG=DEBUG
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  PURPOSE:
+;
+;The general algorithm for Dynamic Pressure is mNV^2. I want the units
+;to be in nanoPascals (nPa) and so have determined a coefficient which
+;contains the proton mass and the conversions to the correct units. A
+;typical pressure in the solar wind is a few nPa.
+;
+;coefficient = 1.6726 e-6
+;
+;Use the variables from WI_K0_SWE:
+;
+;  "V_GSE_p(0)" - flow speed (km/s)
+;  "Np" - ion number density (/cc)
+;
+; ALGORITHM:
+;
+; Pressure = coefficient * Np * V_GSE_p(0) * V_GSE_p(0)
+;
+; CALLING SEQUENCE:
+;
+;          new_buf = calc_p(buf,org_names)
+;
+; VARIABLES:
+;
+; Input:
+;
+;  buf        - an IDL structure built w/in read_myCDF
+;  org_names  - list of original variables input to read_myCDF. Any
+;               variables in this list will remain tagged as 
+;               VAR_TYPE= data otherwise VAR_TYPE = support_data.
+;
+; Output:
+;
+;  new_buf    - an IDL structure containing the populated virtual 
+;               variable 
+; Constants:
+;
+;  coefficient -  Dynamic Pressure conversion coefficient
+;  
+; Keyword Parameters: 
+;
+;
+; REQUIRED PROCEDURES:
+;
+;   none 
+; 
+;-------------------------------------------------------------------
+; History
+;
+;         1.0  R. Baldwin  HSTX     1/6/98 
+;		Initial version
+;
+;-------------------------------------------------------------------
+
+ status=0
+ coefficient = 1.6726e-6
+ fillval = -1.00000e+31
+
+; Establish error handler
+ catch, error_status
+ if(error_status ne 0) then begin
+   print, "ERROR= number: ",error_status," in calc_p.pro"
+   print, "ERROR= Message: ",!ERR_STRING
+   status = -1
+   return, status
+ endif
+  
+ org_names=strupcase(org_names)
+ if keyword_set(DEBUG) then DEBUG=1L else DEBUG=0L
+ if not keyword_set(INDEX) then INDEX=0L;
+
+ dep=parse_mydepend0(buf)  
+ depends=tag_names(dep)
+ depend0=depends(dep.num)
+ namest=strupcase(tag_names(buf))
+
+  nbuf=buf 
+  vvtag_names=strarr(1)
+  vvtag_indices = vv_names(buf,NAMES=vvtag_names)
+
+; Determine time array 
+; depend0=depends(INDEX)
+; incep=where(vvtag_names eq namest(INDEX),w)
+; incep=incep(0)
+ ;depend0=buf.(vvtag_indices(incep)).DEPEND_0
+ depend0=buf.(INDEX).DEPEND_0
+;print, depend0, INDEX
+ incep=tagindex(depend0, namest)
+ incep=incep(0)
+ names=tag_names(buf.(incep))
+ ntags=n_tags(buf.(incep))
+; Check to see if HANDLE a tag name
+ wh=where(names eq 'HANDLE',whn)
+ if(whn) then begin
+  handle_value, buf.(incep).HANDLE,time 
+  datsz=size(time)
+ endif else begin
+  time=buf.(incep).dat
+ endelse
+; Determine components
+   ;cond0=buf.(vvtag_indices(indat)).COMPONENT_0 
+  cond0=buf.(INDEX).COMPONENT_0 
+   ;cond1=buf.(vvtag_indices(indat)).COMPONENT_1 
+  cond1=buf.(INDEX).COMPONENT_1 
+  x0=execute('handle_value, buf.'+cond0+'.HANDLE,V_GSE_p') 
+  x1=execute('handle_value, buf.'+cond1+'.HANDLE,np') 
+; Compute Pressure
+  wnp=where(np eq fillval, wnpn)
+  wv=where(V_GSE_p(0,*) eq fillval, wvn)
+
+  num = n_elements(np)-1
+  pressure = fltarr(n_elements(np))
+  for i=0L, num do begin
+   pressure[i] = coefficient*np[i]*V_GSE_p[0,i]^2.0
+  endfor
+   if(wvn ne 0) then pressure[wv] = fillval 
+   if(wnpn ne 0) then pressure[wnp] = fillval
+
+  nu_dat_handle=handle_create(value=pressure)
+  ;nbuf.(vvtag_indices(indat)).handle=nu_dat_handle
+  nbuf.(INDEX).handle=nu_dat_handle
+
+; Check that all variables in the original variable list are declared as
+; data otherwise set to metadata 
+; Find variables w/ var_type == data
+
+   status = check_myvartype(nbuf, org_names)
+
+return, nbuf 
+end 
+
+FUNCTION Add_51s, buf, org_names, INDEX=INDEX, DEBUG=DEBUG
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  PURPOSE:
+;
+;Want to take the given variables value and add 51 to it.  This was
+;written specifically for po_h2_uvi, but is generic.
+;
+; CALLING SEQUENCE:
+;
+;          new_buf = Add_51s(buf,org_names)
+;
+; VARIABLES:
+;
+; Input:
+;
+;  buf        - an IDL structure built w/in read_myCDF
+;  org_names  - list of original variables input to read_myCDF. Any
+;               variables in this list will remain tagged as 
+;               VAR_TYPE= data otherwise VAR_TYPE = support_data.
+;
+; Output:
+;
+;  new_buf    - an IDL structure containing the populated virtual 
+;               variable 
+; Constants:
+;
+;  # to add -  defaults to 51
+;  
+; Keyword Parameters: 
+;	INDEX : this can be set the structure variable index # for which
+;	you'd like this conversion.  If this isn't set we'll look for the
+;	epoch variable.
+;
+; REQUIRED PROCEDURES:
+;
+;   none 
+; 
+;-------------------------------------------------------------------
+; History
+;
+;         1.0  T. Kovalick 4/16/2001
+;		Initial version
+;
+;-------------------------------------------------------------------
+
+ status=0
+ num_milliseconds = 51000 ; 51 seconds in milliseconds
+
+; Establish error handler
+ catch, error_status
+ if(error_status ne 0) then begin
+   print, "ERROR= number: ",error_status," in Add_51s.pro"
+   print, "ERROR= Message: ",!ERR_STRING
+   status = -1
+   return, status
+ endif
+  
+ org_names=strupcase(org_names)
+ if keyword_set(DEBUG) then DEBUG=1L else DEBUG=0L
+
+;Get the virtual variables index #.
+ if (n_elements(INDEX) gt 0) then vvar_index = INDEX else print, 'No virtual variable specified.'
+
+ if (vvar_index ge 0) then begin
+
+  nbuf=buf 
+  
+  epoch_names = tag_names(buf.(vvar_index))
+  handle_found = 0
+
+; Check to see if HANDLE is a tag name
+  wh=where(epoch_names eq 'HANDLE',whn)
+  if(whn) then handle_found = 1
+
+; Determine the "parent variable" component_0
+  cond0=buf.(vvar_index).COMPONENT_0 
+  if (handle_found) then x0=execute('handle_value, buf.'+cond0+'.HANDLE,parent_times') $
+	else x0=execute('parent_times =  buf.'+cond0+'.DAT')
+  shifted_times = parent_times ; create the same sized array
+
+  num = n_elements(parent_times)-1
+  for i=0L, num do begin
+	shifted_times[i] = parent_times[i]+ num_milliseconds
+  endfor
+
+  if (handle_found eq 1) then begin
+    nu_dat_handle=handle_create(value=shifted_times)
+    nbuf.(vvar_index).handle=nu_dat_handle
+  endif else begin
+    nbuf.(vvar_index).dat=shifted_times
+  endelse
+
+; Check that all variables in the original variable list are declared as
+; data otherwise set to metadata 
+; Find variables w/ var_type == data
+
+   status = check_myvartype(nbuf, org_names)
+
+   return, nbuf 
+
+endif else begin
+   print, 'No valid variable found in add_51s, returning -1'
+   return, -1
+endelse
+
+end 
+
+
+FUNCTION compute_magnitude, buf, org_names, INDEX=INDEX, DEBUG=DEBUG
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;
+;  PURPOSE:
+;
+;This routine computes the magnitude given a x,y,z vector variable
+;
+; CALLING SEQUENCE:
+;
+;          new_buf = compute_magnitude(buf,org_names, INDEX=INDEX)
+;
+; VARIABLES:
+;
+; Input:
+;
+;  buf        - an IDL structure built w/in read_myCDF
+;  org_names  - list of original variables input to read_myCDF. Any
+;               variables in this list will remain tagged as 
+;               VAR_TYPE= data otherwise VAR_TYPE = support_data.
+;
+; Output:
+;
+;  new_buf    - an IDL structure containing the populated virtual 
+;               variable 
+; Constants:
+;
+;  none
+;  
+; Keyword Parameters: 
+;	INDEX : this can be set the structure variable index # for which
+;	you'd like this conversion.  If this isn't set we'll look for the
+;	epoch variable.
+;
+; REQUIRED PROCEDURES:
+;
+;   none 
+; 
+;-------------------------------------------------------------------
+; History
+;
+;         1.0  T. Kovalick 6/27/2001
+;		Initial version
+;
+;-------------------------------------------------------------------
+
+ status=0
+
+; Establish error handler
+ catch, error_status
+ if(error_status ne 0) then begin
+   print, "ERROR= number: ",error_status," in compute_magnitude function"
+   print, "ERROR= Message: ",!ERR_STRING
+   status = -1
+   return, status
+ endif
+  
+ org_names=strupcase(org_names)
+ if keyword_set(DEBUG) then DEBUG=1L else DEBUG=0L
+
+;Get the virtual variables index #.
+ if (n_elements(INDEX) gt 0) then vvar_index = INDEX else print, 'No virtual variable specified.'
+
+ if (vvar_index ge 0) then begin
+
+  nbuf=buf 
+  
+  names = tag_names(buf.(vvar_index))
+  handle_found = 0
+
+; Check to see if HANDLE is a tag name
+  wh=where(names eq 'HANDLE',whn)
+  if(whn) then handle_found = 1
+
+; Determine the "parent variable" component_0
+  cond0=buf.(vvar_index).COMPONENT_0 
+  if (handle_found) then x0=execute('handle_value, buf.'+cond0+'.HANDLE,parent') $
+	else x0=execute('parent =  buf.'+cond0+'.DAT')
+
+  psize = size(parent, /struct)
+  ; create a magnitude array
+  magnitude = make_array(psize.dimensions(psize.n_dimensions-1))
+
+  if (psize.n_dimensions eq 1) then begin ;single record
+	bx = parent(0)
+	by = parent(1)
+	bz = parent(2)
+	magnitude = sqrt(bx*bx + by*by + bz*bz)
+	
+  endif else begin
+     if (psize.n_dimensions eq 2) then begin
+	num = psize.dimensions(1)-1
+  
+	for i=0L, num do begin
+
+	  bx = parent(0, i)
+	  by = parent(1, i)
+	  bz = parent(2, i)
+	  magnitude(i) = sqrt(bx*bx + by*by + bz*bz)
+
+	endfor
+     endif
+  endelse
+
+  if (handle_found eq 1) then begin
+    nu_dat_handle=handle_create(value=magnitude)
+    nbuf.(vvar_index).handle=nu_dat_handle
+  endif else begin
+    nbuf.(vvar_index).dat=magntidue
+  endelse
+
+; Check that all variables in the original variable list are declared as
+; data otherwise set to metadata 
+; Find variables w/ var_type == data
+
+   status = check_myvartype(nbuf, org_names)
+
+   return, nbuf 
+
+endif else begin
+   print, 'No valid variable found in compute_magnitude, returning -1'
+   return, -1
+endelse
+
+end 

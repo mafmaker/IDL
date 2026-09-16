@@ -1,0 +1,8 @@
+
+function imf_clock_angle_f,imfby,imfbz
+
+  clock_angle=atan(abs(byimf),bzimf)
+
+ 
+return,clock_angle
+end

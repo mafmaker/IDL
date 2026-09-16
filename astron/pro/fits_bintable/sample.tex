@@ -1,0 +1,172 @@
+\documentstyle[11pt]{article}
+
+\setlength{\oddsidemargin}{0in}		%  1 inch (0 + 1) from left.
+\setlength{\topmargin}{-0.5in}		%  1 inch (1.5 - 0.5) from top.
+\setlength{\textwidth}{6.5in}		%  1 inch (8.5 - 1 - 6.5) from right.
+\setlength{\textheight}{9in}		%  1 inch (11 - 1 - 9) from bottom.
+
+\addtolength{\parskip}{0.5\baselineskip}
+
+\begin{document}			% Remember to put in \end{document}.
+\thispagestyle{empty}			% Don't number first page.
+
+
+
+\section{Creating FITS binary table files}
+
+The processes of creating a FITS binary table file is fairly easy.  However,
+there are enough individual steps involved in creating the file, that it is
+anticipated that it will be carried out primarily using procedure files, rather
+than interactively from the keyboard.
+
+The steps involved in creating a FITS binary table extension file is as
+follows:
+%
+\begin{itemize}
+\item
+	First the primary FITS data unit must be created.  At the very minimum,
+	this will include a FITS header with the keyword ``EXTEND'' set to
+	True.  It may also have data associated with it, or it may simply have
+	``NAXIS'' set to zero to signal that there is no primary data array.
+	This step is carried out through the FXHMAKE and FXWRITE routines.
+\item
+	Next, the binary table extension header must be created, and the
+	various columns to be used have to be defined.  The routines FXBHMAKE
+	and FXADDCOL take care of this.
+\item
+	Then, the extension file must be opened, and the header written out.
+	FXBCREATE takes care of this.
+\item
+	The next step is to actually write the data arrays themselves into the
+	table.  This is done using FXBWRITE.  A separate call to FXBWRITE is
+	made for every row and every column in the binary table.
+\item
+	Finally, the table file is closed with the FXBFINISH command.
+\end{itemize}
+
+The following IDL statements demonstrate how to use these routines to create a
+simple binary table with three columns and five rows.  Some test arrays are
+generated to write into these columns, and are slightly modified for each row,
+to make the test more complete.
+%
+\begin{quote}
+\begin{verbatim}
+;  Create the data to write to the binary table.
+;
+a = intarr(10,100)
+b = reverse(intarr(20,100),2) - 100
+c = fix(dist(50))
+;
+;  Create a primary header and write it out.
+;
+fxhmake,header,/extend,/date
+fxwrite,'sample.fits',header
+;
+;  Create a binary table extension header for a table with 5 rows.
+;
+fxbhmake,header,5,'TESTEXT','Test binary table extension'
+;
+;  Create the columns for the a, b, and c arrays.
+;
+fxbaddcol,acol,header,a,'Column 1'
+fxbaddcol,bcol,header,b,'Column 2'
+fxbaddcol,ccol,header,c,'Column 3'
+;
+;  Write out the extension header.
+;
+fxbcreate,unit,'sample.fits',header
+;
+;  Write out the data.  For each row, multiply the test arrays by the row
+;  number.
+;
+for i=1,5 do fxbwrite,unit,a*i,acol,i
+for i=1,5 do fxbwrite,unit,b*i,bcol,i
+for i=1,5 do fxbwrite,unit,c*i,ccol,i
+;
+;  Close the binary extension, and merge with the primary FITS file.
+;
+fxbfinish,unit
+end
+\end{verbatim}
+\end{quote}
+%
+The primary FITS header created by this routine is very simple, and looks like
+this
+%
+\begin{quote}
+\begin{verbatim}
+SIMPLE  =                    T /Written by IDL:  30-Jan-1992 11:19:34.00
+BITPIX  =                    8 /
+NAXIS   =                    0 /
+EXTEND  =                    T /File contains extensions
+DATE    = '30/01/92'           /
+END
+\end{verbatim}
+\end{quote}
+%
+And the binary table extension header looks like this
+%
+\begin{quote}
+\begin{verbatim}
+XTENSION= 'BINTABLE'           /Written by IDL:  30-Jan-1992 11:35:49.00
+BITPIX  =                    8 /
+NAXIS   =                    2 /Binary table
+NAXIS1  =                11000 /Number of bytes per row
+NAXIS2  =                    5 /Number of rows
+PCOUNT  =                    0 /Random parameter count
+GCOUNT  =                    1 /Group count
+TFIELDS =                    3 /Number of columns
+EXTNAME = 'TESTEXT '           /Test binary table extension
+TFORM1  = '1000I   '           /Integer*2 (short integer)
+TTYPE1  = 'COLUMN 1'           /Label for column 1
+TDIM1   = '(10,100)'           /Array dimensions for column 1
+TFORM2  = '2000I   '           /Integer*2 (short integer)
+TTYPE2  = 'COLUMN 2'           /Label for column 2
+TDIM2   = '(20,100)'           /Array dimensions for column 2
+TFORM3  = '2500I   '           /Integer*2 (short integer)
+TTYPE3  = 'COLUMN 3'           /Label for column 3
+TDIM3   = '(50,50) '           /Array dimensions for column 3
+END
+\end{verbatim}
+\end{quote}
+
+
+\section{Reading FITS binary table files}
+
+The process of reading FITS binary tables is much simpler than writing them,
+since the structure of the table is already set.  There are only three basic
+steps in reading a FITS binary table file:
+%
+\begin{itemize}
+\item
+	The file is opened, and the binary table extension selected, with the
+	routine FXBOPEN.
+\item
+	Data is read from the table with the routine FXBREAD.  A particular row
+	and column can be read, or an entire column can be read into a single
+	array (except for columns containing variable-length arrays).
+\item
+	The file is closed with the routine FXBCLOSE.
+\end{itemize}
+%
+For instance, the binary table created in the above example could be read with
+the following statements.
+%
+\begin{quote}
+\begin{verbatim}
+IDL> FXBOPEN,UNIT,'sample.fits','testext',header
+IDL> FXBREAD,UNIT,A,'Column 1'
+IDL> FXBREAD,UNIT,B,'Column 2'
+IDL> FXBREAD,UNIT,C,'Column 3'
+IDL> FXBCLOSE,UNIT
+IDL> HELP,A,B,C
+A               INT       = Array(10, 100, 5)
+B               INT       = Array(20, 100, 5)
+C               INT       = Array(50, 50, 5)
+\end{verbatim}
+\end{quote}
+%
+Note that, because the entire columns were read in, the arrays A, B, and C each
+have an extra last dimension of 5.
+
+\end{document}

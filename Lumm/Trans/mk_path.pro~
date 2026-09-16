@@ -1,0 +1,33 @@
+pro mk_path_event, event
+
+common mk_path_common, index
+
+index=event.index
+widget_control, event.top, /destroy
+
+return
+end
+
+
+function mk_path, path
+
+@common
+common mk_path_common, index
+
+subdir=findfile(path)
+ns=n_elements(subdir)
+
+if n_elements(main_base) le 0 then begin 
+   mainbase = 0
+   modal = 0
+endif else modal = 1
+s1=widget_base(/column, title='pick a directory', $
+               xoffset=300, yoffset=200, group_leader=main_base, modal=modal)
+list=widget_list(s1, value=subdir, ysize=min([ns, 20]))
+
+widget_control, s1, /realize
+
+xmanager, 'mk_path', s1, group_leader=main_base
+
+return, subdir(index)
+end

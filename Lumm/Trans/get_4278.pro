@@ -1,0 +1,23 @@
+pro get_4278, t_altitude, N2_4278, N2p_B, i4278, path
+
+; Driver to get N2(1N) profiles from the transport code
+
+@/home/lmp/Lumm/Trans/common
+
+if n_elements(path) le 0 then $
+   path = '~/Trans/Output/' + mk_path('~/Trans/Output')
+
+read_exr, path, ''
+
+t_altitude=altitude             ; needs to be a different name
+                                ; (altitude is in a common block...)
+N2p_B = ion_n2(*,2)
+N2_4278 = N2p_B*1.97e-7         ; in R
+i4278 = (-1e5)*trap(n2_4278, altitude)  ; in R (note: trap gets negative
+                                ; value since the arrays are in
+                                ; decending order)
+  
+return
+;stop
+end
+

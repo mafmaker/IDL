@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+
+<HEAD>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=iso-8859-1">
+<META NAME="VPSiteProject" CONTENT="file:///D|/www/Project.vpp">
+
+	<META NAME="GENERATOR" Content="Visual Page 2.0 for Windows">
+	<TITLE>Extended IDL Help</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="../images/edge.gif">
+
+<P>&gt;
+
+<BLOCKQUOTE>
+	<P>
+	<TABLE BORDER="0" WIDTH="500">
+		<TR>
+			<TD>
+				<H2>MSVELOVECT</H2>
+				<PRE> NAME:                                                                          
+  MSVELOVECT                                                                   
+                                                                               
+PURPOSE:                                                                       
+  Produce a two-dimensional velocity field plot.                               
+                                                                               
+  A directed arrow is drawn at each point showing the direction and            
+  magnitude of the field.                                                      
+                                                                               
+      This routine was developed from the original VELOVECT routine            
+      and now allows two dimensional arrays for X and Y for irregularily       
+      spaced data.                                                             
+                                                                               
+CATEGORY:                                                                      
+  Plotting, two-dimensional.                                                   
+                                                                               
+CALLING SEQUENCE:                                                              
+  MSVELOVECT, U, V [, X, Y]                                                    
+                                                                               
+INPUTS:                                                                        
+  U:  The X component of the two-dimensional field.                            
+      U must be a two-dimensional array.                                       
+                                                                               
+  V:  The Y component of the two dimensional field.  Y must have               
+      the same dimensions as X.  The vector at point [i,j] has a               
+      magnitude of:                                                            
+                                                                               
+          (U[i,j]^2 + V[i,j]^2)^0.5                                            
+                                                                               
+      and a direction of:                                                      
+                                                                               
+          ATAN2(V[i,j],U[i,j]).                                                
+                                                                               
+OPTIONAL INPUT PARAMETERS:                                                     
+  X:  Optional abcissae values.  X must be a vector with a length              
+      equal to the first dimension of U and V *OR* a 2-dimensional             
+              array with the same dimensions as U and V.                       
+                                                                               
+  Y:  Optional ordinate values.  Y must be a vector with a length              
+      equal to the first dimension of U and V *OR* a 2-dimensional             
+              array with the same dimensions as U and V.                       
+                                                                               
+KEYWORD INPUT PARAMETERS:                                                      
+  COLOR:  The color index used for the plot.                                   
+                                                                               
+  DOTS:   Set this keyword to 1 to place a dot at each missing point.          
+      Set this keyword to 0 or omit it to draw nothing for missing             
+      points.  Has effect only if MISSING is specified.                        
+                                                                               
+  LENGTH: Length factor.  The default of 1.0 makes the longest (U,V)           
+      vector the length of a cell.                                             
+             ### Franz Rohrer's modification of the LENGTH keyword:            
+             LENGTH now applies a scale factor relative to the data values,    
+             not just a relative scaling. If you don't specify LENGTH it acts  
+             as before.                                                        
+                                                                               
+      MISSING: Missing data value.  Vectors with a LENGTH greater              
+      than MISSING are ignored.                                                
+                                                                               
+      OVERPLOT: Set this keyword to make VELOVECT &quot;overplot&quot;.  That is, the    
+              current graphics screen is not erased, no axes are drawn, and    
+              the previously established scaling remains in effect.            
+                                                                               
+      NOZERO: Do not plot zero vectors as dots.                                
+                                                                               
+  Note:   All other keywords are passed directly to the PLOT procedure         
+      and may be used to set option such as TITLE, POSITION,                   
+      NOERASE, etc.                                                            
+OUTPUTS:                                                                       
+  None.                                                                        
+                                                                               
+COMMON BLOCKS:                                                                 
+  None.                                                                        
+                                                                               
+SIDE EFFECTS:                                                                  
+  Plotting on the selected device is performed.  System                        
+  variables concerning plotting are changed.                                   
+                                                                               
+RESTRICTIONS:                                                                  
+  None.                                                                        
+                                                                               
+PROCEDURE:                                                                     
+  Straightforward.  Unrecognized keywords are passed to the PLOT               
+  procedure.                                                                   
+                                                                               
+MODIFICATION HISTORY:                                                          
+  DMS, RSI, Oct., 1983.                                                        
+  For Sun, DMS, RSI, April, 1989.                                              
+  Added TITLE, Oct, 1990.                                                      
+  Added POSITION, NOERASE, COLOR, Feb 91, RES.                                 
+  August, 1993.  Vince Patrick, Adv. Visualization Lab, U. of Maryland,        
+      fixed errors in math.                                                    
+  August, 1993. DMS, Added _EXTRA keyword inheritance.                         
+  January, 1994, KDB. Fixed integer math which produced 0 and caused           
+                  divide by zero errors.                                       
+  December, 1994, MWR. Added _EXTRA inheritance for PLOTS and OPLOT.           
+  June, 1995, MWR. Removed _EXTRA inheritance for PLOTS and changed            
+           OPLOT to PLOTS.                                                     
+      September, 1996, GGS. Changed denominator of x_step and y_step vars.     
+      February, 1998, DLD.  Add support for CLIP and NO_CLIP keywords.         
+      June, 1998, DLD.  Add support for OVERPLOT keyword.                      
+      
+
+</PRE>
+				<PRE><FONT COLOR="red">Modified:  16 Sep 1999: Martin Schultz added support for 2D U and V arrays          
+             cleaned up the routine some and added the NOZERO keyword.         
+             (renamed as msvelovect.pro on Sep 23)                             
+             Also included Franz Rohrer's modification of the LENGTH keyword:  
+             LENGTH now applies a scale factor relative to the data values,    
+             not just a relative scaling. If you don't specify LENGTH it acts as before.  
+
+ DISCLAIMER:  This routine has been modified from its original form as it was
+              supplied by Research Systems, Inc (RSI).  As such, RSI is not responsible
+              for any errors existing in this code.</FONT>
+
+
+</PRE>
+				<UL>
+					<LI><A HREF="msvelovect.pro">Download msvelovect.pro</A>
+				</UL>
+			</TD>
+		</TR>
+	</TABLE>
+
+</BLOCKQUOTE>
+
+
+</BODY>
+
+</HTML>

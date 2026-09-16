@@ -1,0 +1,12 @@
+pro killnan,array,val
+
+;  Author - Thomas Immel, UCB
+;  Tired, Tired, Tired of NAN when dividing. Kill NAN!
+;
+;  Just be sure to provide the value you want to replace nan with.
+;
+
+killer=where(finite(array) eq 0,counter)
+if counter gt 0 then array(killer)=val
+return
+end

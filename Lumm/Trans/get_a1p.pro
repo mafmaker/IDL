@@ -1,0 +1,19 @@
+pro get_a1p, path, t_altitude, a1p
+
+; Driver to get N2(a1p) profiles from the transport code
+
+@common
+
+if n_elements(path) le 0 then $
+   path = '/mydisks/home/lmp/Trans/Output/' + mk_path('/mydisks/home/lmp/Trans/Output')
+
+read_exr, path, ''
+
+t_altitude=altitude             ; needs to be a different name
+                                ; (altitude is in a common block...)
+a1p=exr_n2(*,5)
+
+return
+;stop
+end
+

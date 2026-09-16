@@ -1,0 +1,28 @@
+/TAPE_IO                      (VMS only)           January 1993
+
+     This subdirectory contains procedures which use the IDL TAPWRT and
+TAPRD procedure to manipulate files on tape.    The TAPRD and TAPWRT 
+procedures are only available under VMS IDL, and hence the procedures in this
+directory are limited to VMS.     Users on Unix machines might wish to
+delete this directory
+
+--------
+FBTAPE - Read a fixed block tape to disk 
+FITS2X - Read a FITS tape directly into IDL image and header variables  
+FITSRD - Interactive driver to read a FITS tape into STSDAS (modified FITS)
+         disk format. 
+FITSRD_LARGE  - Like DFITSRD but works on large arrays, slower than
+                 DFITSRD but less demanding on virtual memory.  
+FITSREAD - Read a FITS tape to STSDAS format.  Called by FITSRD 
+FITSREAD_LARGE - Analogue of FITSREAD, called by FITSRD_LARGE.
+FITSLIST - List the headers on a FITS tape. 
+FITSTAPE - Function to perform FITS tape I/O.  Called by FITSWRITE, FITSREAD
+            FITS2X, X2FITS.    
+FITSWRT - Interactive driver to write from SDAS format to FITS tape
+FITSWRITE- Write an SDAS file to a FITS tape.  Called by FITSWRT  
+FXTAPEWRITE - Copy a disk FITS file to tape 
+FXTAPEREAD - Copy a FITS file from tape to disk 
+TINIT - Position a VMS tape between final double EOF for appending new files
+X2FITS - Write IDL image, header variables directly to a FITS tape (VMS)
+
+

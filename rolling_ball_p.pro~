@@ -1,0 +1,73 @@
+pro rolling_ball_p,x,y,newy,radius=radius,stopper=stopper,verbose=verbose
+
+;  License : Berkeley Standard Distribution License 2.0.
+; Copyright 2024, UC Berkeley
+
+;Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+;Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+;Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+;Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+;  ECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES ; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+;------------------------------------------------------------------------------------------------------- 
+;  Quick implementation of a distance-calculating rolling ball analysis
+;  x is the independent variable input, like time
+;  y is the dependent variable like an index or other time series 
+;  newy is the rolled data, offset by radius but otherwise correctly determined
+;  radius is the unit of the rolling ball
+;  ;
+                                ; Be sure that the indices in the x and y directions are roughly comparable. THis code does not check that you 
+                                ; provided time in decimal hours for a day and the y axis is in 2000 nt. The distance calculation at the
+                                ; heard of the code will show very large distances dominated entirely the data size and provide nonsensical
+                                ; results
+                                ;
+  ;
+;                                ;
+;  ;;
+;
+;
+
+
+
+  
+  yrange=round((max(y)+radius+1) - min(y))
+
+  newy=y-y
+  newy2=y-y
+  yindex=(findgen(yrange*10)/10.) + min(y)   ; make an array of Bz offsets, or values of y in general
+  distances=fltarr(n_elements(x),n_elements(yindex))
+
+
+  
+;---calculate distance of every point in the x,y input to fixed levels of y - this doesn't need to be run backwards.
+  for i=n_elements(yindex)-1,0,-1 do begin  ; for every row of bz offset upward by at least radius
+     for j=0,n_elements(x)-1 do begin       ; for every position along that row 
+        distance=sqrt( (yindex[i]-y)^2 + (x-j)^2)   ;calculate the distance between each position and all x and y positions simultaneously
+;        if min(distance) lt radius then plot,distance ;---if you find a distance smaller than radius than announce.
+;        print,i,j
+  if keyword_set(verbose) gt 0 then if i mod 100 eq 0 and j mod 100 eq 0 then       plot,distance,title=string(i) +' ' +  string(j)
+        distances[j,i]=min(distance)   ;--- this is half the code
+     endfor
+   endfor
+
+
+  
+  for i=n_elements(yindex)-1,0,-1 do begin  ;these two loops could obviously be done at the same time
+     finder=where(distances[*,i] lt radius and newy eq 0,found) ;--- this is the other half of the code.
+     if found gt 0 then newy[finder]=yindex[i]
+     print,found
+  endfor
+
+  if keyword_set(verbose) gt 0 then begin
+     print,'yrange and min(y)', strcompress(yrange),strcompress(min(y));plot
+     help,yindex
+  endif  
+
+  if keyword_set(stopper) gt 0 then begin
+     print,'you said stop, so I am stopping!'
+     stop
+  endif
+  
+  return
+end

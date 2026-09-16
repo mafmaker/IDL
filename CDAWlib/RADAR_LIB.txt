@@ -1,0 +1,26 @@
+;+
+; NAME:
+;       RADAR_LIB
+;
+; PURPOSE:
+;       This library of routines provides a number of general purpose
+;       functions for working with radar data and other data.
+;
+; ROUTINES:
+;
+;       CNV_MDHMS_SEC   convert time from mo,day,hr,min,sec to year_sec
+;       CNVTIME         convert time from mo,day,hr,min,sec to year_sec
+;       CNV_SEC_MDHMS   convert time from year_sec to mo,day,hr,min,sec
+;       CNVCOORD        convert coordinates to/from magnetic/geographic
+;       MLT             calculate magnetic local time
+;       MONDAY          calculates day of year from month and day of month
+;                       or the inverse
+;       ANGADJ          compute angle of rotation from geographic to
+;                       magnetic coordinates
+;       VECTPLT         general radar vector plotting routine
+;
+;----------------------------------------------------------------------------
+;
+; the above mentioned routines can be found in the same named files
+; with the .pro extension.
+;

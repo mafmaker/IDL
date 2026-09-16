@@ -1,0 +1,53 @@
+pro make_pos_array, pos_arr, rows, cols, xspace = xspace, $
+                    yspace = yspace,  ytop = ytop, stopper = stopper
+  
+;  Program now placed in the ~immel/idl directory for future reference
+;  and use. It can be much improved to give a pos array with any set
+;  of columns, rows, spacing, offset, etc. Someday I will get to that!
+;
+;
+;  11-21-03  -  Now is the time to boost this up another level.
+;               remember to set !p.position before getting here.
+;
+;
+
+
+
+
+;!p.position = [0, 0, 1, 1]
+;old_position=!p.position
+;rows = 2
+;cols = 2
+ytot=!p.position[3]-!p.position[1]
+ytop=!p.position[3]
+xright = !p.position[2]
+xtot = !p.position[2]-!p.position[0]
+
+
+xspace_ = 0.01
+yspace_ = 0.03
+ytop = 0.03   ; little extra at the top (or bottom?) to put a title
+pos_arr=fltarr(4, rows*cols)
+xtot = xtot - cols*xspace_  ;the total space to be taken up by images in the x direction
+ytot = ytot - rows*yspace_ - ytop  ;the total space taken up by images in the y direction
+yoff = (1-ytot)/2. ;rows*yspace / 2.
+
+ystep=ytot/rows
+xstep =xtot/cols
+
+if keyword_set(xspace) gt 0 then xspace_ = xspace
+if keyword_set(yspace) gt 0 then yspace_ = yspace
+if keyword_set(ytop)   gt 0 then ytop_   = ytop
+
+for i = 0, rows*cols -1 do pos_arr[*, i]  = $
+  [xstep*(i mod cols)+xspace_*(i mod cols), $
+   yoff+ ytot-(i/cols+1)*ystep - yspace_*((i /cols)-1)-ytop, $
+   xstep*((i mod cols)+1)+xspace_*((i mod cols)), $
+   yoff+ ytot-(i/cols+0)*ystep - yspace_*((i /cols)-1)-ytop]
+
+pos_arr[0, *]= pos_arr[0, *] + !p.position[0]/2
+pos_arr[2, *]= pos_arr[2, *] + !p.position[0]/2
+
+if keyword_set(stopper) gt 0 then stop
+
+end

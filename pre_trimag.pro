@@ -1,0 +1,26 @@
+pro pre_trimag,image,glat,glon,mapout,latres=latres,lonres=lonres
+;
+;
+;  program to prepare a structure for ingestion by trimag
+;  switch to /legacy mode in August 07. 
+;  switch back to normal mode. 
+
+;print,'remap_sami is an example of this type of thing actually working'
+
+
+if keyword_set(latres) then latres_=latres else latres_=0.5
+if keyword_set(lonres) then lonres_=lonres else lonres_=0.5
+
+sza=image-image
+dza=image-image
+mlat=image-image
+mlt=image-image
+src='HWIC'
+
+imageinfo={image:image,glat:glat,glon:glon,sza:sza,dza:dza,mlat:mlat,mlt:mlat,src:src}
+
+trimag,imageinfo,mapim,latmax,latmin,/geo,/z,latres=latres_,lonres=lonres_
+mapout={mapim:mapim,latmax:latmax,latmin:latmin}
+
+
+end

@@ -1,0 +1,73 @@
+pro intensity, alt=alt, irange=irange, erange=erange
+
+; make plots of intensity vs energy and angle at a given altitude
+
+@common
+
+p_save = !p.multi
+win_size = 512
+if !p.multi(1) gt 1 then begin
+   !p.multi(1) = 1
+   !p.multi(2) = 4
+   if !d.flags/256 then begin
+      device, get_screen_size=screensize
+      win_size = screensize(1)*w_scale
+   endif
+endif
+if !p.multi(0) eq 0 then $
+     if !d.flags/256 then window, ys=win_size, /free  $
+                     else device, ysize=23, yoffset=2.5
+
+if not keyword_set(alt) then iz=0 else $
+       iz=where(abs(altitude-alt) eq min(abs(altitude-alt)))
+
+int_all=fltarr(nmax, 2*kmax)
+all_ang=fltarr(2*kmax)
+
+k=indgen(kmax)-kmax
+int_all(*,0:kmax-1)=intens_dn(iz,*,abs(k)-1)
+int_all(*,kmax:2*kmax-1)=intens_up(iz,*,*)
+all_ang(0:kmax-1)=acos(angle(abs(k)-1))/!dtor
+all_ang(kmax:2*kmax-1)=acos(-angle)/!dtor
+
+if not keyword_set(erange) then begin
+    e1=mmin(energy, above=0)
+    e2=max(energy)
+endif else begin
+    e1=erange(0)
+    e2=erange(1)
+endelse
+if e2 le e1 then begin 
+    e1=mmin(energy, above=0)
+    e2=max(energy)
+endif    
+ie=where(e1 le energy and energy le e2, error)
+if error le 0 then print, e1, e2, error
+
+if not keyword_set(irange) then begin
+    i1=mmin(int_all(ie,*), above=0)
+    i2=max(int_all(ie,*))
+endif else begin
+    i1=irange(0)
+    i2=irange(1)
+endelse
+if i1 ge i2 then begin
+    i1=mmin(int_all(ie,*), above=0)
+    i2=max(int_all(ie,*))
+endif
+
+int_all = (int_all(ie,*) < i2)
+int_all = (int_all > i1)
+
+if !d.flags/256 then reverse = 0 else reverse = 1
+if !d.flags/256 then space = 0 else space = 0.02
+image2, int_all, energy(ie), all_ang, $
+  /xlog, /zlog, ysty=1, xsty=1, title='Intensity at ' + $
+  strcompress(altitude(iz), /rem)+' km Altitude', $
+  xtit='Energy (eV)', ytit='Pitch Angle', $
+  unit='(eV cm!e2!n s ster)!e-1!n', space=space ;, rev=reverse
+
+!p.multi(1) = p_save(1)
+!p.multi(2) = p_save(2)
+return
+end

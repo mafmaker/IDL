@@ -1,0 +1,17 @@
+;script to read all data to set up for non-widget plotting etc
+
+@common
+@common_w
+pathname =  '/mydisks/home/lmp/Trans/Output'
+subdir=mk_path(pathname, group=main_base)
+flx_param={emax:0., fmin:0., alt_r:[0.,0.]}
+ionr_param={npowers:0, yrange:[0.,0.]}
+flx_cont_param={npowers:0, yrange:[0.,0.], xrange:[0.,0.], $
+                up:0, energyflux:0, total:0, net:0, photo:0, surf:0}
+engdep_param={npowers:0, yrange:[0.,0.], only_total:0}
+intensity_param={alt:0, erange:[0.,0.], irange:[0.,0.]}
+penetration_param={zrange:[0.,0.], frange:[0.,0.], updn:1, total:0, $
+                  photo:0, net:0, eflux:0}
+spectrum_param={emin:0., emax:0., fmin:0., fmax:0., count:0}
+read_all, subdir, pathname
+read_crs, strcompress(crs_file, /rem)

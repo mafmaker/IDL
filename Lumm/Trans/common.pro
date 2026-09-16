@@ -1,0 +1,17 @@
+; This code provides all data common blocks for the plotting programs.
+
+common grid, energy, altitude, angle, mu_weight
+common flux, flux_up, flux_down, flux_extra
+common intensity, intens_dn, intens_up, total_int
+common excitation, exr_n2, exr_o2, exr_o, ion_n2, ion_o2, ion_o, tot_ion, $
+     pick_n2, pick_o2, pick_o
+common engdep, exdep_n2, exdep_o2, exdep_o, iondep_n2, iondep_o2, $
+   iondep_o, dep_electron, edep
+common density, n2, o2, o, t_n, n_e, t_e
+common header, messag, crs_file, nmax, mmax, kmax, jmax, ex_states, $
+   ion_states
+common uv_emission, wavelength, emission, brightness
+common other_emission, line
+common local, w_scale
+
+

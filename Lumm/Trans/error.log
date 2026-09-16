@@ -1,0 +1,74 @@
+IDL Version 5.3 (sunos sparc). (c) 1999, Research Systems, Inc.
+Installation number: 13185-2.
+Licensed for use by: Space Physics Research Group
+
+ON_ERROR set to 1...
+% Compiled module: LOADCT2.
+% Compiled module: LOADCT.
+% LOADCT: Loading table Rainbow + white
+          68 colors available.
+% Compiled module: PUSHD.
+% Compiled module: DENSITY.
+% Compiled module: DISPLAY.
+% Compiled module: ENGDEP.
+% Compiled module: EXRATES.
+% Compiled module: FLX_CONT.
+% Compiled module: FLX_SURF.
+% Compiled module: INTENSITY.
+% Compiled module: IONRATES.
+% Compiled module: MK_PATH_EVENT.
+% Compiled module: MK_PATH.
+% Compiled module: PENETRATION.
+% Compiled module: PLOT_LOSS.
+% Compiled module: PRNT_ERROR_EVENT.
+% Compiled module: PRNT_ERROR.
+% Compiled module: READ_ALL.
+% Compiled module: READ_ATM.
+% Compiled module: READ_CRS.
+% Compiled module: READ_DEP.
+% Compiled module: READ_EXR.
+% Compiled module: READ_FLX.
+% Compiled module: READ_INT.
+% Compiled module: READ_LBH.
+% Compiled module: SET_ENGDEP_EVENT.
+% Compiled module: SET_ENGDEP.
+% Compiled module: SET_FLX_CONT_EVENT.
+% Compiled module: SET_FLX_CONT.
+% Compiled module: SET_FLX_SURF_EVENT.
+% Compiled module: SET_FLX_SURF.
+% Compiled module: SET_IONR_EVENT.
+% Compiled module: SET_IONR.
+% Compiled module: SET_EXCR_EVENT.
+% Compiled module: SET_EXCR.
+% Compiled module: SET_INTENSITY_EVENT.
+% Compiled module: SET_INTENSITY.
+% Compiled module: SET_PENETRATION_EVENT.
+% Compiled module: SET_PENETRATION.
+% Compiled module: SET_SPECTRUM_EVENT.
+% Compiled module: SET_SPECTRUM.
+% Compiled module: SPECTRUM.
+% Compiled module: TRANS_EVENT.
+% Compiled module: MK_BUTTON.
+% Compiled module: TRANS.
+% Compiled module: UV_EMISSION.
+% Compiled module: POPD.
+% Compiled module: MSG_OUT.
+% Compiled module: CW_BGROUP.
+% Compiled module: XMANAGER.
+% Compiled module: FILEPATH.
+% LOADCT: Loading table STD GAMMA-II
+Reading file /mydisks/home/lmp/Trans/Output//jdw_epara1a//CRSxdr
+% Compiled module: MMIN.
+% Compiled module: IMAGE3.
+% Compiled module: LOG_LABEL.
+% Compiled module: CW_FIELD.
+% XMANAGER: The MODAL keyword to the XMANAGER procedure is obsolete. It is
+  superseded by the MODAL keyword to the WIDGET_BASE function.
+% Program caused arithmetic error: Floating divide by 0
+% Program caused arithmetic error: Floating illegal operand
+% Program caused arithmetic error: Floating divide by 0
+% Program caused arithmetic error: Floating illegal operand
+% LOADCT: Loading table STD GAMMA-II
+Reading file /mydisks/home/lmp/Trans/Output//jdw_epara2a//CRSxdr
+% LOADCT: Loading table STD GAMMA-II
+Reading file /mydisks/home/lmp/Trans/Output//jdw_epara3a//CRSxdr

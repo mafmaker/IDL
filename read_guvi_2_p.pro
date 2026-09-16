@@ -1,0 +1,325 @@
+pro read_guvi_2_p,starttime,raw,mapim,mag_mapim,mean_lt,mean_mlt,fit_array,coeff_array,nofits=nofits
+
+year=starttime(0)
+syear=strcompress(year,/rem)
+doy=starttime(1)
+sdoy=strcompress(doy,/rem)
+if doy lt 100 then sdoy = '0' + sdoy
+if doy lt 10  then sdoy = '0' + sdoy
+
+
+;
+; program fragment_for_thomas
+; code from Bob DeMajistre 
+; year=2002
+
+
+re=6371.
+zs=625.
+
+;--- the C variable is used later!!!
+read_ncdf,'/home/immel/idl/timed/guvi/GUVI1_TIMED_v008.ncdf',C
+
+f0=findfile('/Home/Immel/Sci/Fuv/Guvi/L1b/Guvi.Jhuapl.Edu/Levels/Level1b/imaging/'+syear+'/'+sdoy+'/GUVI_im_disk_v008r00_'+syear+sdoy+'*.L1B')
+
+f1=findfile('/Volumes/england_shared_files/guvi.jhuapl.edu/levels/level1b/imaging/'+syear+'/'+sdoy+'/GUVI_im_disk_v008r00_'+syear+sdoy+'*.L1B')
+
+
+if n_elements(f1) gt 1 then f=f1 else f=f0
+
+;f=f0
+
+;stop
+
+if strlen(f(0)) lt 2 then begin
+
+  print,'No GUVI data found. Try again!'
+  raw=-1 & mapim=-1 & mag_mapim=-1 & mean_lt=-1 & mean_mlt=-1
+  fit_array=-1 & coeff_array=-1
+  return
+endif
+
+lt_array=fltarr(n_elements(f))
+mlt_array=fltarr(n_elements(f))
+
+
+
+
+;---make the dummy magnetic array now
+
+maglatres=1.
+maglonres=5.
+
+mag_degrees=90 ; range of magnetic latitude to cover
+
+mag_array=fltarr(360/maglonres,mag_degrees/maglatres) -1; (+- 45 degrees magnetic coords)
+;---define lats for the gaussfits to come
+
+mag_xsize=360/maglonres
+mag_ysize=mag_degrees/maglatres
+mag_lats=(findgen(mag_degrees/maglatres)*maglatres-(mag_degrees/2.))
+mag_lons=(findgen(360/maglonres)*maglonres-(360/2.))
+
+mag_weight=mag_array
+
+geores=0.1
+
+geo_array=fltarr(360/geores,90/geores)-1  ;concentrates on low latitudes
+geo_weight=geo_array                      ;fairly useless without mult. days
+
+geo_array_trimag=fltarr(360/geores,180/geores)
+
+help,geo_array_trimag
+
+for j=0,n_elements(f) -1 do begin ;(f(0))   ; god not this again
+
+  ff=''
+  ff=f(j)
+  read_ncdf,ff,d
+
+;  help,/struct,d
+
+;for now, assume same slit and detector throughout file
+  islit=d.slit[0]-1
+  idet=d.detector[0]-1
+  scanang=!dtor*c.cross_track_mirror_scan_angle[32:*,islit,idet]
+  mu=cos(asin( (1.+zs/re)*sin(scanang) ) )
+
+  ii=where(d.solarzenithangle[7,60,*] gt 110. and $
+        d.piercepointlatitude[7,60,*] lt 50 and $
+        d.piercepointlatitude[7,60,*] gt -50)
+
+  jj=where(mu gt .15,jjcount)
+  mu1=mu[jj]#(fltarr(n_elements(ii))+1.)
+  uth=d.time[ii]*1.e-3/3600.  
+  lat=transpose(d.piercepointlatitude[7,jj,ii],[1,2,0])
+  lon=transpose(d.piercepointlongitude[7,jj,ii],[1,2,0])
+  r1356=transpose(total(d.radiancedata[2,*,jj,ii],2)/14.,[1,2,0])*mu1
+
+
+  pre_trimag,r1356,lat,lon,map_struct,latres=geores,lonres=geores
+
+;--- slap this image into a larger grid of data 
+  sizer=size(map_struct.mapim)
+  start_lat=round(map_struct.latmin /geores) 
+  geo_array_trimag(*,start_lat:start_lat+sizer(2)-1) =  $
+    geo_array_trimag(*,start_lat:start_lat+sizer(2)-1) + map_struct.mapim>0
+  
+;  stop
+
+;---going to calculate LT and MLT, from example in $FUVIEW_HOME/get_lt.pro
+  ydn2md,(uth-uth)+year,d.doy,month,dom
+  greg_to_jdaynum,(uth-uth)+year,month,dom,jd
+  ephem,jd,uth,gha,dec,eqtime
+  expander=intarr(jjcount)+1
+  gha2d=expander#gha
+
+  glt = (lon + gha2d)/15. - 12.   
+  ndx=WHERE(glt LT 0,count)
+  IF(count GT 0) THEN glt(ndx)=glt(ndx)+24.
+  ndx=WHERE(glt GT 24,count)   
+  IF(count GT 0) THEN glt(ndx)=glt(ndx)-24. 
+;--- new one to allow for nightside continuity
+  ndx=WHERE(glt LT 12,count)
+  if(count GT 0) THEN glt(ndx)=glt(ndx) + 24
+;--- finally calculate the mean local time of an orbit
+  lt_array(j)=mean(glt)
+
+  slon = (12. - uth - (eqtime/15.))*15.
+  slon2d= expander # slon
+  dec2d= expander # dec
+  geo_to_apex,dec2d,slon2d,slat_mag,slon_mag,'$FUVIEW_HOME/support/mlatlon.1997a.xdr'
+
+
+;  ii=where(lon gt 180)
+;  if ii[0] ne -1 then lon[ii]=lon[ii]-360.
+
+;going to have to work in two tracks here, one a 1x1 degree grid of
+;global magnetic coordinates that are loaded appropriately (rec
+;geo_to_apex) for that one.
+
+
+;--- magnetic mapping
+
+  geo_to_apex,lat,lon,apexlat,apexlon,'$FUVIEW_HOME/support/mlatlon.1997a.xdr'
+
+;--- magnetic local time
+
+    mlt = (apexlon - slon_mag)/15. + 12.
+
+    ;check range of mlt 0-24 
+    ndx=WHERE(mlt LT 0,count)
+    IF(count GT 0) THEN mlt[ndx]=mlt[ndx]+24.
+    ndx=WHERE(mlt GT 24,count)
+    IF(count GT 0) THEN mlt[ndx]=mlt[ndx]-24.
+;--- and for nightside continuity
+    ndx=WHERE(mlt LT 12,count)
+    IF(count GT 0) THEN mlt[ndx]=mlt[ndx]+24.
+
+    mlt_array(j)=mean(mlt)
+
+
+
+;----prepare for indexing regualar grid, check to see if you need to call shiftlon
+  print, 'call shiftlong if this is not zero!!!'
+  print,total(apexlon-abs(apexlon))
+  if   total(apexlon-abs(apexlon)) ne 0 then shiftlong,apexlon
+
+
+
+
+  finder=where(abs(apexlat) lt 45,gotdat)
+  mlats4map=apexlat(finder) & mlats4map=(mlats4map+45)/maglatres 
+  mlons4map=apexlon(finder) & mlons4map=(mlons4map)/maglonres
+
+  finder2=where(abs(lat) lt 45,gotdat2)
+  lats4map=lat(finder2) & lats4map=(lats4map+45)/geores 
+  lons4map=lon(finder2) & lons4map=(lons4map)/geores 
+
+
+
+  for i=0,gotdat-1 do mag_array(mlons4map(i)< mag_xsize-0.01,mlats4map(i))= $
+                    mag_array(mlons4map(i)<mag_xsize-0.01,mlats4map(i)) $
+                    + r1356(finder(i))
+
+  for i=0,gotdat-1 do mag_weight(mlons4map(i)<mag_xsize-0.01,mlats4map(i))= $
+                    mag_weight(mlons4map(i)<mag_xsize-0.01,mlats4map(i)) $
+                    + 1
+
+;--- teensy hack happening here on the boundary of that array
+
+;--- geographic mapping
+
+
+  for i=0,gotdat2-1 do geo_array(lons4map(i),lats4map(i))= $
+                    geo_array(lons4map(i),lats4map(i)) $
+                    + r1356(finder2(i))
+
+  for i=0,gotdat2-1 do geo_weight(lons4map(i),lats4map(i))= $
+                    geo_weight(lons4map(i),lats4map(i)) $
+                    + 1
+
+
+
+;--- following test is for day 76 only! when I know the sat is right after midnightt
+;  if lt_array(j) lt 0 or lt_array(j) gt 1 then begin
+;    print,'LT is screwed up!'
+;    stop
+;  endif
+
+
+endfor
+
+
+
+;stop
+
+;--- calculate mean irradiances
+
+irradiance_g = geo_array/geo_weight & irradiance_g(where(geo_weight eq 0))=0
+irradiance_m = mag_array/mag_weight & irradiance_m(where(mag_weight eq 0))=0
+
+
+;--- prepare variable to be sent back
+
+mean_lt=mean(lt_array)
+mean_mlt=mean(mlt_array)
+
+mapim=geo_array_trimag
+raw=irradiance_g
+mag_mapim=irradiance_m
+coeff_arr = 0
+fit_array = 0
+
+;--- prepare to do gaussian fits to these data
+
+
+
+
+if keyword_set(nofits) gt 0 then goto,DONT_DO_ANY_FITS
+
+nterms=5
+indices=nterms+1
+estimates=[100,12,5,1,.1,.01]
+s_estimates=estimates*[1,-1,1,1,1,1]
+estimates=estimates(0:nterms-1)
+s_estimates=s_estimates(0:nterms-1)
+
+coeff_arr=fltarr(nterms,n_elements(mag_lons))
+s_coeff_arr=coeff_arr
+fit_array=irradiance_m-irradiance_m  ; should use this for displaying fitted data.
+
+;north =where(mag_lats gt 0)
+;south =where(mag_lats lt 0)
+
+;--- NOW do gaussian fits to these data
+
+!p.multi=[0,2,1,0]
+for i=0,n_elements(mag_lons)-1 do begin
+  
+  weights2use=reform(mag_weight(i,*))
+  
+  north =where(mag_lats gt 0 and weights2use gt 0,north_count)
+  south =where(mag_lats le 0 and weights2use gt 0,south_count)
+  
+  if north_count gt 0 then begin
+    n_lats=mag_lats(north)
+    n_irrad=reform(irradiance_m(i,north))
+    n_weights=reform(mag_weight(i,north))
+    fit=gaussfit(n_lats,n_irrad,a,nterms=nterms,estimates=estimates)
+    coeff_arr(*,i)=a
+    plot,n_lats,n_irrad
+    oplot,n_lats,fit
+    
+    wait,0.01
+    justnorth=where(mag_lats gt 0)
+    powerterm= (mag_lats(justnorth) - coeff_arr(1,i))/coeff_arr(2,i) 
+    fit=0
+    switch nterms of  
+         6: fit = fit + coeff_arr(5,i)*mag_lats(justnorth)^2  
+         5: fit = fit + coeff_arr(4,i)*mag_lats(justnorth) 
+         4: fit = fit + coeff_arr(3,i)  
+         3: fit = fit + coeff_arr(0,i)*exp((-1)*(powerterm)^2/2)  
+    endswitch  
+
+    fit_array(i,justnorth)=fit
+
+  endif
+
+  if south_count gt 0 then begin
+    s_lats=mag_lats(south)
+    s_irrad=reform(irradiance_m(i,south))
+    s_weights=reform(mag_weight(i,south))
+    s_fit=gaussfit(s_lats,s_irrad,a,nterms=nterms,estimates=s_estimates)
+    s_coeff_arr(*,i)=a
+    plot,s_lats,s_irrad
+    oplot,s_lats,s_fit
+    
+    wait,0.01
+    justsouth=where(mag_lats le 0)
+    powerterm= (mag_lats(justsouth) - s_coeff_arr(1,i))/s_coeff_arr(2,i) 
+    fit=0
+    switch nterms of  
+         6: fit = fit + s_coeff_arr(5,i)*mag_lats(justsouth)^2  
+         5: fit = fit + s_coeff_arr(4,i)*mag_lats(justsouth) 
+         4: fit = fit + s_coeff_arr(3,i)  
+         3: fit = fit + s_coeff_arr(0,i)*exp((-1)*(powerterm)^2/2)  
+    endswitch  
+
+    fit_array(i,justsouth)=fit
+
+  endif
+  
+endfor
+    
+
+
+
+coeff_array=s_coeff_arr
+
+
+DONT_DO_ANY_FITS:
+
+
+;stop
+end

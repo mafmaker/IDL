@@ -1,0 +1,31 @@
+pro read_xray_p,time1,time2,soft,hard,xraytime, stopper = stopper
+
+;
+;  time is an array [yyyy,ddd,hh,mm]
+;
+;  there were real errors here (decimal was not decimal hours but
+;  rather minutes/100. Disaster!
+
+datapath='/home/immel/sci/goes/xray/'
+
+if time1(1) ne time2(1) then print,'Works only for the same day now.'
+
+datafile=datapath + 'xray' + strcompress(fix(time1(0)),/rem) + $
+	 strcompress(fix(time1(1)),/rem) + '.idl'
+
+restore,datafile
+index1=time1(2)*60 + time1(3)
+index2=time2(2)*60 + time2(3)
+
+soft=flux1_(index1:index2)
+hard=flux2_(index1:index2)
+xtime=hhmm_(index1:index2)
+xhrs=fix((xtime/100)) 
+xmins=fix((xtime/100 - xhrs) * 100)
+
+xraytime=(xhrs*60 + xmins)/60.
+
+;xraytime=fltarr(index2-index1+1)
+if keyword_set(stopper) gt 0 then stop
+
+end

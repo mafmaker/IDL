@@ -1,0 +1,86 @@
+pro flx_cont, _extra=extra, energyflux=energyflux, total=total, up=up, $
+              photo=photo, npowers=npowers, surf=surf, xrange=xrange, $
+              yrange=yrange, net=net
+
+; make contour plots of the particle flux 
+
+@common
+
+if xrange(0) ne xrange(1) then  $
+     ix = where(xrange(0) le energy and energy le xrange(1)) else  $
+     ix = indgen(n_elements(energy))
+if yrange(0) ne yrange(1) then  $
+     iy = where(yrange(0) le altitude and altitude le yrange(1)) else  $
+     iy = indgen(n_elements(altitude))
+
+f=flux_down(min(ix):max(ix),min(iy):max(iy))
+word="Downward "
+
+if keyword_set(total) then begin
+   f=flux_down(min(ix):max(ix),min(iy):max(iy))+ $
+        flux_up(min(ix):max(ix),min(iy):max(iy))
+  word="Total "
+endif
+
+if keyword_set(net) then begin
+   f=abs(flux_down(min(ix):max(ix),min(iy):max(iy))- $
+        flux_up(min(ix):max(ix),min(iy):max(iy)))
+  word="Net "
+endif
+
+if keyword_set(up) then begin
+  f=flux_up(min(ix):max(ix),min(iy):max(iy))
+  word="Upward "
+endif
+
+if keyword_set(photo) then begin
+  f=flux_extra(min(ix):max(ix),min(iy):max(iy))
+  word="Internal Source "
+endif
+
+title=word+"Particle Flux (log(flux eV!e-1!ncm!e-2!ns!e-1!n))"
+unit=word+"Particle Flux (eV!e-1!ncm!e-2!ns!e-1!n))"
+
+if keyword_set(energyflux) then begin
+  for m=0,mmax-1 do f(*,m)=f(*,m)*energy
+  title=word+"Energy Flux (log(flux cm!e-2!ns!e-1!n))"
+  unit=word+"Energy Flux (cm!e-2!ns!e-1!n))"
+endif
+
+if not keyword_set(npowers) then npowers=8
+fmin=max(f)/10.^npowers
+
+if keyword_set(surf) then begin
+;   xsurf, (f > fmin), energy(ix), altitude(iy), title=title, $
+;	 xstyle=1, ystyle=1, /xty, /zlog,  $
+;	 xtitle="Energy (eV)", ytitle="Altitude (km)", _extra=extra
+   image3, f, energy(ix), altitude(iy), unit=unit, title=title, $
+	 xstyle=1, ystyle=1, /xlog, /zlog, zmin=1e2, zmax=1e11, $
+	 xtitle="Energy (eV)", ytitle="Altitude (km)", _extra=extra
+endif else begin 
+   f=alog10(f > fmin)
+   if min(f) ge max(f) then begin
+      msg_out, 'No flux between minimum and maximum:'+ $
+           strcompress(fmin)+strcompress(10^max(f))
+      return
+   endif
+
+   fmin=long(2*(min(f)+0.5))*0.5 ; lowest contour level
+   fmax=long(2*max(f))*0.5      ; highest contour level
+   nlevels=min([(fmax-fmin)/0.5, 28]) ; number of levels
+   index=findgen(nlevels+2)*!d.n_colors/(nlevels+2) ; define colour index
+   index=index+index(1)
+; make (and label) contour lines at multiples of 1/2
+   levels=rotate(fmax-findgen(nlevels+1)*0.5,2)
+
+   if !d.flags/256 and !p.multi(0) eq 0 then window, /free
+   contour, f, energy(ix), altitude(iy), title=title, $
+        levels=levels, xstyle=1, ystyle=1, /xty, /fill, $
+        xtitle="Energy (eV)", ytitle="Altitude (km)", _extra=extra
+   contour, f, energy(ix), altitude(iy), levels=levels, xstyle=4,  $
+        ystyle=4, /xty, /follow, /over
+endelse
+
+return
+end
+

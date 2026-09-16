@@ -1,0 +1,28 @@
+pro dump_all_images_p,image_stack,png=png,gif=gif
+
+                                ; program to dump all images in a file to external files
+                                ; input : image_stack - 3d array [x,y,n]
+                                ; x=elements in x dimension
+                                ; y=elements in y dimension
+                                ; n = number of images
+
+;  it will bytscl the image, so be sure to bytscl it first if you want it scaled the way you want.
+;  it will use the 
+  thing=size(image_stack)
+  xsize=thing[1]
+  ysize=thing[2]
+  nimages=thing[3]
+;  initstring=' '
+  
+  print,'Enter an identifying string for these files'
+  read,initstring
+
+  for ii=0,nimages-1 do begin
+     image=reform(image_stack[*,*,ii])
+     image_number = strcompress(ii,/rem)
+     if ii lt 100 then image_number = '0' + image_number 
+     if ii lt 10 then image_number = '0' + image_number 
+     write_png,'png/' + initstring+image_number+'.png', image
+  endfor
+return
+end

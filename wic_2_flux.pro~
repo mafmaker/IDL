@@ -1,0 +1,81 @@
+pro wic_2_flux,wic,EE,EF
+
+;
+; Author: Thomas Immel
+; Date  : 2-3-2001
+; 
+;  Counts must be corrected back to what the Belgians calculated.
+;  to use their numbers
+;
+;  Input - The wic array can be a keogram or a mapped array. It is
+;	   NOT recommended that you hand this thing and image.
+;
+
+
+echar=[0.5,1.,5.,25.,300.]
+
+wic_cts=[351.,443.,556.,575.]
+wic_cts_abs=[344.,427.,346.,95.4,20.]
+
+
+;--- a quadratic will fit these data if you take the log of the
+;--- energy flux
+
+max_ee=300.
+constrain=where(ee gt max_ee,num_constrain)
+if num_constrain gt 0 then ee(constrain)=max_ee
+
+good_ee=where(ee gt 0 and ee lt max_ee and wic gt 0,counter)
+
+if counter gt 0 then begin
+
+  newcts=ee & newcts(*)=0
+
+  newcts(good_ee)=interpol(wic_cts_abs,echar,ee(good_ee))
+  EF=EE & EF(*)=0
+
+  EF(good_ee)=wic(good_ee)/newcts(good_ee)
+
+  badones=where(finite(ef) eq 0)
+
+endif else begin
+
+  Print,'No good <E> values to determine EFlux, setting to 0'
+  ef=ee
+  ef(*)=0
+
+endelse
+
+;print,ee(badones)
+;print,wic(badones)
+
+;loge=alog(echar)
+;coefs=poly_fit(loge,wic_cts_abs,3,a,b,c)
+;this works poorly!!!!
+
+;--- take the characteristic energy calculated before and predict
+;--- rather the count rate if the total flux were one erg
+;--- (i.e. given the characteristic energy, calculate the
+;---  predicted WIC counting rate.)
+
+;oneerg_wic=coefs(0) + alog(ee)* coefs(1) + (alog(ee)^2) * coefs(2) + $
+;		(alog(ee)^3)*coefs(3)
+
+;--- knowing that energy adds linearly, calculate the total energy flux
+;--- in ergs/cm^2/sec
+
+
+
+;--- that's it.
+
+;newe=findgen(300) + 1
+;new_wic=coefs(0) + alog(newe)* coefs(1) + (alog(newe)^2) * coefs(2) + $
+;		(alog(newe)^3)*coefs(3)
+
+
+
+
+;stop
+
+return
+end

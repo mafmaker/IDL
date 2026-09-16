@@ -1,0 +1,43 @@
+pro flx_surf, _extra=_extra, emax=emax, fmin=fmin
+
+; plot the particle flux as a surface plot (this doesn't look too great...)
+
+;common header, messag, crs_file, nmax, mmax, kmax, jmax, states
+;common grid, energy, altitude, angle, mu_weight
+;common flux, flux_up, flux_down, flux_extra
+@common
+
+if !d.flags/256 then begin
+   device, get_screen_size=screensize
+   window, /free, xs=screensize(0)/2*w_scale, ys=screensize(1)*w_scale
+endif else $
+   device, xsize=13, ysize=24, yoffset=2, xoffset=4.2
+
+p_save=!p.multi
+!p.multi=[0,1,2]
+
+if keyword_set(emax) then dummy=min(abs(energy-emax), n_max) $
+                     else n_max=nmax-1
+f=flux_down(1:n_max, *)
+if not keyword_set(fmin) then fmin=max(flux_down)/1e7
+;bad=where(f lt fmin, i)
+;if i gt 0 then f(bad)=1e36
+
+surface, f, energy(1:n_max), altitude, title="Downward Flux", $
+	 xtitle="Energy (eV)", ytitle="Altitude (km)", xty=1, zty=1, $
+         min_val=fmin, _extra=_extra
+
+f=flux_up(1:n_max, *)
+if not keyword_set(fmin) then fmin=max(flux_up)/1e7
+;bad=where(f lt fmin, i)
+;if i gt 0 then f(bad)=1e36
+
+surface, f, energy(1:n_max), altitude, title="Upward Flux", $
+	 xtitle="Energy (eV)", ytitle="Altitude (km)", xty=1, zty=1, $
+         min_val=fmin, _extra=_extra
+
+!p.multi=p_save
+
+return
+end
+

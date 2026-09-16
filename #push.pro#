@@ -1,0 +1,9 @@
+push,arr,var
+
+;
+; emulate the push function found in most modern computer languages
+;
+;
+;
+
+helper=size(arr) & helper=size

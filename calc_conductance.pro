@@ -1,0 +1,33 @@
+pro calc_conductance,ee,ef,hall,ped
+
+
+;
+;  Author  Thomas Immel, UCB
+;  Date    03-24-2001
+;  Purpose To calculate Hall and Pedersen Conductances using the formulae
+; 	   of Robinson et al. (JGR, 2565, 1987)
+;
+;  Input : ee and ef (electron mean energy and total energy flux in 
+;		(milliwatts/m^2, which are EQUIVALENT to ergs/cm^2)
+
+bad=where(ee le 0 or ef le 0)
+good=where(ee gt 0 and ef gt 0,counter)
+
+if counter gt 0 then begin
+
+;---
+
+  hall=ee & hall(*)=0
+  ped=ee & ped(*)=0
+
+;---
+
+  ped(good)= (40*ee(good))/(16 + ee(good)^2) * ef(good)^(0.5)
+  hall(good)=ped(good) * 0.45 * ee(good)^(0.85)
+
+;---
+
+endif
+
+return 
+end

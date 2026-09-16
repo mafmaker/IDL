@@ -1,0 +1,145 @@
+pro convert_wic_si13_new,x_in,y_in,x_out,y_out,x_out2,y_out2,x_out3,y_out3,$
+	x_out4,y_out4,x_out5,y_out5,x_out6,y_out6,x_out7,y_out7,$
+	x_out8,y_out8,x_out9,y_out9,x_out10,y_out10,time_diff,$
+	reverse=reverse
+
+if keyword_set(reverse) then begin
+	print,'First test y-offset'
+;	stop
+	endif
+
+if Keyword_set(reverse) then begin
+  a=[ 10.1358,  1.76592e0,-1.20322e-1,7.41718e-4,8.77110e-4,8.76623e-5]
+  b=[-18.0236,-1.67850e-3,  1.93567e0,3.47393e-5,1.75421e-4,-3.2079e-5]
+  endif else begin
+  a=[-5.07654,5.69312e-1,2.81693e-2,-1.32078e-4,-1.19285e-4,-1.51399e-5]
+  b=[ 9.29572,6.09182e-4,5.15769e-1,-4.85788e-6,-2.33429e-5,3.56581e-6]
+  endelse
+
+x_out=a[0]+a[1]*x_in+a[2]*y_in+a[3]*x_in*x_in+a[4]*y_in*y_in+a[5]*x_in*y_in
+y_out=b[0]+b[1]*x_in+b[2]*y_in+b[3]*x_in*x_in+b[4]*y_in*y_in+b[5]*x_in*y_in
+
+if Keyword_set(reverse) then begin
+  a=[ 3.86891, 1.88063e0,-4.31054e-2,-6.00962e-6, 2.47762e-4, 2.23625e-4]
+  b=[-18.7393,9.34507e-3,  1.96949e0,-3.67344e-5,-1.12176e-4,-7.13018e-5]
+  endif else begin
+  a=[-1.80530e0, 5.30749e-1,1.05437e-2,4.31977e-7,-3.44546e-5,-3.13766e-5]
+  b=[ 9.52248e0,-2.30655e-3,5.08276e-1,5.31298e-6, 1.48984e-5, 9.36629e-6]
+  endelse
+
+x_out2=a[0]+a[1]*x_in+a[2]*y_in+a[3]*x_in*x_in+a[4]*y_in*y_in+a[5]*x_in*y_in
+y_out2=b[0]+b[1]*x_in+b[2]*y_in+b[3]*x_in*x_in+b[4]*y_in*y_in+b[5]*x_in*y_in
+
+if keyword_set(reverse) then begin
+  a=[  2.435,1.894]
+  b=[-18.021,1.951]
+  endif else begin
+  a=[-1.228,5.274e-1]
+  b=[ 9.243,5.126e-1]
+  endelse
+
+x_out3=a[0]+a[1]*x_in
+y_out3=b[0]+b[1]*y_in
+  
+;==================================================================
+; own data set for early 262
+
+if keyword_set(reverse) then begin
+  a=[-2.528,1.975e-0,-7.816e-3,-2.391e-4, 2.220e-4,-3.496e-4]
+  b=[-17.74,3.985e-3, 1.968e-0, 1.450e-6,-9.815e-5,-2.160e-5]
+  endif else begin
+  a=[1.232, 5.102e-1,2.190e-3, 1.733e-5,-3.981e-5,5.449e-5]
+  b=[9.014,-9.466e-4,5.085e-1,-3.385e-7, 1.328e-5,2.678e-6]
+  endelse
+
+x_out4=a[0]+a[1]*x_in+a[2]*y_in+a[3]*x_in*x_in+a[4]*y_in*y_in+a[5]*x_in*y_in
+y_out4=b[0]+b[1]*x_in+b[2]*y_in+b[3]*x_in*x_in+b[4]*y_in*y_in+b[5]*x_in*y_in
+  
+;========== simple linear for 262 =================
+if keyword_set(reverse) then begin
+  a=[ 4.647,1.903]
+  b=[-16.94,1.951]
+  endif else begin
+  a=[-2.403,5.252e-1]
+  b=[ 8.681,5.124e-1]
+  endelse
+
+x_out5=a[0]+a[1]*x_in
+y_out5=b[0]+b[1]*y_in
+
+; =============== multiple
+
+if Keyword_set(reverse) then begin
+  a=[ 6.411, 1.900   ,-5.285e-2, 6.372e-6, 2.919e-4,2.268e-5]
+  b=[-16.76,-1.962e-3, 1.948   ,-1.359e-5,-2.212e-5,7.734e-5]
+  endif else begin
+  a=[-3.116e0,5.262e-1,1.281e-2,-9.577e-7,-3.871e-5,-4.961e-6]
+  b=[ 8.600e0,3.572e-4,5.134e-1, 1.796e-6, 3.058e-6,-1.066e-5]
+  endelse
+
+x_out6=a[0]+a[1]*x_in+a[2]*y_in+a[3]*x_in*x_in+a[4]*y_in*y_in+a[5]*x_in*y_in
+y_out6=b[0]+b[1]*x_in+b[2]*y_in+b[3]*x_in*x_in+b[4]*y_in*y_in+b[5]*x_in*y_in
+
+; =============== multiple with time
+
+;if Keyword_set(reverse) then begin
+;  a=[ 6.144, 1.910   ,-4.436e-6,-1.445e-4,-3.628e-2]
+;  b=[-17.00, 1.953   ,-1.926e-5, 1.550e-5]
+;  endif else begin
+;  a=[-3.211e0,5.239e-1,7.350e-7, 1.995e-5, 1.906e-2]
+;  b=[ 8.702e0,5.122e-1,2.953e-6,-3.119e-6]
+;  endelse
+;x_out7=a[0]+a[1]*x_in+a[2]*x_in*x_in+a[3]*x_in*y_in+a[4]*time_diff
+;y_out7=b[0]+b[1]*y_in+b[2]*y_in*y_in+b[3]*x_in*y_in
+
+if Keyword_set(reverse) then begin
+  a=[ 7.467, 1.908   ,-4.805e-2,-3.219e-5, 3.214e-4,-7.835e-5,-3.623e-2]
+  b=[-16.78,-1.986e-3, 1.949   ,-1.110e-5,-2.096e-5, 7.280e-5]
+  endif else begin
+  a=[-3.701e0,5.242e-1,1.134e-2, 4.616e-6,-4.364e-5, 1.045e-5,1.905e-2]
+  b=[ 9.608e0,3.825e-4,5.133e-1, 1.437e-6, 2.874e-6,-1.007e-5]		;+1 linear
+  endelse
+
+x_out7=a[0]+a[1]*x_in+a[2]*y_in+a[3]*x_in*x_in+a[4]*y_in*y_in+a[5]*x_in*y_in+a[6]*time_diff
+y_out7=b[0]+b[1]*x_in+b[2]*y_in+b[3]*x_in*x_in+b[4]*y_in*y_in+b[5]*x_in*y_in
+
+
+; =============== multiple without time difference day 297
+if Keyword_set(reverse) then begin
+  a=[ 6.434e-0, 1.924e-0,-3.512e-2,-1.191e-4, 7.405e-5,2.392e-5]
+  b=[-2.326e+1,-1.023e-2, 1.966e-0, 5.718e-5,-2.594e-4,1.055e-4]
+  endif else begin
+  a=[-3.076e-0,5.189e-1,9.014e-3, 1.802e-5,-9.246e-6,-5.211e-6]
+  b=[ 1.184e+1,2.490e-3,5.101e-1,-7.954e-6, 3.603e-5,-1.509e-5]		
+  endelse
+
+x_out8=a[0]+a[1]*x_in+a[2]*y_in+a[3]*x_in*x_in+a[4]*y_in*y_in+a[5]*x_in*y_in
+y_out8=b[0]+b[1]*x_in+b[2]*y_in+b[3]*x_in*x_in+b[4]*y_in*y_in+b[5]*x_in*y_in
+
+; ========= Benoits numbers without time difference day 297
+if Keyword_set(reverse) then begin
+  a=[ 5.037289028E+00,  1.926148519E+00, -2.537059895E-02, -8.263175316E-05,  1.033944426E-04, -7.527188178E-05]
+  b=[-2.382751147E+01, -7.176174311E-03,  1.980129576E+00,  1.506151098E-05, -4.082094052E-04,  1.178333014E-04]
+  endif else begin
+  a=[-2.370825782E+00,  5.182809553E-01,  5.680471121E-03,  1.408879567E-05, -1.128778261E-05,  9.741157833E-06]
+  b=[ 1.206046526E+01,  1.545424402E-03,  5.075214936E-01, -2.156659899E-06,  5.527212872E-05, -1.605615959E-05]		
+  endelse
+
+x_out9=a[0]+a[1]*x_in+a[2]*y_in+a[3]*x_in*x_in+a[4]*y_in*y_in+a[5]*x_in*y_in
+y_out9=b[0]+b[1]*x_in+b[2]*y_in+b[3]*x_in*x_in+b[4]*y_in*y_in+b[5]*x_in*y_in
+
+; ========= Benoits numbers with time difference day 297
+if Keyword_set(reverse) then begin
+  a=[ 8.239588360E+00,  1.920592578E+00, -2.937613611E-02, -6.709008032E-05,  1.190213902E-04, -4.863815587E-05,  4.701325289E-02]
+  b=[-2.374113119E+01, -7.326042795E-03,  1.980021528E+00,  1.548073916E-05, -4.077878765E-04,  1.185517317E-04,  1.268156850E-03]
+  endif else begin
+  a=[-4.112136258E+00,  5.206962702E-01,  6.919943607E-03,  9.515167680E-06, -1.490007525E-05,  6.233135839E-06,  2.461004419E-02]
+  b=[ 1.201587642E+01,  1.607272139E-03,  5.075532322E-01, -2.273774456E-06,  5.517963059E-05, -1.614598772E-05,  6.301768400E-04]		
+  endelse
+
+x_out10=a[0]+a[1]*x_in+a[2]*y_in+a[3]*x_in*x_in+a[4]*y_in*y_in+a[5]*x_in*y_in+a[6]*time_diff
+y_out10=b[0]+b[1]*x_in+b[2]*y_in+b[3]*x_in*x_in+b[4]*y_in*y_in+b[5]*x_in*y_in+b[6]*time_diff
+
+
+
+end

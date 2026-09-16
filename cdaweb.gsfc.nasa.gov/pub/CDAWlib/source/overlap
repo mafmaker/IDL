@@ -1,0 +1,71 @@
+#!  /usr/local/bin/perl -w
+#
+#   overlap
+#
+#   Reads a CDAWeb gap file and deletes all superseeded CDFs.
+#
+#   Usage:
+#
+#       overlap <gap file> (the name of the gap file should be
+#                           entered without the .gap extension)
+#
+#   Written by:
+#
+#        Karen Horrocks
+#        February 1997
+#
+######################################################################
+
+#opens and reads the gap file
+my $arg;
+foreach $arg (@ARGV) {
+#	$arg = "~cdaweb/metadata/run/".$arg;
+	print $arg, "\n";
+    next unless open(GAP, $arg);
+    last;
+}#endforeach
+my @records = <GAP>;
+
+my $i;
+for ($i=0; $i<=$#records; $i++) {
+
+	# finds records that begin with OVERLAP
+	if ($records[$i] =~ /^OVERLAP/) {
+		chomp($records[$i]);
+		chomp($records[$i+1]);
+		
+		# extracts the file names of the overlapped files
+		my $file1 = substr($records[$i], 11);
+		my $file2 = substr($records[$i+1], 11);
+
+		my $len1 = length($file1);
+		my $len2 = length($file2);
+
+		#truncate the .cdf for now
+
+		my $trunc1 = substr($file1, 0, $len1-4);
+		my $trunc2 = substr($file2, 0, $len2-4);
+
+#		 print "file 1:  ", $trunc1, "\nfile 2:  ", $trunc2, "\n";
+
+		# determines if the file names up to the version are equal
+		if (substr($trunc1, 0, -3) eq substr($trunc2, 0, -3)) {
+			
+			# deletes the file with the lower version
+			if (substr($trunc1, -2) > substr($trunc2, -2)) {
+				unlink($file2);	
+				print $file2, " deleted.\n    Superseded by ",
+					 $file1, ".\n";
+			} elsif (substr($trunc1, -2) < substr($trunc2, -2)) {
+				unlink($file1);
+				print $file1, " deleted.\n    Superseded by ",
+					 $file2, ".\n";
+			}#endif
+			
+		}#endif
+		
+	}#endif
+	
+}#endforeach
+
+close(GAP);

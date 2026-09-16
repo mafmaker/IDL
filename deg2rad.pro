@@ -1,0 +1,8 @@
+;*************************************************************************
+FUNCTION DEG2RAD, ARRAY
+;CONVERTS AN ARRAY OF ANGLES FROM DEGREES TO RADIANS.
+;CAN WORK ON ANY ARRAY!
+  XXX=WHERE(ARRAY NE -300.0)
+  ARRAY(XXX)=ARRAY(XXX)/180.0 * !PI
+  RETURN,ARRAY
+END

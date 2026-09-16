@@ -1,0 +1,78 @@
+pro get_gps_tec,starttime,stoptime,gpstecdata,gpstectimes,stopper=stopper,splitter=splitter
+
+; code to read GPS TEC data produced by the MIT Haystack group,
+; available on openmadrigal.org, at the haystack link, and the data
+; link from there. 
+; http://madrigal.haystack.mit.edu/cgi-bin/madrigal/madInvent.cgi
+;
+;  Author : T. J. Immel
+;  Date   : Sept 12, 2005
+;  Licence: BSD
+
+if keyword_set(splitter) gt 0 then split=splitter else split=1
+
+datadir='/home/immel/sci/gps/'
+
+syear=strcompress(starttime(0),/rem)
+subyear=strmid(syear,2,2)
+doy0=starttime(1)
+doy1=stoptime(1)
+hour0=starttime(2)
+hour1=stoptime(2)
+
+ydn2md,starttime(0),starttime(1),month0,day0
+ydn2md,stoptime(0),stoptime(1),month1,day1
+
+smonth=strcompress(month0,/rem) & if month0 lt 10 then smonth='0'+smonth
+emonth=strcompress(month1,/rem) & if month1 lt 10 then emonth='0'+emonth
+sday=strcompress(day0,/rem) & if day0 lt 10 then sday='0'+sday
+eday=strcompress(day1,/rem) & if day1 lt 10 then eday='0'+eday
+
+
+hour0=starttime(2)
+hour1=stoptime(2)
+min0=starttime(3)
+min1=stoptime(3)
+
+starthr=hour0*60 + min0
+endhr=hour1*60  +min1
+
+filebase=datadir + 'gps' + subyear + smonth + sday + '.idl'
+
+;--- make time (minutes) array
+restore,filebase
+sizer=size(tec)
+times=findgen(sizer(3)) * round(1440/sizer(3)) + round(1440/sizer(3))/2.
+
+;--- find times that fall in the window requested
+
+indices=where(times lt endhr and times gt starthr,numindices)
+splitindices=(indices-indices(0))/(numindices/ split)
+
+;--- define the target array, with splitter levels in the array
+
+tecarr=fltarr(sizer(1),sizer(2),split)
+tectimes=fltarr(split)
+
+;--- load the data array and gps times.
+
+for i=0,split-1 do begin
+
+  finder=where(splitindices eq i)  
+  tec_total=total(tec(*,*,indices(finder)),3)
+  weight_total=total(weights(*,*,indices(finder)),3)
+  tec_dummy=tec_total/weight_total
+  killnan,tec_dummy,-1
+  tecarr(*,*,i)=tec_dummy
+
+  tectimes(i)=mean(times(indices(finder)))
+
+endfor
+
+
+
+;--- load the proper output variables and you are done
+
+if keyword_set(stopper) gt 0 then stop
+
+end

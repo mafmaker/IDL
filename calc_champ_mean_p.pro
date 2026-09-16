@@ -1,0 +1,114 @@
+
+pro calc_champ_mean_p,champ,doy,champ_mean_day,champ_mean_night,stopper=stopper
+
+;   author : Thomas Immel
+;  purpose : Calulate a quick mean density vs latitude and LT for the
+;  october storm period of interest for Fall AGU 2004. Give the champ
+;  structure and the day you want to use as an average.
+;
+;  Updated Feb 2008 to remove flare effects in density with a cubic
+;  fit to the daily trend. It does a pretty good job. Version _p2 of
+;  this code makes the flare correction optional and returns
+;  orbit-separated densities.
+;
+;
+
+
+lats=180 ; really, don't change this
+latres=1.
+
+day_ct=dblarr(lats/latres)
+day_wt=fltarr(lats/latres)
+night_ct=dblarr(lats/latres)
+night_wt=fltarr(lats/latres)
+
+champ_lt=champ.lon + champ.gpst*15.
+
+fix_champ=where(champ_lt lt 0,gottafix)
+if gottafix gt 0 then champ_lt(fix_champ)=champ_lt(fix_champ) + 360.
+fix_champ2=where(champ_lt gt 360,gottafix2)
+if gottafix2 gt 0 then champ_lt(fix_champ2)=champ_lt(fix_champ2) - 360.
+
+champ_lt = champ_lt/15.   ;finally champ_lt is defined
+
+day=where(champ_lt gt 6 and champ_lt le 18 and champ.doy eq doy,numday)
+night=where(champ_lt le 6 or champ_lt gt 18 and champ.doy eq doy,numnight)
+
+;---turn latitudes into indices
+champ_day_den=champ.density(day)
+champ_day_lat= round(champ.lat(day) +90)/latres
+champ_night_den=champ.density(night)
+champ_night_lat=round(champ.lat(night) +90)/latres
+
+;lats=champ.lat + 90
+;lats=round(lats)
+
+;--- fool with orbits to see why the sawteeth won't go away.
+;--- one problem is that the data are in ~ 1.9 degree 
+;--- separation intervals
+
+
+champ_day_time=champ.gpst(day)  ;GPS time of measurements in daytime
+champ_nigth_time=champ.gpst(night)  ;GPS time of measurements in daytime
+
+splitter=where(deriv(champ_day_time) gt .25,n_orbits)  ;split into orbits
+orbit_split= champ_day_time - champ_day_time
+orbit_split(splitter)=1
+orbits=n_orbits/2 -1; minus one, toss out the last one
+
+day_den_arr=fltarr(orbits)##day_ct   ; we don't need weights, this array will 
+                                     ; always be undersampled
+
+
+;--- correct for nasty flare effects.
+corrector=poly_fit(champ_day_time,champ_day_den,3,yfit=yfit)
+champ_day_den=champ_day_den - yfit + corrector(0)
+
+;plot,day_ct/day_wt,yrange=[1e-11,2e-10]
+
+orbit_index=0
+orbit_switch=0 
+
+for i=0,numday-1 do begin
+
+  day_ct(champ_day_lat(i))=  day_ct(champ_day_lat(i)) + champ_day_den(i)
+  day_wt(champ_day_lat(i))=  day_wt(champ_day_lat(i)) + 1
+
+  orbit_step=[orbit_split(i-1 > 0),orbit_split(i)]
+
+  ;look for down step in orbit_step
+  if orbit_step(0) eq 1 and orbit_step(1) eq 0 then orbit_index=orbit_index + 1
+  if orbit_index lt orbits then $
+  day_den_arr(champ_day_lat(i),orbit_index)=champ_day_den(i)
+;  oplot,day_ct/day_wt,min_value=0
+
+
+
+;  if orbit_split(i) gt 0 then print, "Waiting a second'
+;  if orbit_split(i) gt 0 then wait,2
+
+endfor
+
+for i=0,numnight-1 do begin
+  night_ct(champ_night_lat(i))=  night_ct(champ_night_lat(i)) + champ_night_den(i)
+  night_wt(champ_night_lat(i))=  night_wt(champ_night_lat(i)) + 1
+endfor
+
+
+
+
+champ_mean_day=day_ct/day_wt
+champ_mean_night=night_ct/night_wt
+
+
+killnan,champ_mean_day,0.
+killnan,champ_mean_night,0.
+
+
+
+
+
+if keyword_set(stopper) gt 0 then stop
+
+return
+end
