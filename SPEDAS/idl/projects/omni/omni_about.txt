@@ -1,3 +1,0 @@
-To read about the OMNI data (sources, availability, acknowledgements, etc.), see the page:
-
-http://omniweb.gsfc.nasa.gov/html/ow_data.html

@@ -1,3 +1,0 @@
-project: WIND
-load_data: wind_ui_load_data
-config: wind_fileconfig

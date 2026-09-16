@@ -1,3 +1,0 @@
-project: BARREL
-load_data: barrel_ui_load_data
-config: barrel_fileconfig

@@ -1,3 +1,0 @@
-project: Geomagnetic Indices
-load_data: idx_ui_load_data
-config: geom_indices_fileconfig

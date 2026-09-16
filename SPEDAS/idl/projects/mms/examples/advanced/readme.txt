@@ -1,1 +1,0 @@
-This folder contains scripts that show more advanced usage of the MMS plugin, as well as scripts that generate multi-instrument/science quality (L2) figures.
