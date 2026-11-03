@@ -7,7 +7,7 @@
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
-; Version : 1.1.2 - Not compatible with version 1.0.0.
+; Version : 1.1.3 - Not compatible with version 1.0.0.
 ;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;
@@ -177,9 +177,10 @@
 ;                           code which uses the attribute data in the past.
 ;  01 Jul 16  T. N. Fae     Fixed BUG: "CHAR" variables with more than one
 ;                           dimension did not read to STRING correctly.
-;                            
+;  02 Nov 26  T. J. Immel   Checks for duplicate use of variable attribute
+;                           names and appends '_' of the higher index names.                          
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+ 
 
 ; Internal Functions & Procedures
 FORWARD_FUNCTION readAttributesNetCDF
@@ -584,15 +585,40 @@ FUNCTION readAttributesNetCDF, ncID, attributes, variableID
   
   ; No Data?
   IF (0 EQ count) THEN GOTO,complete
-  
-  ; Loop Attributes
-  FOR index=0 , count-1 DO BEGIN
+
+
+; Loop Attributes - now checks for duplicate names and adds an
+;                   underscore to second instances of names
+
+  ; Keep track of processed tag names in lowercase to catch case-insensitive collisions
+
+  ; Initialize an empty string array to track tag names case-insensitively
+  added_tags = STRARR(1) 
+  added_tags[0] = "__placeholder__"
+
+
+FOR index=0 , count-1 DO BEGIN
     ; Get Attribute Names
     IF (global) THEN nameNC = NCDF_ATTNAME(ncID,/GLOBAL   ,index) $
     ELSE             nameNC = NCDF_ATTNAME(ncID,variableID,index)
     name = validateNameNetCDF(nameNC)
     
-    ; Get Type Information
+    ; --- COLLISION FIX START ---
+    lc_name = strlowcase(name)
+    
+    ; Check if this tag name already exists in our tracking array
+    pos = WHERE(added_tags EQ lc_name, count_match)
+    WHILE (count_match GT 0) DO BEGIN
+        name = name + '_'
+        lc_name = strlowcase(name)
+        pos = WHERE(added_tags EQ lc_name, count_match)
+    ENDWHILE
+    
+    ; Remember this tag name for future iterations
+    added_tags = [added_tags, lc_name]
+    ; --- COLLISION FIX END ---
+    
+    ; Get Type Information (using nameNC as required by NCDF_ATTINQ)
     IF (global) THEN information = NCDF_ATTINQ(ncID,/GLOBAL   ,nameNC) $
     ELSE             information = NCDF_ATTINQ(ncID,variableID,nameNC)
     createStructureNetCDF,value,information.DataType
@@ -606,8 +632,35 @@ FUNCTION readAttributesNetCDF, ncID, attributes, variableID
     ELSE             NCDF_ATTGET,ncID,variableID,nameNC,value
     
     ; Add to Structure
-    attributes = CREATE_STRUCT(attributes,name,{ID:index,Name:name,Value:value})
+    attributes = CREATE_STRUCT(attributes,name,{ID:index,Name:nameNC,Value:value})
   ENDFOR
+
+
+
+
+  ; Loop Attributes
+;  FOR index=0 , count-1 DO BEGIN
+;    ; Get Attribute Names
+;    IF (global) THEN nameNC = NCDF_ATTNAME(ncID,/GLOBAL   ,index) $
+;    ELSE             nameNC = NCDF_ATTNAME(ncID,variableID,index)
+;    name = validateNameNetCDF(nameNC)
+;    
+;    ; Get Type Information
+;    IF (global) THEN information = NCDF_ATTINQ(ncID,/GLOBAL   ,nameNC) $
+;    ELSE             information = NCDF_ATTINQ(ncID,variableID,nameNC)
+;    createStructureNetCDF,value,information.DataType
+;    typeString = SIZE(attributeValue,/TYPE) EQ 7
+;    
+;    ; Check String Conversion
+;    IF ( (typeString NE 0)  AND  (SIZE(value,/TYPE) NE 7) ) THEN value = STRING(value)
+;    
+;    ; Load Attribute
+;    IF (global) THEN NCDF_ATTGET,ncID,/GLOBAL   ,nameNC,value $
+;    ELSE             NCDF_ATTGET,ncID,variableID,nameNC,value
+;    
+;    ; Add to Structure
+;    attributes = CREATE_STRUCT(attributes,name,{ID:index,Name:name,Value:value})
+;  ENDFOR
   
   ; Success
   complete:
