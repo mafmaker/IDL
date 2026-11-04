@@ -11,7 +11,7 @@ image = image_
 thing=size(image)
 
 xsize=thing(1) & ysize=thing(2)
-HELP,IMAGE
+;HELP,IMAGE
 if keyword_set(nobytscl) ne 1 then image=bytscl(image)
                    ;do before call if you care about
 				      ;max and min
